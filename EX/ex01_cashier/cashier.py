@@ -9,6 +9,3 @@ for i in coins_list:
     print(coins)
     summa = summa - i * number1
     print(summa)
-
-print("Цикл закончен")
-
