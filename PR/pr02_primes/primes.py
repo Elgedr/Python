@@ -4,4 +4,4 @@ def is_prime_number(x):
         return True
     else:
         return False
-print(is_prime_number(2))
+print(is_prime_number(7))
