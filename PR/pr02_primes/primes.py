@@ -1,12 +1,17 @@
 """Primes."""
-def is_prime_number(x: int) -> bool:
+
+
+def is_prime_number(x: int):
     if x < 2:
         return False
     if x == 2:
         return True
-    elif x % 1 == 0 and x % x == 0:
-        return True
-    else:
-        return False
+    for i in range(2, x):
+        if x % i == 0:
+            return False
+        else:
+            return True
+
+
 if __name__ == '__main__':
-    print(is_prime_number(4))
+    print(is_prime_number(88))
