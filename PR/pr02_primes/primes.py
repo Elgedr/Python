@@ -16,4 +16,5 @@ def is_prime_number(x: int):
 
 
 if __name__ == '__main__':
+
     print(is_prime_number(121))
