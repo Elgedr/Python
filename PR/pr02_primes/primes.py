@@ -2,8 +2,8 @@
 
 
 def is_prime_number(x: int):
-    """funktsioon"""
 
+    """funktsioon"""
     if x < 2:
         return False
     if x == 2:
