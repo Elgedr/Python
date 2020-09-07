@@ -3,7 +3,7 @@
 
 def is_prime_number(x: int):
 
-    """funktsioon"""
+    """Funktsioon."""
     if x < 2:
         return False
     if x == 2:
