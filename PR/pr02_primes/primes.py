@@ -1,7 +1,10 @@
 """Primes."""
-def is_prime_number(x):
-    if x/1 % 1 and x/x % x:
+def is_prime_number(x: int) -> bool:
+    if x == 1:
+        return False
+    elif x % 1 == 0 and x % x == 0:
         return True
     else:
         return False
-print(is_prime_number(7))
+if __name__ == '__main__':
+    print(is_prime_number(4))
