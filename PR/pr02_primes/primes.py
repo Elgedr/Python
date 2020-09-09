@@ -1,4 +1,4 @@
-"""Primes."""
+"""Is even."""
 
 
 def is_prime_number(x: int):
