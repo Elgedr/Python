@@ -4,18 +4,19 @@
 def encode(message: str, key: int):
     """Encode."""
     result = ""
-    alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
     message = message.lower()
-    # if message in alphabet:
     for letter in message:
-        position_in_alphabet = alphabet.find(letter)
-        second_position = position_in_alphabet + key
         if letter in alphabet:
+            position_in_alphabet = alphabet.find(letter)
+            second_position = position_in_alphabet + key
+            second_position = second_position % 26
             result = result + alphabet[second_position]
+
         else:
             result = result + letter
     return result
 
 
 if __name__ == '__main__':
-    print("CAT", 2)
+    print(encode("cat", 2))
