@@ -16,23 +16,22 @@ def make_dough(ingredients: list):
 def can_make_pancake(dough: float) -> bool:
     """Can make pancake."""
     dough_amount_for_one_pancake = 0.8
-    if make_dough(dough) / dough_amount_for_one_pancake >= 1:
+    if dough / dough_amount_for_one_pancake >= 1:
         return True
     return False
 
 
 def make_a_pancake(dough: float):
-    """Make a pancake"""
-    taina_kogus = make_dough(dough)
+    """Make a pancake."""
+    taina_kogus = dough
     for_one_pancake = 0.8
-    for i in taina_kogus:
-        taina_kogus = taina_kogus / for_one_pancake
-        taina_kogus = taina_kogus.__round__(taina_kogus, 2)
-        return taina_kogus
+    after_cooking = taina_kogus / for_one_pancake
+    result = round(after_cooking, 2)
+    return result
 
 
-# def make_n_pancakes(n: int, ingredients: list):
-#     """Make n pancakes."""
+def make_n_pancakes(n: int, ingredients: list):
+    """Make n pancakes."""
 
 
 if __name__ == '__main__':
