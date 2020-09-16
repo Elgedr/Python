@@ -32,7 +32,14 @@ def make_a_pancake(dough: float):
 
 def make_n_pancakes(n: int, ingredients: list):
     """Make n pancakes."""
-    dough = make_dough(ingredients)
+    dough_amount = make_dough(ingredients)
+    done_pancakes = 0
+    for i in range(0, n):
+        if can_make_pancake(dough_amount):
+            dough_amount = make_a_pancake(dough_amount)
+            done_pancakes = done_pancakes + 1
+    return done_pancakes
+
 
 
 if __name__ == '__main__':
