@@ -32,6 +32,7 @@ def make_a_pancake(dough: float):
 
 def make_n_pancakes(n: int, ingredients: list):
     """Make n pancakes."""
+    dough = make_dough(ingredients)
 
 
 if __name__ == '__main__':
