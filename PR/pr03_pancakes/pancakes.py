@@ -26,7 +26,9 @@ def make_a_pancake(dough: float):
     taina_kogus = make_dough(dough)
     for_one_pancake = 0.8
     for i in taina_kogus:
-
+        taina_kogus = taina_kogus / for_one_pancake
+        taina_kogus = taina_kogus.__round__(taina_kogus, 2)
+        return taina_kogus
 
 
 # def make_n_pancakes(n: int, ingredients: list):
