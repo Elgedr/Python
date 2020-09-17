@@ -7,7 +7,7 @@ def make_dough(ingredients: list):
     flour = ingredients.count("flour") // 4
     milk = ingredients.count("milk") // 5
     butter = ingredients.count("butter") // 1
-    sugar = ingredients.count("butter") // 2
+    sugar = ingredients.count("sugar") // 2
     amount = [egg, flour, milk, butter, sugar]
     dough = min(amount) * 7
     return dough
@@ -55,6 +55,6 @@ if __name__ == '__main__':
     ingredients3 = ["egg" for _ in range(3)] + ["milk" for _ in range(15)] + ["flour" for _ in range(7)] \
                   + ["butter" for _ in range(3)] + ["sugar" for _ in range(2)]
     print(make_n_pancakes(8, ingredients3))  # 8
-    ingredients4 = ["egg" for _ in range(21)] + ["milk" for _ in range(45)] + ["flour" for _ in range(133)] \
+    ingredients4 = ["egg" for _ in range(21)] + ["milk" for _ in range(45)] + ["flour" for _ in range(4)] \
                   + ["butter" for _ in range(14)] + ["sugar" for _ in range(12)]
-    print(make_n_pancakes(333, ingredients4))  # 4 -> 7dl dough, 0.8dl per pancake -> could make 8 pancakes, we want 4
+    print(make_n_pancakes(4, ingredients4))  # 4 -> 7dl dough, 0.8dl per pancake -> could make 8 pancakes, we want 4
