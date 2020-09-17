@@ -15,8 +15,8 @@ def make_dough(ingredients: list):
 
 def can_make_pancake(dough: float) -> bool:
     """Can make pancake."""
-    dough_amount_for_one_pancake = 0.8
-    if dough / dough_amount_for_one_pancake >= 1:
+    dough_amount_for_one_pancake = 0.8 >= 0
+    if dough - dough_amount_for_one_pancake:
         return True
     return False
 
@@ -46,6 +46,15 @@ def make_n_pancakes(n: int, ingredients: list):
 
 
 if __name__ == '__main__':
-
-    print(make_dough(ingredients=["egg"] * 10 + ["milk"] * 20 + ["flour"] * 29 + ["butter"] * 10 + ["sugar"] * 17))
-# c
+    ingredients = ["egg"] + ["milk"] * 5 + ["flour"] * 4 \
+                  + ["butter"] + ["sugar"]
+    print(make_dough(ingredients))  # 0 -> not enough sugar.
+    ingredients2 = ["egg"] * 4 + ["milk"] * 9 + ["flour"] * 14 \
+                        + ["butter"] * 3 + ["sugar"] * 7
+    print(make_dough(ingredients2))  # 7 -> can make 7dl dough not 7.x dl.
+    ingredients3 = ["egg" for _ in range(3)] + ["milk" for _ in range(15)] + ["flour" for _ in range(7)] \
+                  + ["butter" for _ in range(3)] + ["sugar" for _ in range(2)]
+    print(make_n_pancakes(8, ingredients3))  # 8
+    ingredients4 = ["egg" for _ in range(21)] + ["milk" for _ in range(45)] + ["flour" for _ in range(133)] \
+                  + ["butter" for _ in range(14)] + ["sugar" for _ in range(12)]
+    print(make_n_pancakes(333, ingredients4))  # 4 -> 7dl dough, 0.8dl per pancake -> could make 8 pancakes, we want 4
