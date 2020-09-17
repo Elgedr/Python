@@ -48,3 +48,4 @@ def make_n_pancakes(n: int, ingredients: list):
 if __name__ == '__main__':
 
     print(make_dough(ingredients=["egg"] * 10 + ["milk"] * 20 + ["flour"] * 29 + ["butter"] * 10 + ["sugar"] * 17))
+# c
