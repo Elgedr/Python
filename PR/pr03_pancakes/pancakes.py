@@ -15,8 +15,8 @@ def make_dough(ingredients: list):
 
 def can_make_pancake(dough: float) -> bool:
     """Can make pancake."""
-    dough_amount_for_one_pancake = 0.8 >= 0
-    if dough - dough_amount_for_one_pancake:
+    dough_amount_for_one_pancake = 0.8
+    if dough / dough_amount_for_one_pancake >= 1:
         return True
     return False
 
