@@ -25,21 +25,24 @@ def make_a_pancake(dough: float):
     """Make a pancake."""
     taina_kogus = dough
     for_one_pancake = 0.8
-    after_cooking = taina_kogus / for_one_pancake
+    after_cooking = taina_kogus - for_one_pancake
     result = round(after_cooking, 2)
     return result
 
 
 def make_n_pancakes(n: int, ingredients: list):
     """Make n pancakes."""
-    dough_amount = make_dough(ingredients)
+    dough_amount = make_dough(ingredients)  # например 7
     done_pancakes = 0
-    for i in range(0, n):
-        if can_make_pancake(dough_amount):
+    if can_make_pancake(dough_amount) is False:
+        return done_pancakes
+    else:
+        while can_make_pancake(dough_amount) is True:
             dough_amount = make_a_pancake(dough_amount)
             done_pancakes = done_pancakes + 1
+    if done_pancakes > n:
+        return n
     return done_pancakes
-
 
 
 if __name__ == '__main__':
