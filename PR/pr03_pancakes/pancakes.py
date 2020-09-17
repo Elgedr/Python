@@ -43,4 +43,3 @@ def make_n_pancakes(n: int, ingredients: list):
     if done_pancakes > n:
         return n
     return done_pancakes
-
