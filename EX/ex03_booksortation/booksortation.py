@@ -1,11 +1,17 @@
 """Book_sortation."""
 
 
-def add_book_to_category(book: str, category: str, categorised_books: dict):
-    """1 funktsioon."""
-    categorised_books = {"spell books": [""], "history books": [""], "relics books": [""], "potion books": [""], "other books": [""]}
-    # if book in
-    # return dict
+# def add_book_to_category(book: str, category: str, categorised_books: dict) -> dict:
+#     """1 funktsioon."""
+#     categorised_books = {"spell books": [""],
+#     "history books": [""],
+#     "relics books": [""],
+#     "potion books": [""],
+#     "other books": [""]}
+
+
+def booksortation(books: list) -> dict:
+    """Peamine funktsioon."""
 
 
 def is_spell_book(book: str) -> bool:
@@ -42,3 +48,5 @@ def is_potion_book(book: str) -> bool:
     elif konsonantide_arv - taishaalikute_arv == 1:
         return True
     return False
+
+https://www.youtube.com/watch?v=h568KGjc0f0
