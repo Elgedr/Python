@@ -8,17 +8,23 @@ def add_book_to_category(book: str, category: str, categorised_books: dict) -> d
                          "relics books": [],
                          "potion books": [],
                          "other books": []}
-    if is_spell_book(book) is True:
-        categorised_books["spell book"].append(book)
-    elif is_history_book(book) is True:
-        categorised_books["history books"].append(book)
-    elif is_relics_book(book) is True:
-        categorised_books["relics books"].append(book)
-    elif is_potion_book(book) is True:
-        categorised_books["potion books"].append(book)
-    else:
-        categorised_books["other books"].append(book)
+    for book in categorised_books:
+        if category in categorised_books:
+            categorised_books[category].append(book)
+        elif category not in categorised_books:
+            categorised_books[category].append(book)
     return categorised_books
+    # if is_spell_book(book) is True:
+    #     categorised_books["spell book"].append(book)
+    # elif is_history_book(book) is True:
+    #     categorised_books["history books"].append(book)
+    # elif is_relics_book(book) is True:
+    #     categorised_books["relics books"].append(book)
+    # elif is_potion_book(book) is True:
+    #     categorised_books["potion books"].append(book)
+    # else:
+    #     categorised_books["other books"].append(book)
+    # return categorised_books
 
 
 def booksortation(books: list) -> dict:
