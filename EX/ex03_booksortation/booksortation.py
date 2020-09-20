@@ -1,18 +1,29 @@
 """Book_sortation."""
 
 
-# def add_book_to_category(book: str, category: str, categorised_books: dict) -> dict:
-#     """1 funktsioon."""
-#     categorised_books = {"spell books": [""],
-#     "history books": [""],
-#     "relics books": [""],
-#     "potion books": [""],
-#     "other books": [""]}
+def add_book_to_category(book: str, category: str, categorised_books: dict) -> dict:
+    """1 funktsioon."""
+    categorised_books = {"spell books": [],
+                         "history books": [],
+                         "relics books": [],
+                         "potion books": [],
+                         "other books": []}
+    if is_spell_book(book) is True:
+        categorised_books["spell book"].append(book)
+    elif is_history_book(book) is True:
+        categorised_books["history books"].append(book)
+    elif is_relics_book(book) is True:
+        categorised_books["relics books"].append(book)
+    elif is_potion_book(book) is True:
+        categorised_books["potion books"].append(book)
+    else:
+        categorised_books["other books"].append(book)
+    return categorised_books
 
 
 def booksortation(books: list) -> dict:
     """Peamine funktsioon."""
-
+    add_book_to_category(books)
 
 def is_spell_book(book: str) -> bool:
     """2 funktsioon."""
@@ -49,4 +60,10 @@ def is_potion_book(book: str) -> bool:
         return True
     return False
 
-https://www.youtube.com/watch?v=h568KGjc0f0
+
+if __name__ == '__main__':
+    # All True.
+    print(is_spell_book('*kana*'))
+    print(is_history_book('This Is A History Book'))
+    print(is_relics_book('ThE StAfF'))
+    print(is_potion_book('The Banana Juice'))
