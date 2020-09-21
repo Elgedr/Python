@@ -54,6 +54,8 @@ def is_relics_book(book: str) -> bool:
     """4 funktsioon."""
     if book[0::2].islower() and book[1::2].isupper() or book[0::2].isupper() and book[1::2].islower():
         return True
+    if book != book.isalpha():
+        return True
     return False
 
 
