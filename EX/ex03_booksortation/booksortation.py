@@ -34,7 +34,7 @@ def add_book_to_category(book: str, category: str, categorised_books: dict) -> d
 
 def is_spell_book(book: str) -> bool:
     """2 funktsioon."""
-    if len(book) > 3 and book.startswith("*") and book.endswith("*"):
+    if len(book) >= 2 and book.startswith("*") and book.endswith("*"):
         return True
     return False
 
@@ -76,8 +76,4 @@ def is_potion_book(book: str) -> bool:
 
 if __name__ == '__main__':
     # All True.
-    print(is_spell_book('*kana*'))
-    print(is_history_book('This Is A History Book'))
-    print(is_relics_book('ThE StAfF'))
-    print(is_potion_book('The Banana Juice'))
-    print(is_potion_book("*"))
+    print(is_spell_book('**'))
