@@ -83,7 +83,3 @@ def is_potion_book(book: str) -> bool:
     elif konsonantide_arv - taishaalikute_arv == 1:
         return True
     return False
-
-
-if __name__ == '__main__':
-    print(is_history_book("I FiT ThReE"))
