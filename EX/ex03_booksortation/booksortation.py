@@ -6,13 +6,13 @@ def booksortation(books: list) -> dict:
     new_sorted = {}
     for i in range(len(books)):
         if is_spell_book(books[i]) is True:
-            new_sorted = add_book_to_category(books[i], "spell book", new_sorted)
+            new_sorted = add_book_to_category(books[i], "spell books", new_sorted)
         elif is_history_book(books[i]) is True:
-            new_sorted = add_book_to_category(books[i], "history book", new_sorted)
+            new_sorted = add_book_to_category(books[i], "history books", new_sorted)
         elif is_relics_book(books[i]) is True:
-            new_sorted = add_book_to_category(books[i], "relics book", new_sorted)
+            new_sorted = add_book_to_category(books[i], "relics books", new_sorted)
         elif is_potion_book(books[i]) is True:
-            new_sorted = add_book_to_category(books[i], "potion book", new_sorted)
+            new_sorted = add_book_to_category(books[i], "potion books", new_sorted)
         else:
             new_sorted = add_book_to_category(books[i], "other", new_sorted)
 
