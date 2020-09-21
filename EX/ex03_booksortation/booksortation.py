@@ -52,7 +52,7 @@ def is_history_book(book: str) -> bool:
 
 def is_relics_book(book: str) -> bool:
     """4 funktsioon."""
-    for i in range(1, (len(book))):
+    for i in range(1, len(book)):
         if book[i].isupper() and book[i-1].isupper():
             return False
         elif book[i].islower() and book[i-1].islower():
@@ -61,10 +61,6 @@ def is_relics_book(book: str) -> bool:
             return False
         elif book[i].isupper() and book[i-1] == "" and book[i-2].isupper():
             return False
-    # if book[0::2].islower() and book[1::2].isupper() or book[0::2].isupper() and book[1::2].islower():
-    #     return True
-        elif book.isalpha():
-            return True
     return True
 
 
