@@ -13,8 +13,8 @@ def booksortation(books: list) -> dict:
             new_sorted = add_book_to_category(books[i], "relics book", new_sorted)
         elif is_potion_book(books[i]) is True:
             new_sorted = add_book_to_category(books[i], "potion book", new_sorted)
-    else:
-        new_sorted = add_book_to_category(books[i], "other", new_sorted)
+        else:
+            new_sorted = add_book_to_category(books[i], "other", new_sorted)
 
     for i in new_sorted:
         new_sorted[i].sort()
