@@ -41,8 +41,12 @@ def is_spell_book(book: str) -> bool:
 
 def is_history_book(book: str) -> bool:
     """3 funktsioon."""
-    if book != book.title():
-        return False
+    world = book.split()
+    for i in world:
+        if i[0].islower():
+            return False
+        if i[0].isupper():
+            pass
     return True
 
 
