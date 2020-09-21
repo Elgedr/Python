@@ -41,7 +41,7 @@ def is_spell_book(book: str) -> bool:
 
 def is_history_book(book: str) -> bool:
     """3 funktsioon."""
-    if book != "" and book.isdigit():
+    if book != "" and book[0].isdigit():
         return True
     if book == book.title():
         return True
@@ -77,4 +77,4 @@ def is_potion_book(book: str) -> bool:
 
 
 if __name__ == '__main__':
-    print(booksortation(["I FiT ThReE"]))
+    print(is_history_book("I FiT ThReE"))
