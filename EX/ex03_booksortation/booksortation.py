@@ -55,11 +55,16 @@ def is_relics_book(book: str) -> bool:
 
 def is_potion_book(book: str) -> bool:
     """5 funktsioon."""
-    taishaalikud = "a, e, i, o, u"
-    kaashaalikud = "b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, x, z, w, y"
+    taishaalikud = "aeiou"
+    kaashaalikud = "bcdfghjklmnpqrstvxzwy"
+    taishaalikute_arv = 0
+    konsonantide_arv = 0
     small = book.lower()
-    taishaalikute_arv = small.count(taishaalikud)
-    konsonantide_arv = small.count(kaashaalikud)
+    for letter in small:
+        if letter in taishaalikud:
+            taishaalikute_arv = taishaalikute_arv + 1
+        elif letter in kaashaalikud:
+            konsonantide_arv = konsonantide_arv + 1
     if taishaalikute_arv == konsonantide_arv:
         return True
     elif taishaalikute_arv - konsonantide_arv == 1:
