@@ -41,8 +41,6 @@ def is_spell_book(book: str) -> bool:
 
 def is_history_book(book: str) -> bool:
     """3 funktsioon."""
-    if book == "" and book[0].isdigit():
-        return False
     if book != book.title():
         return False
     return True
