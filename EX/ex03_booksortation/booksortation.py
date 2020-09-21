@@ -57,9 +57,9 @@ def is_relics_book(book: str) -> bool:
             return False
         elif book[i].islower() and book[i-1].islower():
             return False
-        elif book[i].islower() and book[i-1] == "" and book[i-2].isupper():
+        elif book[i].islower() and book[i-1] == " " and book[i-2].isupper():
             return False
-        elif book[i].isupper() and book[i-1] == "" and book[i-2].islower():
+        elif book[i].isupper() and book[i-1] == " " and book[i-2].islower():
             return False
     return True
 
