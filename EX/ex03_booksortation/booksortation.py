@@ -4,7 +4,7 @@
 def booksortation(books: list) -> dict:
     """Peamine funktsioon."""
     new_sorted = {}
-    for i in range(len(books)):
+    for i in range(len(books)):  #рассматривается каждая книга из списка.
         if is_spell_book(books[i]) is True:
             new_sorted = add_book_to_category(books[i], "spell books", new_sorted)
         elif is_history_book(books[i]) is True:
@@ -25,11 +25,11 @@ def add_book_to_category(book: str, category: str, categorised_books: dict) -> d
     """1 funktsioon."""
     if category in categorised_books:
         categorised_books[category].append(book)
-        return categorised_books
+        # return categorised_books
     else:
         categorised_books[category] = []
         categorised_books[category].append(book)
-        return categorised_books
+    return categorised_books
 
 
 def is_spell_book(book: str) -> bool:
@@ -41,8 +41,8 @@ def is_spell_book(book: str) -> bool:
 
 def is_history_book(book: str) -> bool:
     """3 funktsioon."""
-    world = book.split()
-    for i in world:
+    word = book.split()
+    for i in word:
         if i[0].islower():
             return False
         if i[0].isupper():
