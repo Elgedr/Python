@@ -16,8 +16,8 @@ def booksortation(books: list) -> dict:
         else:
             new_sorted = add_book_to_category(books[i], "other books", new_sorted)
 
-    for i in new_sorted:
-        new_sorted[i].sort()
+    for key in new_sorted:
+        new_sorted[key].sort()
     return new_sorted
 
 
