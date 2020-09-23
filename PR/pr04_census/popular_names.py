@@ -46,16 +46,6 @@ def number_of_people(names_dict: dict) -> int:
     return result
 
 
-def names_by_popularity(names_dict: dict) -> str:
-    """Create a string used to print the names by popularity."""
-
-
-
-
-# if __name__ == '__main__':
-#     example_names = ("Kati:F\n" * 1000 + "Mati:M\n" * 800 + "Mari:F\n" * 600 + "Tõnu:M\n" * 400).rstrip("\n").split("\n")
-#     people = to_dictionary(example_names)
-#     print(people)
-#     male_names, female_names = to_sex_dicts(people)
-#     print(male_names)  # -> {'Mati': 800, 'Tõnu': 400}
-#     print(female_names)  # -> {'Kati': 1000, 'Mari': 600}
+# def names_by_popularity(names_dict: dict) -> str:
+#     """Create a string used to print the names by popularity."""
+#     for keys in names_dict:
