@@ -20,9 +20,6 @@ def to_dictionary(names: list) -> dict:
             pass
     return new_dict
 
-if __name__ == '__main__':
-    print(to_dictionary(("Kati:F\n" * 1000 + "Mati:M\n" * 800 + "Mari:F\n" * 600 + "Tõnu:M\n" * 400).rstrip("\n").split("\n")))
-
 
 def to_sex_dicts(names_dict: dict) -> tuple:
     """Divide the names by sex to 2 different dictionaries."""
@@ -32,7 +29,7 @@ def to_sex_dicts(names_dict: dict) -> tuple:
         if 'F' in keys:
             female_names[keys[:-2:]] = names_dict.get(keys)
         elif 'M' in keys:
-            male_names[keys] = names_dict.get(keys)
+            male_names[keys[:-2:]] = names_dict.get(keys)
     return female_names, male_names
 
 
