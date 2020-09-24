@@ -14,12 +14,14 @@ def to_dictionary(names: list) -> dict:
     """To dictioary."""
     new_dict = {}
     for name in names:
-        if name in new_dict:
-            amount = names.count(name)
-            new_dict[name] = [amount]
+        if name not in new_dict:
+            new_dict[name] = names.count(name)
         else:
             pass
     return new_dict
+
+if __name__ == '__main__':
+    print(to_dictionary(("Kati:F\n" * 1000 + "Mati:M\n" * 800 + "Mari:F\n" * 600 + "Tõnu:M\n" * 400).rstrip("\n").split("\n")))
 
 
 def to_sex_dicts(names_dict: dict) -> tuple:
