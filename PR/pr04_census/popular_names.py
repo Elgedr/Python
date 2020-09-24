@@ -46,7 +46,7 @@ def number_of_people(names_dict: dict) -> int:
     """Calculate the number of people in the dictionary."""
     result = sum(names_dict.values())
     return result
-
+# zzz
 
 def names_by_popularity(names_dict: dict) -> str:
     """Create a string used to print the names by popularity."""
