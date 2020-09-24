@@ -32,6 +32,8 @@ def to_sex_dicts(names_dict: dict) -> tuple:
             male_names[keys[:-2:]] = names_dict[keys]
     return female_names, male_names
 
+if __name__ == '__main__':
+    print(to_sex_dicts({'Kati:F': 1000, 'Mati:M': 800, 'Mari:F': 600, 'Tõnu:M': 400}))
 
 def most_popular(names_dict: dict) -> str:
     """Find the most popular name in the dictionary."""
