@@ -27,9 +27,9 @@ def to_sex_dicts(names_dict: dict) -> tuple:
     male_names = {}
     for keys in names_dict:
         if 'F' in keys:
-            female_names[keys[:-2:]] = names_dict.get(keys)
+            female_names[keys[:-2:]] = names_dict[keys]
         elif 'M' in keys:
-            male_names[keys[:-2:]] = names_dict.get(keys)
+            male_names[keys[:-2:]] = names_dict[keys]
     return female_names, male_names
 
 
