@@ -25,7 +25,7 @@ def to_sex_dicts(names_dict: dict) -> tuple:
     male_names = {}
     for keys in names_dict:
         if 'F' in keys:
-            female_names[keys] = names_dict.get(keys)
+            female_names[keys[:-2:]] = names_dict.get(keys)
         elif 'M' in keys:
             male_names[keys] = names_dict.get(keys)
     return female_names, male_names
@@ -46,6 +46,7 @@ def number_of_people(names_dict: dict) -> int:
     return result
 
 
-# def names_by_popularity(names_dict: dict) -> str:
-#     """Create a string used to print the names by popularity."""
-#     for keys in names_dict:
+def names_by_popularity(names_dict: dict) -> str:
+    """Create a string used to print the names by popularity."""
+    if len(names_dict) == 0:
+        return ""
