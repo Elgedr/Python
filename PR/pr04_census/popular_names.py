@@ -14,8 +14,8 @@ def to_dictionary(names: list) -> dict:
     """To dictioary."""
     new_dict = {}
     for name in names:
-        amount = names.count(name)
-        new_dict[name] = [amount]
+        # amount = names.count(name)
+        new_dict[name] = [new_dict[name]]
     return new_dict
 
 
