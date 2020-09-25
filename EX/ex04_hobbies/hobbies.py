@@ -17,12 +17,12 @@ def create_dictionary(file):
     for name in create_list_from_file(file):
         deleted_part = name.find(":")
         if name not in new_dict:
-            new_dict[name[:deleted_part:]] = [name[deleted_part::]]
+            new_dict[name[:deleted_part:]] = [name[deleted_part+1::]]
             # new_dict[name[:deleted_part:]].append(name[deleted_part::])
         if name and new_dict[name] in new_dict:
             pass
         elif name in new_dict and new_dict[name] not in new_dict:
-            new_dict[name].append(name[deleted_part::])
+            new_dict[name].append(name[deleted_part+1::])
     return new_dict
 
 
