@@ -18,6 +18,7 @@ def create_dictionary(file):
         deleted_part = name.find(":")
         if name not in new_dict:
             new_dict[name[:deleted_part:]] = [name[deleted_part::]]
+            # new_dict[name[:deleted_part:]].append(name[deleted_part::])
         if name and new_dict[name] in new_dict:
             pass
         elif name in new_dict and new_dict[name] not in new_dict:
@@ -28,3 +29,4 @@ def create_dictionary(file):
 if __name__ == '__main__':
     dic = create_dictionary("hobbies_database.txt")
     print(len(create_list_from_file("hobbies_database.txt")))
+    print(create_dictionary([]))
