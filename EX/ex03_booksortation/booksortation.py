@@ -86,4 +86,4 @@ def is_potion_book(book: str) -> bool:
 
 
 if __name__ == '__main__':
-    print(booksortation(["*kana*", 'This Is A History Book', 'ThE StAfF']))
+    print(booksortation(["*kana*", 'This Is A History Book', 'ThE StAfF', '6666">::']))
