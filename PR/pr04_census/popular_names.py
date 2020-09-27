@@ -66,7 +66,7 @@ def names_by_popularity(names_dict: dict) -> str:
         amount = 0
     final_string = ""
     for i, name in enumerate(final_list):
-        final_string = f"{i+1}. {name}: {names_dict[name]}\n"
+        final_string += f"{i+1}. {name}: {names_dict[name]}\n"
     return final_string
 
 
