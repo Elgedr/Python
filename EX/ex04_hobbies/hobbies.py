@@ -8,12 +8,12 @@ def create_list_from_file(file):
         return f.read().splitlines()
 
 
-def create_dictionary(file):
+def create_dictionary(file) -> dict:
     """Create dictionary about given peoples' hobbies as Name: [hobby_1, hobby_2]."""
     new_dict = {}
-    for i in create_list_from_file(file):
-        name = i.split(":")[0]
-        hobby = i.split(":")[1]
+    for key in create_list_from_file(file):
+        name = key.split(":")[0]
+        hobby = key.split(":")[1]
         if name not in new_dict:
             new_dict[name] = [hobby]
         else:
@@ -22,28 +22,46 @@ def create_dictionary(file):
     return new_dict
 
 
-def find_person_with_most_hobbies(file):
+def find_person_with_most_hobbies(file) -> dict:
     """Find the person (or people) who have more hobbies than others."""
     people_hobbies_dict = create_dictionary(file)
     people = []
     amount = 0
-    for i in people_hobbies_dict:
-        if len(people_hobbies_dict[i]) > amount:
-            amount = len(people_hobbies_dict[i])
+    for key in people_hobbies_dict:
+        if len(people_hobbies_dict[key]) > amount:
+            amount = len(people_hobbies_dict[key])
             people.clear()
-            people.append(i)
-        elif len(people_hobbies_dict[i]) == amount:
-            people.append(i)
+            people.append(key)
+        elif len(people_hobbies_dict[key]) == amount:
+            people.append(key)
     return people
 
 
-def find_person_with_least_hobbies(file):
+def find_person_with_least_hobbies(file) -> list:
     """ Find the person (or people) who have less hobbies than others."""
-    person = []
+    people = []
+    people_hobbies_dict = create_dictionary(file)
+    amount = len(people_hobbies_dict)
+    for key in people_hobbies_dict:
+        if amount > len(people_hobbies_dict[key]):
+            amount = len(people_hobbies_dict[key])
+            people.clear()
+            people.append(key)
+        elif len(people_hobbies_dict[key]) == amount:
+            people.append(key)
+    return people
 
 
-if __name__ == '__main__':
-    file = "hobbies_database.txt"
-    dic = create_dictionary(file)
-    print(len(create_list_from_file(file)))
-    print(find_person_with_most_hobbies(file))
+def find_most_popular_hobby(file) -> list:
+    """Find the most popular hobby."""
+    people_hobbies_dict = create_dictionary(file)
+    the_most_popular_hobby = []
+    for name in people_hobbies_dict:
+
+
+def find_least_popular_hobby(file):
+    """Find the least popular hobby."""
+
+
+def write_corrected_database(file, file_to_write):
+    """Write .csv file in a proper way. Use collected and structured data."""
