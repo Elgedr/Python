@@ -56,7 +56,7 @@ def find_most_popular_hobby(file) -> list:
     """Find the most popular hobby."""
     people_hobbies_dict = create_dictionary(file)
     the_most_popular_hobby = []
-    for name in people_hobbies_dict:
+    # for name in people_hobbies_dict:
 
 
 def find_least_popular_hobby(file):
