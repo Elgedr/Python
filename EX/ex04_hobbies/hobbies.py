@@ -22,7 +22,7 @@ def create_dictionary(file) -> dict:
     return new_dict
 
 
-def find_person_with_most_hobbies(file) -> dict:
+def find_person_with_most_hobbies(file) -> list:
     """Find the person (or people) who have more hobbies than others."""
     people_hobbies_dict = create_dictionary(file)
     people = []
@@ -65,3 +65,8 @@ def find_least_popular_hobby(file):
 
 def write_corrected_database(file, file_to_write):
     """Write .csv file in a proper way. Use collected and structured data."""
+    with open(file_to_write, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=',')
+        name = "Name"
+        hobbies = "Hobbies"
+        writer.writerow([name, hobbies])
