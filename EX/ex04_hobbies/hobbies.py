@@ -1,4 +1,4 @@
-"""Hobbies"""
+"""Hobbies."""
 import csv
 
 
@@ -38,7 +38,7 @@ def find_person_with_most_hobbies(file) -> list:
 
 
 def find_person_with_least_hobbies(file) -> list:
-    """ Find the person (or people) who have less hobbies than others."""
+    """Find the person (or people) who have less hobbies than others."""
     people = []
     people_hobbies_dict = create_dictionary(file)
     amount = len(people_hobbies_dict)
