@@ -55,8 +55,15 @@ def find_person_with_least_hobbies(file) -> list:
 def find_most_popular_hobby(file) -> list:
     """Find the most popular hobby."""
     people_hobbies_dict = create_dictionary(file)
+    all_hobbies = list(people_hobbies_dict.values())
     the_most_popular_hobby = []
-    # for name in people_hobbies_dict:
+    hobby_amount = {}
+    for hobby in all_hobbies:
+        hobby_amount[hobby] = all_hobbies.count(hobby)
+    for hobby in hobby_amount:
+        if hobby_amount[hobby] == hobby_amount[max(hobby_amount, key=hobby_amount.get)]:
+            the_most_popular_hobby.append(hobby)
+    return the_most_popular_hobby
 
 
 def find_least_popular_hobby(file):
@@ -70,3 +77,26 @@ def write_corrected_database(file, file_to_write):
         name = "Name"
         hobbies = "Hobbies"
         writer.writerow([name, hobbies])
+
+
+if __name__ == '__main__':
+    dic = create_dictionary("hobbies_database.txt")
+    print(len(create_list_from_file("hobbies_database.txt")))  # -> 100
+    print("Check presence of hobbies for chosen person:")
+    print("shopping" in dic["Wendy"])  # -> True
+    print("fitness" in dic["Sophie"])  # -> False
+    print("gaming" in dic["Peter"])  # -> True
+    print("Check if hobbies - person relation is correct:")
+    print("Check if a person(people) with the biggest amount of hobbies is(are) correct:")
+    print(find_person_with_most_hobbies("hobbies_database.txt"))  # -> ['Jack']
+    print(len(dic["Jack"])) # ->  12
+    print(len(dic["Carmen"])) # -> 10
+    print("Check if a person(people) with the smallest amount of hobbies is(are) correct:")
+    print(find_person_with_least_hobbies("hobbies_database.txt"))  # -> ['Molly']
+    print(len(dic["Molly"])) # -> 5
+    print(len(dic["Sophie"])) # -> 7
+    print("Check if the most popular hobby(ies) is(are) correct")
+    print(find_most_popular_hobby("hobbies_database.txt"))  # -> ['gaming', 'sport', 'football']
+    print("Check if the least popular hobby(ies) is(are) correct")
+    print(find_least_popular_hobby("hobbies_database.txt"))  # -> ['tennis', 'dance', 'puzzles', 'flowers']
+    write_corrected_database("hobbies_database.txt", 'correct_hobbies_database.csv')
