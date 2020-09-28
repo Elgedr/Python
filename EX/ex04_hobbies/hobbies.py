@@ -77,3 +77,6 @@ def write_corrected_database(file, file_to_write):
         name = "Name"
         hobbies = "Hobbies"
         writer.writerow([name, hobbies])
+
+if __name__ == '__main__':
+    print(find_most_popular_hobby({"molli": ['gaming', 'sport', 'football'], "peter": ['gaming', 'sport']}))
