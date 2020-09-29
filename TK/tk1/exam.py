@@ -34,9 +34,6 @@ def caught_speeding(speed, is_birthday: bool):
 def first_half(text):
     """Return the first half of an string."""
     amount = int(len(text) / 2)
-    result = text[amount::]
+    result = text[:amount:]
     return result
 
-
-if __name__ == '__main__':
-    print(first_half("HelloThere"))
