@@ -11,7 +11,7 @@ def workday_count(days):
     if days > 7:
         week = days // 7
         days -= week * 7
-        res = res + days
+        res = week * 5
     return res
 
 
