@@ -9,7 +9,7 @@ def workday_count(days):
     elif amount_of_days == 6:
         result = amount_of_days - 1
         return result
-    elif amount_of_days ==7:
+    elif amount_of_days == 7:
         result = amount_of_days - 2
         return result
 
