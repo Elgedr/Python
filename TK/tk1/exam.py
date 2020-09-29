@@ -14,15 +14,15 @@ def workday_count(days):
         return result
 
 
-if __name__ == '__main__':
-    print(workday_count(9))
+# if __name__ == '__main__':
+#     print(workday_count(9))
 
 
 def caught_speeding(speed, is_birthday: bool):
     """Return which category speeding ticket you would get."""
     if speed <= 60 and is_birthday == False:
         return 0
-    elif 61 < speed <= 80 and is_birthday == False:
+    elif 61 <= speed <= 80 and is_birthday == False:
         return 1
     elif speed >= 81 and is_birthday == False:
         return 2
@@ -35,4 +35,4 @@ def caught_speeding(speed, is_birthday: bool):
 
 
 if __name__ == '__main__':
-    print(caught_speeding(50, False))
+    print(caught_speeding(61, False))
