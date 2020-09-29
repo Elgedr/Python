@@ -39,3 +39,8 @@ def first_half(text):
 
 def last_indices_elements_sum(nums):
     """Return sum of elements at indices of last two elements."""
+    result = nums[-1] + nums[-2]
+    return result
+
+if __name__ == '__main__':
+    print(last_indices_elements_sum([0, 1, 2, 0]))
