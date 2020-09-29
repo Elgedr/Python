@@ -50,7 +50,3 @@ def last_indices_elements_sum(nums):
     else:
         result = nums[last] + nums[lastt]
     return result
-
-
-
-
