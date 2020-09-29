@@ -33,7 +33,7 @@ def caught_speeding(speed, is_birthday: bool):
 
 def first_half(text):
     """Return the first half of an string."""
-    amount = len(text) / 2
+    amount = int(len(text) / 2)
     result = text[amount::]
     return result
 
