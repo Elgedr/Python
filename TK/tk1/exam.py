@@ -4,14 +4,14 @@
 def workday_count(days):
     """Given number of days."""
     res = 0
-    if days == 7 or days == 6:
-        res = res + 5
-    if days < 6:
-        res = res + days
     if days > 7:
         week = days // 7
         days -= week * 7
         res = (week * 5)
+    if days == 7 or days == 6:
+        res = res + 5
+    if days < 6:
+        res = res + days
     return res
 
 
