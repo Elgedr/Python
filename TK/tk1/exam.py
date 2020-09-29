@@ -15,6 +15,10 @@ def workday_count(days):
     return res
 
 
+if __name__ == '__main__':
+    print(workday_count(16))
+
+
 def caught_speeding(speed, is_birthday: bool):
     """Return which category speeding ticket you would get."""
     if speed <= 60 and is_birthday is False:
@@ -50,3 +54,21 @@ def last_indices_elements_sum(nums):
     else:
         result = nums[last] + nums[lastt]
     return result
+
+
+def max_duplicate(nums):
+    """Return the largest element which has at least one duplicate."""
+    numbers = []
+    for number in nums:
+        if nums.count(number) > 1:
+            numbers.append(number)
+        else:
+            pass
+    if len(numbers) == 0:
+        return None
+    numbers = set(numbers)
+    return max(numbers)
+
+
+if __name__ == '__main__':
+    print(max_duplicate([1, 2, 3, 1]))
