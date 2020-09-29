@@ -43,9 +43,9 @@ def last_indices_elements_sum(nums):
     last = nums[-1]
     lastt = nums[-2]
     result = 0
-    if nums[-1] > len(nums)-1:
+    if nums[-1] > len(nums) - 1:
         nums[last] = 0
-    elif nums[-2] > len(nums)-1:
+    elif nums[-2] > len(nums) - 1:
         nums[lastt] = 0
     else:
         result = nums[last] + nums[lastt]
