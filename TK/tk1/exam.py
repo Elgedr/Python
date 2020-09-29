@@ -42,7 +42,7 @@ def last_indices_elements_sum(nums):
     """Return sum of elements at indices of last two elements."""
     last = nums[-1]
     lastt = nums[-2]
-    if nums[-1] and nums[-2] > len(nums) - 1:
+    if nums[-1] > len(nums) - 1 and nums[-2] > len(nums) - 1:
         result = 0
         return result
     if nums[-1] > len(nums) - 1:
@@ -55,7 +55,7 @@ def last_indices_elements_sum(nums):
 
 
 if __name__ == '__main__':
-    print(last_indices_elements_sum([0, 1, 2, 0, 15, 10]))
+    print(last_indices_elements_sum([0, 1, 7, 2]))
 
 
 def max_duplicate(nums):
