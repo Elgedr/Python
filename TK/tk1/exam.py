@@ -17,17 +17,17 @@ def workday_count(days):
 
 def caught_speeding(speed, is_birthday: bool):
     """Return which category speeding ticket you would get."""
-    if speed <= 60 and is_birthday == False:
+    if speed <= 60 and is_birthday is False:
         return 0
-    elif 61 <= speed <= 80 and is_birthday == False:
+    elif 61 <= speed <= 80 and is_birthday is False:
         return 1
-    elif speed >= 81 and is_birthday == False:
+    elif speed >= 81 and is_birthday is False:
         return 2
-    elif is_birthday == True and speed <= 65:
+    elif is_birthday is True and speed <= 65:
         return 0
-    elif is_birthday == True and 66 < speed <= 85:
+    elif is_birthday is True and 66 < speed <= 85:
         return 1
-    elif is_birthday == True and speed >= 86:
+    elif is_birthday is True and speed >= 86:
         return 2
 
 
@@ -37,3 +37,5 @@ def first_half(text):
     result = text[:amount:]
     return result
 
+def last_indices_elements_sum(nums):
+    """Return sum of elements at indices of last two elements."""
