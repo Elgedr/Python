@@ -42,6 +42,8 @@ def last_indices_elements_sum(nums):
     """Return sum of elements at indices of last two elements."""
     last = nums[-1]
     lastt = nums[-2]
+    if nums[-1] > len(nums)-1 or nums[-2] > len(nums)-1:
+        pass
     result = nums[last] + nums[lastt]
     return result
 
