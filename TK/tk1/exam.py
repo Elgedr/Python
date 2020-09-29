@@ -3,19 +3,16 @@
 
 def workday_count(days):
     """Given number of days."""
-    amount_of_days = days
-    if amount_of_days <= 5:
-        return amount_of_days
-    elif amount_of_days > 5:
-        result = amount_of_days - 1
-        return result
-    elif amount_of_days == 7:
-        result = amount_of_days - 2
-        return result
-
-
-# if __name__ == '__main__':
-#     print(workday_count(9))
+    res = 0
+    if days == 7 or days == 6:
+        res = res + 5
+    if days < 6:
+        res = res + days
+    if days > 7:
+        week = days // 7
+        days = (days - week) * 7
+        res = res + days
+    return res
 
 
 def caught_speeding(speed, is_birthday: bool):
@@ -34,5 +31,12 @@ def caught_speeding(speed, is_birthday: bool):
         return 2
 
 
+def first_half(text):
+    """Return the first half of an string."""
+    amount = len(text) / 2
+    result = text[amount::]
+    return result
+
+
 if __name__ == '__main__':
-    print(caught_speeding(61, False))
+    print(first_half("HelloThere"))
