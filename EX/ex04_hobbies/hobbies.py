@@ -92,4 +92,10 @@ def write_corrected_database(file, file_to_write):
             name = key
             hobbies = "-".join(value)
             writer.writerow([name, hobbies])
-    return file_to_write
+
+
+if __name__ == '__main__':
+    dic = create_dictionary("hobbies_database.txt")
+
+    print(find_least_popular_hobby("hobbies_database.txt"))  # -> ['tennis', 'dance', 'puzzles', 'flowers']
+    write_corrected_database("hobbies_database.txt", 'correct_hobbies_database.csv')
