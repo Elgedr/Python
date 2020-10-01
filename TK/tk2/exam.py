@@ -5,13 +5,17 @@ def format_time(minutes):
     """Funktsioon."""
     hours = minutes // 60
     mins = minutes % 60
-    if hours > 0:
-        if minutes > 0:
-            return f"{hours}h {mins}min"
-        else:
-            return f"{hours}h"
-    else:
+    if hours == 0:
         return f"{mins}min"
+    elif hours != 0 and mins > 0:
+        return f"{hours}h {mins}min"
+    else:
+        return f"{hours}h"
+
+print(format_time(0))
+print(format_time(1))
+print(format_time(61))
+print(format_time(60))
 
 
 def sorta_sum(a: int, b: int) -> int:
