@@ -122,16 +122,10 @@ def write_corrected_database(file, file_to_write):
     """Write .csv file in a proper way. Use collected and structured data."""
     with open(file_to_write, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
-        name = "Name"
-        hobbies = "Hobbies"
-        writer.writerow([name, hobbies])
-        dictt = create_dictionary(file)
-        for i in dictt:
-            dictt[i] = sorted(dictt[i])
-        dictt = sorted(dictt.items())
-        for key, value in dictt:
+        writer.writerow(["Name", "Hobbies"])
+        for key, value in sorted(create_dictionary(file).items()):
             name = key
-            hobbies = "-".join(value)
+            hobbies = "-".join(sorted(value))
             writer.writerow([name, hobbies])
 
 

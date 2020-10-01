@@ -53,7 +53,3 @@ def count_clumps(nums: list) -> int:
         elif nums[number] != nums[number + 1]:
             in_clump = False
     return amount_of_nums
-
-
-if __name__ == '__main__':
-    print(count_clumps([2, 2, 2, 2, 3, 4, 4]))
