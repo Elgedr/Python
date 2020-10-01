@@ -34,7 +34,7 @@ def combo_string(s1: str, s2: str) -> str:
 
 
 def num_as_index(nums: list) -> int:
-    """ Return element which index is the value of the smaller of the first and the last element."""
+    """Return element which index is the value of the smaller of the first and the last element."""
     minimum = min([nums[0], nums[-1]])
     if minimum > len(nums):
         return minimum
@@ -48,4 +48,3 @@ def num_as_index(nums: list) -> int:
 #     Say that a "clump" in a list is a series of 2 or more adjacent elements of the same value."""
 #     for numbers in nums:
 #         if nums.count(numbers) > 1:
-
