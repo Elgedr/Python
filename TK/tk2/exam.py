@@ -25,3 +25,27 @@ def sorta_sum(a: int, b: int) -> int:
 
 def combo_string(s1: str, s2: str) -> str:
     """Return a new string of the form short + long + short."""
+    if len(s1) > len(s2):
+        return s2 + s1 + s2
+    elif len(s2) > len(s1):
+        return s1 + s2 + s1
+
+
+def num_as_index(nums: list) -> int:
+    """ Return element which index is the value of the smaller of the first and the last element.
+
+    If there is no such element (index is too high), return the smaller of the first and the last element."""
+    minimum = min([nums[0], nums[-1]])
+    if minimum > len(nums):
+        return minimum
+    return nums[minimum]
+
+
+def count_clumps(nums: list) -> int:
+    """
+    Return the number of clumps in the given list.
+
+    Say that a "clump" in a list is a series of 2 or more adjacent elements of the same value."""
+    for numbers in nums:
+        if nums.count(numbers) > 1:
+
