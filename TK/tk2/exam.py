@@ -45,12 +45,12 @@ def count_clumps(nums: list) -> int:
     a = 0
     in_clump = False
     for i in range(len(nums)):
-        if i+1 == len(nums):
+        if i + 1 == len(nums):
             break
-        if nums[i] == nums[i+1] and not in_clump:
+        if nums[i] == nums[i + 1] and not in_clump:
             in_clump = True
             a = a + 1
-        elif nums[i] != nums[i+1]:
+        elif nums[i] != nums[i + 1]:
             in_clump = False
     return a
 
