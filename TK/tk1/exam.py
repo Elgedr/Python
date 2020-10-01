@@ -43,7 +43,7 @@ def last_indices_elements_sum(nums):
     last = nums[-1]
     lastt = nums[-2]
     if nums[-1] > len(nums) - 1 and nums[-2] > len(nums) - 1:
-        result = 0
+        result = 0 + 0
         return result
     if nums[-1] > len(nums) - 1:
         result = 0 + nums[lastt]
