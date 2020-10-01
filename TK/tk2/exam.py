@@ -7,7 +7,7 @@ def format_time(minutes):
     mins = minutes % 60
     if hours > 0:
         if minutes > 0:
-            return f"{hours}h{mins}min"
+            return f"{hours}h {mins}min"
         else:
             return f"{hours}h"
     else:
@@ -40,11 +40,11 @@ def num_as_index(nums: list) -> int:
         return minimum
     return nums[minimum]
 
-#
-# def count_clumps(nums: list) -> int:
-#     """
-#     Return the number of clumps in the given list.
-#
-#     Say that a "clump" in a list is a series of 2 or more adjacent elements of the same value."""
-#     for numbers in nums:
-#         if nums.count(numbers) > 1:
+
+def count_clumps(nums: list) -> int:
+    """
+    Return the number of clumps in the given list.
+
+    Say that a "clump" in a list is a series of 2 or more adjacent elements of the same value."""
+    for numbers in nums:
+        if nums.count(numbers) > 1:
