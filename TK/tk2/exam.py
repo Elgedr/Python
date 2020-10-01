@@ -12,11 +12,6 @@ def format_time(minutes):
     else:
         return f"{hours}h"
 
-print(format_time(0))
-print(format_time(1))
-print(format_time(61))
-print(format_time(60))
-
 
 def sorta_sum(a: int, b: int) -> int:
     """Given 2 ints, a and b, return their sum."""
@@ -45,10 +40,11 @@ def num_as_index(nums: list) -> int:
     return nums[minimum]
 
 
-# def count_clumps(nums: list) -> int:
-#     """
-#     Return the number of clumps in the given list.
-#
-#     Say that a "clump" in a list is a series of 2 or more adjacent elements of the same value."""
-#     for numbers in nums:
-#         if nums.count(numbers) > 1:
+def count_clumps(nums: list) -> int:
+    """Return the number of clumps in the given list."""
+    listt = []
+    for numbers in nums:
+        if nums.count(numbers) > 1:
+            listt.append(numbers)
+    result = len(listt)
+    return result
