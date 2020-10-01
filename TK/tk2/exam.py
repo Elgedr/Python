@@ -12,3 +12,7 @@ def format_time(minutes):
             return f"{hours}h"
     else:
         return f"{mins}min"
+
+
+def sorta_sum(a: int, b: int) -> int:
+    """Given 2 ints, a and b, return their sum."""
