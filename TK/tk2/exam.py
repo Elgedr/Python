@@ -42,9 +42,18 @@ def num_as_index(nums: list) -> int:
 
 def count_clumps(nums: list) -> int:
     """Return the number of clumps in the given list."""
-    listt = []
-    for numbers in nums:
-        if nums.count(numbers) > 1:
-            listt.append(numbers)
-    result = len(listt)
-    return result
+    a = 0
+    in_clump = False
+    for i in range(len(nums)):
+        if i+1 == len(nums):
+            break
+        if nums[i] == nums[i+1] and not in_clump:
+            in_clump = True
+            a = a + 1
+        else:
+            in_clump = False
+    return a
+
+
+if __name__ == '__main__':
+    print(count_clumps([2, 2, 2, 2, 3, 4, 4]))
