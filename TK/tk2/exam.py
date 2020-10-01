@@ -50,7 +50,7 @@ def count_clumps(nums: list) -> int:
         if nums[i] == nums[i+1] and not in_clump:
             in_clump = True
             a = a + 1
-        else:
+        elif nums[i] != nums[i+1]:
             in_clump = False
     return a
 
