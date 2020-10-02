@@ -12,8 +12,8 @@ def read_production_data(filename: str) -> dict:
                 pass
             else:
                 productivity_dictionary[row[0]] = row[1::]
-                print(productivity_dictionary)
         return productivity_dictionary
+
 
 
 def calculate_quality(production_data: dict) -> dict:
@@ -60,3 +60,37 @@ if __name__ == '__main__':
     print('[Run Time (minutes), Ideal Run Rate (pcs/min), Total Count (pcs), Good Count (pcs)]')
     for key, value in prod_data.items():
         print(f"{key}: {value}")
+
+    # Sildistaja: [358, 57, 18602, 18388]
+    # Hapukurgipurgitaja: [415, 12, 4800, 2013]
+    # Autoklaav: [450, 10, 4500, 4500]
+    # Supivillija: [402, 36, 14230, 14214]
+    # Makaronikeetja: [410, 25, 10230, 10230]
+    # Kartulikoorija: [420, 111, 46620, 44123]
+    # Mahlapress: [0, 0, 0, 0]
+
+    quality_dict = calculate_quality(prod_data)
+    print('\n- Quality calculation results -')
+    for key, value in quality_dict.items():
+        print(f"{key}: {value}")
+
+    # Sildistaja: 98.8
+    # Hapukurgipurgitaja: 41.9
+    # Autoklaav: 100.0
+    # Supivillija: 99.9
+    # Makaronikeetja: 100.0
+    # Kartulikoorija: 94.6
+    # Mahlapress: 0.0
+
+    availability_dict = calculate_availability(prod_data)
+    print('\n- Availability calculation results -')
+    for key, value in availability_dict.items():
+        print(f"{key}: {value}")
+
+    # Sildistaja: 85.2
+    # Hapukurgipurgitaja: 98.8
+    # Autoklaav: 107.1
+    # Supivillija: 95.7
+    # Makaronikeetja: 97.6
+    # Kartulikoorija: 100.0
+    # Mahlapress: 0.0
