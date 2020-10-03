@@ -12,8 +12,8 @@ def read_production_data(filename: str) -> dict:
                 pass
             else:
                 productivity_dictionary[row[0]] = row[1::]
+                print(productivity_dictionary)
         return productivity_dictionary
-
 
 
 def calculate_quality(production_data: dict) -> dict:
@@ -44,14 +44,40 @@ def calculate_availability(production_data: dict) -> dict:
 
 def calculate_performance(production_data: dict) -> dict:
     """Performance."""
+    performance_dict = {}
+    for k, v in production_data.items():
+        try:
+            result = float((int(v[2]) / int(v[0])) / int(v[1])) * 100
+            resultt = round(result, 1)
+        except ZeroDivisionError:
+            resultt = 0.0
+        performance_dict[k] = resultt
+    return performance_dict
 
 
 def calculate_oee(production_data: dict) -> dict:
     """oee."""
+    oee_dict = {}
+    avail = calculate_availability(production_data)
+    perf = calculate_performance(production_data)
+    qual = calculate_quality(production_data)
+    for k, v in avail.items():
+        availability = float(v[0])
+    for k, v in perf.items():
+        performance = float(v[0])
+    for k, v in qual.items():
+        quality = float(v[0])
+    oee = float((availability * performance * quality) * 100)
+    oee_result = round(oee, 1)
+    for k, v in production_data:
+        oee_dict[k] = oee_result
+    return oee_dict
 
 
-def write_results_to_file(production_data: dict, filename: str):
-    """Results to fole."""
+
+
+# def write_results_to_file(production_data: dict, filename: str):
+#     """Results to fole."""
 
 
 if __name__ == '__main__':
@@ -93,4 +119,30 @@ if __name__ == '__main__':
     # Supivillija: 95.7
     # Makaronikeetja: 97.6
     # Kartulikoorija: 100.0
+    # Mahlapress: 0.0
+
+    performance_dict = calculate_performance(prod_data)
+    print('\n- Performance calculation results -')
+    for key, value in performance_dict.items():
+        print(f"{key}: {value}")
+
+    # Sildistaja: 91.2
+    # Hapukurgipurgitaja: 96.4
+    # Autoklaav: 100.0
+    # Supivillija: 98.3
+    # Makaronikeetja: 99.8
+    # Kartulikoorija: 100.0
+    # Mahlapress: 0.0
+
+    oee_dict = calculate_oee(prod_data)
+    print('\n- Total OEE calculation results -')
+    for key, value in oee_dict.items():
+        print(f"{key}: {value}")
+
+    # Sildistaja: 76.8
+    # Hapukurgipurgitaja: 39.9
+    # Autoklaav: 107.1
+    # Supivillija: 94.0
+    # Makaronikeetja: 97.4
+    # Kartulikoorija: 94.6
     # Mahlapress: 0.0
