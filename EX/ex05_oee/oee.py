@@ -71,7 +71,7 @@ def calculate_oee(production_data: dict) -> dict:
 
 
 def write_results_to_file(production_data: dict, filename: str):
-    """Results to file."""
+    """Result to file."""
     saadavus = calculate_availability(production_data)
     tootlus = calculate_performance(production_data)
     kvaliteet = calculate_quality(production_data)
