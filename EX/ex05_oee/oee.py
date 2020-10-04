@@ -2,7 +2,7 @@
 import csv
 
 
-def read_production_data(filename: str, encoding='utf-8') -> dict:
+def read_production_data(filename: str,) -> dict:
     """Read a csv file and make a dictionary."""
     productivity_dictionary = {}
     try:
