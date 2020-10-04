@@ -75,7 +75,7 @@ def write_results_to_file(production_data: dict, filename: str):
     saadavus = calculate_availability(production_data)
     tootlus = calculate_performance(production_data)
     kvaliteet = calculate_quality(production_data)
-    oee = calculate_oee(prod_data)
+    oee = calculate_oee(production_data)
     with open(filename, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
         writer.writerow(["Liin", "Saadavus", "Tootlus", "Kvaliteet", "OEE"])
