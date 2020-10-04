@@ -12,7 +12,9 @@ def read_production_data(filename: str,) -> dict:
                 if row[0] in productivity_dictionary:
                     pass
                 else:
-                    productivity_dictionary[row[0]] = row[1::]
+                    for i in row[1::]:
+                        res = int(i)
+                    productivity_dictionary[row[0]] = res
 
     except FileNotFoundError:
         return {}
