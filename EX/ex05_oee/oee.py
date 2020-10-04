@@ -70,8 +70,19 @@ def calculate_oee(production_data: dict) -> dict:
     return oee
 
 
-# def write_results_to_file(production_data: dict, filename: str):
-#     """Results to file."""
+def write_results_to_file(production_data: dict, filename: str):
+    """Results to file."""
+
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=',')
+        writer.writerow(["Liin", "Saadavus", "Tootlus", "Kvaliteet", "OEE"])
+        for k, v in production_data.items():
+            liin = k
+            saadavus = calculate_availability(production_data)
+            tootlus = calculate_performance(production_data)
+            kvaliteet = calculate_quality(production_data)
+            oee = calculate_oee(prod_data)
+            writer.writerow([liin, saadavus, tootlus, kvaliteet, oee])
 
 
 if __name__ == '__main__':
@@ -140,3 +151,15 @@ if __name__ == '__main__':
     # Makaronikeetja: 97.4
     # Kartulikoorija: 94.6
     # Mahlapress: 0.0
+
+    write_results_to_file(prod_data, 'reedene_oee.csv')
+
+    # contents of 'reedene_oee.csv':
+    # Liin, Saadavus, Tootlus, Kvaliteet, OEE
+    # Sildistaja, 85.2, 91.2, 98.8, 76.8
+    # Hapukurgipurgitaja, 98.8, 96.4, 41.9, 39.9
+    # Autoklaav, 107.1, 100.0, 100.0, 107.1
+    # Supivillija, 95.7, 98.3, 99.9, 94.0
+    # Makaronikeetja, 97.6, 99.8, 100.0, 97.4
+    # Kartulikoorija, 100.0, 100.0, 94.6, 94.6
+    # Mahlapress, 0.0, 0.0, 0.0, 0.0
