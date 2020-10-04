@@ -9,7 +9,7 @@ def read_production_data(filename: str,) -> dict:
         with open(filename, encoding='utf-8') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
-                res = [int(i) for i in row]
+                res = [int(row[1::]) for row in csv_reader]
                 if row[0] in productivity_dictionary:
                     pass
                 else:
