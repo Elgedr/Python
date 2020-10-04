@@ -14,9 +14,10 @@ def read_production_data(filename: str, encoding='utf-8') -> dict:
                 else:
                     productivity_dictionary[row[0]] = row[1::]
 
-    except FileExistsError:
+    except FileNotFoundError:
         return {}
     return productivity_dictionary
+
 
 def calculate_quality(production_data: dict) -> dict:
     """Quality."""
@@ -57,26 +58,19 @@ def calculate_performance(production_data: dict) -> dict:
     return performance_dict
 
 
-# def calculate_oee(production_data: dict) -> dict:
-#     """oee."""
-#     oee_dict = {}
-#     avail = calculate_availability(production_data)
-#     perf = calculate_performance(production_data)
-#     qual = calculate_quality(production_data)
-#     for val in avail.values():
-#         availability = val
-#     for val in perf.values():
-#         performance = val
-#     for val in qual.values():
-#         quality = val
-#         oee = float((availability * performance * quality) * 100)
-#         oee_result = round(oee, 1)
-#         oee_dict[k] = oee_result
-#     return oee_dict
+def calculate_oee(production_data: dict) -> dict:
+    """oee."""
+    oee = {}
+    avail = calculate_availability(production_data)
+    perf = calculate_performance(production_data)
+    qual = calculate_quality(production_data)
+    for k in production_data.keys():
+        oee[k] = round(avail[k] * perf[k] * qual[k] / 10000, 1)
+    return oee
 
 
 # def write_results_to_file(production_data: dict, filename: str):
-#     """Results to fole."""
+#     """Results to file."""
 
 
 if __name__ == '__main__':
@@ -133,10 +127,10 @@ if __name__ == '__main__':
     # Kartulikoorija: 100.0
     # Mahlapress: 0.0
 
-    # oee_dict = calculate_oee(prod_data)
-    # print('\n- Total OEE calculation results -')
-    # for key, value in oee_dict.items():
-    #     print(f"{key}: {value}")
+    oee_dict = calculate_oee(prod_data)
+    print('\n- Total OEE calculation results -')
+    for key, value in oee_dict.items():
+        print(f"{key}: {value}")
 
     # Sildistaja: 76.8
     # Hapukurgipurgitaja: 39.9
