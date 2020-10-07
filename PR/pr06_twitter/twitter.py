@@ -3,24 +3,29 @@
 
 class Tweet:
     """Tweet class."""
-
     def __init__(self, user: str, content: str, time: float, retweets: int):
+        """Make consrtuctor."""
         self.user = user
         self.content = content
         self.time = time
         self.retweets = retweets
 
-    def find_fastest_growing(tweets: list) -> Tweet:
+    def find_fastest_growing(tweets: list):
         """Find the fastest growing tweet."""
         dictionary = {}
         for tweet in tweets:
-            res = int(self.retweets / self.time)
+            res = int(tweet.retweets / tweet.time)
             dictionary[tweet] = res
         result = max(dictionary, key=dictionary.get)
         return result
 
     def sort_by_popularity(tweets: list) -> list:
         """Sort tweets by popularity."""
+     retweets_time = {}
+    res = []
+    for tweet in tweets:
+        retweets_time[tweet] = [tweet.retweets, tweet.time]
+        tweets_by_=
 
     if __name__ == '__main__':
         tweet1 = Tweet("@realDonaldTrump", "Despite the negative press covfefe #bigsmart", 1249, 54303)
