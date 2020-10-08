@@ -19,6 +19,7 @@ def create_dictionary(file) -> dict:
         else:
             if hobby not in new_dict[name]:
                 new_dict[name].append(hobby)
+    print(new_dict)
     return new_dict
 
 
@@ -106,18 +107,6 @@ def find_least_popular_hobby(file):
     return minimum_value
 
 
-# def find_least_popular_hobby(file):
-#     """Find the least popular hobby."""
-#     dictionary_from_names_and_hobbies = create_dictionary(file)
-#     dictionary_with_values = {}
-#     list_from_values = []
-#     for value in dictionary_from_names_and_hobbies.values():
-#         list_from_values = list_from_values + value
-#     for hobby in set(list_from_values):
-#         dictionary_with_values.setdefault(list_from_values.count(hobby), []).append(hobby)
-#     return dictionary_with_values[min(dictionary_with_values)]
-
-
 def write_corrected_database(file, file_to_write):
     """Write .csv file in a proper way. Use collected and structured data."""
     with open(file_to_write, 'w', newline='') as csvfile:
@@ -139,14 +128,15 @@ if __name__ == '__main__':
     print("Check if hobbies - person relation is correct:")
     print("Check if a person(people) with the biggest amount of hobbies is(are) correct:")
     print(find_person_with_most_hobbies("hobbies_database.txt"))  # -> ['Jack']
-    print(len(dic["Jack"])) # ->  12
-    print(len(dic["Carmen"])) # -> 10
+    print(len(dic["Jack"]))  # ->  12
+    print(len(dic["Carmen"]))  # -> 10
     print("Check if a person(people) with the smallest amount of hobbies is(are) correct:")
     print(find_person_with_least_hobbies("hobbies_database.txt"))  # -> ['Molly']
-    print(len(dic["Molly"])) # -> 5
-    print(len(dic["Sophie"])) # -> 7
+    print(len(dic["Molly"]))  # -> 5
+    print(len(dic["Sophie"]))  # -> 7
     print("Check if the most popular hobby(ies) is(are) correct")
     print(find_most_popular_hobby("hobbies_database.txt"))  # -> ['gaming', 'sport', 'football']
     print("Check if the least popular hobby(ies) is(are) correct")
     print(find_least_popular_hobby("hobbies_database.txt"))  # -> ['tennis', 'dance', 'puzzles', 'flowers']
     write_corrected_database("hobbies_database.txt", 'correct_hobbies_database.csv')
+    print(find_most_popular_hobby({'Jack': ['crafting', 'skateboarding', 'drawing'], 'Peter': ['hiking', 'drawing', 'eat'], 'El': ['drawing', 'eat', 'eat', 'eat']}))
