@@ -44,14 +44,14 @@ def filter_by_hashtag(tweets: list, hashtag: str) -> list:
 
 
 def sort_hashtags_by_popularity(tweets: list) -> list:
-    import re
     """Sort hashtags by popularity."""
+    import re
     hashtags_pop = {}
     for tw in tweets:
         result = re.findall(r'#\w+', tw.content)
         for has in result:
             if has in tw.content and has not in hashtags_pop:
-                hashtags_pop[has] =  hashtags_pop[has] + tw.retweets
+                hashtags_pop[has] = hashtags_pop[has] + tw.retweets
             elif has not in hashtags_pop:
                 hashtags_pop[has] = has
 
