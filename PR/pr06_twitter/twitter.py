@@ -54,7 +54,7 @@ def sort_hashtags_by_popularity(tweets: list) -> list:
             if has in tw.content and has in hashtags_pop:
                 hashtags_pop[has] = hashtags_pop[has] + tw.retweets
             elif has not in hashtags_pop and has in tw.content:
-                hashtags_pop[has] = has
+                hashtags_pop[has] = tw.retweets
     sort_hash = sorted(hashtags_pop.items(), key=lambda x: (-x[1], x[0]))
     for has in sort_hash:
         res.append(has[0])
