@@ -60,6 +60,7 @@ def sort_hashtags_by_popularity(tweets: list) -> list:
         res.append(has[0])
     return res
 
+
 if __name__ == '__main__':
     tweet1 = Tweet("@realDonaldTrump", "Despite the negative press covfefe #bigsmart", 1249, 54303)
     tweet2 = Tweet("@elonmusk", "Technically, alcohol is a solution #bigsmart", 366.4, 166500)
