@@ -1,4 +1,5 @@
 """Twitter."""
+import re
 
 
 class Tweet:
@@ -45,16 +46,19 @@ def filter_by_hashtag(tweets: list, hashtag: str) -> list:
 
 def sort_hashtags_by_popularity(tweets: list) -> list:
     """Sort hashtags by popularity."""
-    import re
     hashtags_pop = {}
+    res = []
     for tw in tweets:
         result = re.findall(r'#\w+', tw.content)
         for has in result:
-            if has in tw.content and has not in hashtags_pop:
+            if has in tw.content and has in hashtags_pop:
                 hashtags_pop[has] = hashtags_pop[has] + tw.retweets
-            elif has not in hashtags_pop:
+            elif has not in hashtags_pop and has in tw.content:
                 hashtags_pop[has] = has
-
+    sort_hash = sorted(hashtags_pop.items(), key=lambda x: (-x[1], x[0]))
+    for has in sort_hash:
+        res.append(has[0])
+    return res
 
 if __name__ == '__main__':
     tweet1 = Tweet("@realDonaldTrump", "Despite the negative press covfefe #bigsmart", 1249, 54303)
