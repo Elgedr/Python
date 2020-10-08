@@ -39,7 +39,7 @@ def filter_by_hashtag(tweets: list, hashtag: str) -> list:
     result = []
     for tweet in tweets:
         if hashtag in tweet.content:
-            result.append(tweet.content)
+            result.append(tweet)
     return result
 
 
