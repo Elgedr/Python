@@ -19,7 +19,7 @@ def find_fastest_growing(tweets: list) -> Tweet:
     for tweet in tweets:
         res = int(tweet.retweets / tweet.time)
         dictionary[tweet] = res
-    result = max(dictionary, key=dictionary.get)
+    result = max(dictionary.items(), key=lambda x: x[1])[0]
     return result
 
 
