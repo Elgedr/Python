@@ -20,6 +20,7 @@ def find_fastest_growing(tweets: list) -> Tweet:
         res = int(tweet.retweets / tweet.time)
         dictionary[tweet] = res
     result = max(dictionary.items(), key=lambda x: x[1])[0]
+# max(dictionary, key=dictionary.get()) тоже самое
     return result
 
 
@@ -49,11 +50,11 @@ def sort_hashtags_by_popularity(tweets: list) -> list:
     hashtags_pop = {}
     res = []
     for tw in tweets:
-        result = re.findall(r'#\w+', tw.content)
+        result = re.findall(r'#\w+', tw.content)  # выдает списком найденные
         for has in result:
-            if has in tw.content and has in hashtags_pop:
+            if has in hashtags_pop:
                 hashtags_pop[has] = hashtags_pop[has] + tw.retweets
-            elif has not in hashtags_pop and has in tw.content:
+            elif has not in hashtags_pop:
                 hashtags_pop[has] = tw.retweets
     sort_hash = sorted(hashtags_pop.items(), key=lambda x: (-x[1], x[0]))
     for has in sort_hash:

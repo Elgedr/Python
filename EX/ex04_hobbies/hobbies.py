@@ -19,7 +19,6 @@ def create_dictionary(file) -> dict:
         else:
             if hobby not in new_dict[name]:
                 new_dict[name].append(hobby)
-    print(new_dict)
     return new_dict
 
 
@@ -139,4 +138,4 @@ if __name__ == '__main__':
     print("Check if the least popular hobby(ies) is(are) correct")
     print(find_least_popular_hobby("hobbies_database.txt"))  # -> ['tennis', 'dance', 'puzzles', 'flowers']
     write_corrected_database("hobbies_database.txt", 'correct_hobbies_database.csv')
-    print(find_most_popular_hobby({'Jack': ['crafting', 'skateboarding', 'drawing'], 'Peter': ['hiking', 'drawing', 'eat'], 'El': ['drawing', 'eat', 'eat', 'eat']}))
+
