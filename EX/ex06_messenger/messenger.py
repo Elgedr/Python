@@ -31,22 +31,22 @@ class Message:
 
 def write_message(userrrr: User, chat: Chat, content: str) -> None:
     """Write a message to given chat."""
-    if userrrr.name in chat.users:
+    if userrrr in chat.users:
         new_message = Message(userrrr, content)
         chat.messages.append(new_message)
 
 
 def delete_message(chattt: Chat, messageee: Message) -> None:
-    """ Delete message from chat."""
+    """Delete message from chat."""
     if messageee in chattt.messages:
         chattt.messages.remove(messageee)
 
 
 def get_messages_by_user(userrr: User, chattt: Chat) -> list:
-    """ Get messages by user in chat."""
+    """Get messages by user in chat."""
     messages = []
     for messag in chattt.messages:
-        if userrr.name in messag.user:
+        if userrr.name in messag.user.name:
             messages.append(messag)
     return messages
 
