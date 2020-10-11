@@ -61,7 +61,7 @@ def find_most_reacted_message(chat: Chat) -> Message:
     """Find the most reacted message in chat."""
     mes = {}
     for mess in chat.messages:
-        if len(chat.messages) > 0:
+        if len(chat.messages) > 1:
             mes[mess] = int(mess.reactions)
     res = max(mes.items(), key=lambda x: x[1])[0]
     return res
