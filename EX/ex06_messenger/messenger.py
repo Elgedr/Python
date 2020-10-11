@@ -62,8 +62,8 @@ def find_most_reacted_message(chattt: Chat) -> Message:
     mes = {}
     for mess in chattt.messages:
         mes[mess] = mess.reactions
-    res = sorted(mes.items(), key=lambda x: x[1])[0]
-    return res[0]
+    res = max(mes.items(), key=lambda x: x[1])[0]
+    return res
 
 
 def count_reactions_in_chat(chattt: Chat) -> int:
