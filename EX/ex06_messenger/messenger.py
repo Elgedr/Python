@@ -81,38 +81,3 @@ def count_reactions_by_chat(chats: list) -> dict:
     for chat in chats:
         res[chat] = count_reactions_in_chat(chat)
     return res
-
-
-if __name__ == '__main__':
-    user1 = User("Alma")
-    user2 = User("Ago")
-    chat = Chat("Python 2020", [user1, user2])
-
-    write_message(user1, chat, "Parim kohvipiim")
-    write_message(user2, chat, "Eestimaa farmidest")
-    write_message(user2, chat, "Piim")
-    write_message(user1, chat, "Farmi")
-    for message in chat.messages:
-        print(f"{message.user.name}: {message.content}")
-        # Alma: Parim kohvipiim
-        # Ago: Eestimaa farmidest
-        # Ago: Piim
-        # Alma: Farmi
-
-    to_be_deleted = get_messages_by_user(user2, chat)
-    for message in to_be_deleted:
-        delete_message(chat, message)
-    for message in chat.messages:
-        print(f"{message.user.name}: {message.content}")
-        # Alma: Parim kohvipiim
-        # Alma: Farmi
-
-    react_to_last_message(chat)
-    print(chat.messages[0].reactions)  # 0
-    print(chat.messages[-1].reactions)  # 1
-
-    most_reacted = find_most_reacted_message(chat)
-    print(f"{most_reacted.content}: {most_reacted.reactions}")  # Farmi: 1
-
-    print(count_reactions_in_chat(chat))  # 1
-    print(count_reactions_by_chat([chat]))  # {"Python 2020": 1}
