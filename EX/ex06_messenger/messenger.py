@@ -46,7 +46,7 @@ def get_messages_by_user(userrr: User, chattt: Chat) -> list:
     """Get messages by user in chat."""
     messages = []
     for messag in chattt.messages:
-        if userrr in messag.user:
+        if userrr.name in messag.user.name:
             messages.append(messag)
     return messages
 
