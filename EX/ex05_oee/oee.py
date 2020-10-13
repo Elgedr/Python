@@ -6,7 +6,7 @@ def read_production_data(filename: str,) -> dict:
     """Read a csv file and make a dictionary."""
     productivity_dictionary = {}
     try:
-        with open(filename, encoding='utf-8') as csv_file:
+        with open(filename) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
                 res = [int(i) for i in row[1::]]
@@ -38,7 +38,7 @@ def calculate_availability(production_data: dict) -> dict:
     production_dict = {}
     for k, v in production_data.items():
         try:
-            result = float(int(v[0]) / 420)
+            result = float(int(v[0]) / 420)  # 420 see on minutite arv 7 tunnis
             resultt = round(result, 3) * 100
         except ZeroDivisionError:
             resultt = 0.0
@@ -65,7 +65,7 @@ def calculate_oee(production_data: dict) -> dict:
     avail = calculate_availability(production_data)
     perf = calculate_performance(production_data)
     qual = calculate_quality(production_data)
-    for k in production_data.keys():
+    for k in production_data:
         oee[k] = round(avail[k] * perf[k] * qual[k] / 10000, 1)
     return oee
 
