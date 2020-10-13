@@ -29,8 +29,7 @@ def sort_by_popularity(tweets: list) -> list:
     retweets_time = {}
     res = []
     for tweet in tweets:
-        retweets_time[tweet] = [tweet.retweets, -tweet.time]
-    tweets_by_pop = sorted(retweets_time.items(), key=lambda listt: listt[1], reverse=True)
+        tweets_by_pop = sorted(retweets_time.items(), key=lambda listt: (tweet.retweets, -tweet.time), reverse=True)
     for twit in tweets_by_pop:
         res.append(twit[0])
     return res
