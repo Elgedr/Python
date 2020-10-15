@@ -32,22 +32,19 @@ class Train:
 
     def get_number_of_passengers(self) -> int:
         """Tagastab rongi sisse tulevate reisijate arvu."""
-        count = 0
-        while len(self._passengers) > 0:
-            count += 1
-        return count
+        passengers = self._passengers
+        car = int(self._carriages)
+        sit = int(self._seats_in_carriage)
+        for passenger in passengers:
+            if passenger._seat.split("-")[0] > car or passenger._seat.split("-")[1] > sit:
+                passengers.remove(passenger)
+        return len(passengers)
 
     def get_passengers_in_carriages(self) -> dict:
         """Tagastab sõnastiku vagunite ja reisijate andmetega."""
 
-
     @passengers.setter
     def passengers(self, value_list: list):
-        for passenger in value_list:
-           pas_carriage = passenger._seat.split("-")[0]
-           pas_seat = passenger._seat.split("-")[1]
-           if pas_carriage > int(self._carriages) or pas_seat > int(self._seats_in_carriage):
-               value_list.remove(passenger)
         self._passengers = value_list
 
     @carriages.setter
