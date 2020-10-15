@@ -1,17 +1,18 @@
-"""Train"""
+"""Train."""
 
 
 class Train:
-    """Class"""
+    """Class."""
+
     def __init__(self, passengers: list, carriages: int, seats_in_carriage: int):
-        """Constructor"""
+        """Constructor."""
         self._passengers = passengers  # reisijate nimekiri
         self._carriages = carriages  # vagunite arv
         self._seats_in_carriage = seats_in_carriage  # istmete arv ühes vagunis
 
     @property
     def passengers(self) -> list:
-        """Decorator"""
+        """Decorator."""
         return self._passengers
 
     @property
