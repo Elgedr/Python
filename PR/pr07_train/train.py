@@ -55,6 +55,8 @@ class Train:
         for passenger in value_list:
             if int(passenger._seat.split("-")[0]) > car or int(passenger._seat.split("-")[1]) > sit:
                 value_list.remove(passenger)
+            else:
+                pass
         self._passengers = value_list
 
     @carriages.setter
