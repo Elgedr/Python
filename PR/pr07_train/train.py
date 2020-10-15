@@ -32,6 +32,7 @@ class Train:
 
     def get_number_of_passengers(self) -> int:
         """Tagastab rongi sisse tulevate reisijate arvu."""
+        self.passengers = self.passengers
         return len(self.passengers)
 
     def get_passengers_in_carriages(self) -> dict:
