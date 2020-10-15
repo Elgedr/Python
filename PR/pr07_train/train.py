@@ -89,3 +89,16 @@ if __name__ == '__main__':
     t = Train([p_1, p_2, p_3], 3, 10)
     print(t.passengers)
     print(t.get_passengers_in_carriages())
+    passengers = [
+        Passenger('test', '1-2'),
+        Passenger('test2', '2-3'),
+        Passenger('test3', '4-2'),
+    ]
+    t = Train(passengers, 3, 2)
+    result = t.get_passengers_in_carriages()
+    print(result)  # {'1': [{'id': 'test', 'seat': '2'}], '2': [], '3': []}
+    assert len(result.keys()) == 3
+    assert len(result['1']) == 1
+    assert len(result['2']) == 0
+    assert len(result['3']) == 0
+    assert len(passengers) == 3
