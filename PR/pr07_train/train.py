@@ -17,10 +17,12 @@ class Train:
 
     @property
     def carriages(self) -> int:
+        """Carriages."""
         return self._carriages
 
     @property
     def seats_in_carriage(self) -> int:
+        """Seats."""
         return self._seats_in_carriage
 
     def get_seats_in_train(self) -> int:
@@ -41,8 +43,9 @@ class Train:
 
 class Passenger:
     """Class."""
+
     def __init__(self, passenger_id: str, seat: str):
-        """Constructor"""
+        """Constructor."""
         self._passenger_id = passenger_id  # reisija unikaalne identifikaator (id)
         self._seat = seat  # istekoha number.  vaguni_nr-istekoha_nr 2-14
 
