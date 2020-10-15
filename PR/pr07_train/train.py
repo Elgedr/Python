@@ -57,8 +57,6 @@ class Train:
             result[passen.carriage].append(passen.__dict__)
         return result
 
-
-
     @passengers.setter
     def passengers(self, value_list: list):
         self._passengers = value_list
