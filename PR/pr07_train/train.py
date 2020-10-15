@@ -28,13 +28,12 @@ class Train:
 
     def get_seats_in_train(self) -> int:
         """Meetod, mis tagastab istmete koguarvu terve rongi peale."""
-        seats_count = self.carriages * self.seats_in_carriage
+        seats_count = self._carriages * self._seats_in_carriage
         return seats_count
 
     def get_number_of_passengers(self) -> int:
         """Tagastab rongi sisse tulevate reisijate arvu."""
-        self.passengers = self.passengers
-        return len(self.passengers)
+        return len(self._passengers)
 
     def get_passengers_in_carriages(self) -> dict:
         """Tagastab sõnastiku vagunite ja reisijate andmetega."""
@@ -81,8 +80,12 @@ class Passenger:
 
 if __name__ == '__main__':
     p_1 = Passenger('123', '1-9')
-    p_2 = Passenger('321', '2-11')
-    p_3 = Passenger('456', '4-5')
+    p_2 = Passenger('123', '1-9')
+    p_3 = Passenger('123', '1-9')
+
+
+    # p_2 = Passenger('321', '2-11')
+    # p_3 = Passenger('456', '4-5')
     t = Train([p_1, p_2, p_3], 3, 10)
     print(t.passengers)
     print(t.get_passengers_in_carriages())
