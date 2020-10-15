@@ -36,7 +36,7 @@ class Train:
         car = int(self._carriages)
         sit = int(self._seats_in_carriage)
         for passenger in passengers:
-            if passenger._seat.split("-")[0] > car or passenger._seat.split("-")[1] > sit:
+            if int(passenger._seat.split("-")[0]) > car or int(passenger._seat.split("-")[1]) > sit:
                 passengers.remove(passenger)
         return len(passengers)
 
