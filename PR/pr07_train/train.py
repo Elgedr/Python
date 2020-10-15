@@ -42,7 +42,7 @@ class Train:
         for i in range(1, self.carriages + 1):
             result[str(i)] = []
         for i in self.passengers:
-            result[i.seat.split("-")[0]].append(i.__dict__)
+            result[i.seat.split("-")[0]].append(i.__dict__())
         return result
 
     @passengers.setter
