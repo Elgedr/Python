@@ -6,9 +6,10 @@ class Train:
 
     def __init__(self, passengers: list, carriages: int, seats_in_carriage: int):
         """Constructor."""
-        self._passengers = passengers  # reisijate nimekiri
-        self._carriages = carriages  # vagunite arv
-        self._seats_in_carriage = seats_in_carriage  # istmete arv ühes vagunis
+        self.carriages = carriages  # vagunite arv
+        self.seats_in_carriage = seats_in_carriage  # istmete arv ühes vagunis
+        self.passengers = passengers  # reisijate nimekiri
+
 
     @property
     def passengers(self) -> list:
@@ -38,18 +39,19 @@ class Train:
     def get_passengers_in_carriages(self) -> dict:
         """Tagastab sõnastiku vagunite ja reisijate andmetega."""
         result = {}
-        self.passengers = self.passengers
-        for i in range(self.carriages):
-            result[str(i+1)] = []
-        for i in self.passengers:
+        for i in range(self._carriages):
+            result[str(i + 1)] = []
+        for i in self._passengers:
             result[i.seat.split("-")[0]].append(i.__dict__())
         return result
 
     @passengers.setter
     def passengers(self, value_list: list):
+        print("op")
         set_list = []
         for i in value_list:
-            if int(i.seat.split("-")[0]) <= self._carriages and int(i.seat.split("-")[1]) <= self._seats_in_carriage:
+            seat_value = [i.seat.split("-")[0], i.seat.split("-")[1]]
+            if int(seat_value[0]) > 0 and int(seat_value[0]) <= self._carriages and int(i.seat.split("-")[1]) <= self._seats_in_carriage:
                 set_list.append(i)
         self._passengers = set_list
 
