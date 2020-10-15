@@ -34,8 +34,8 @@ class Train:
         """Tagastab rongi sisse tulevate reisijate arvu."""
         passengers = self._passengers
         res = []
-        car = int(self._carriages)
-        sit = int(self._seats_in_carriage)
+        car = self._carriages
+        sit = self._seats_in_carriage
         for passenger in passengers:
             if int(passenger._seat.split("-")[0]) > car or int(passenger._seat.split("-")[1]) > sit:
                 passengers.remove(passenger)
@@ -45,12 +45,17 @@ class Train:
 
     def get_passengers_in_carriages(self) -> dict:
         """Tagastab sõnastiku vagunite ja reisijate andmetega."""
+        result = {}
         car = int(self._carriages)
         sit = int(self._seats_in_carriage)
         for passenger in self.passengers:
             if int(passenger._seat.split("-")[0]) > car or int(passenger._seat.split("-")[1]) > sit:
                 self.passengers.remove(passenger)
-        # for i in range(1, int(self.))
+        for i in range(1, self._carriages + 1):
+            result[str[i]] = []
+        for passen in self._passengers:
+            result[passen.carriage].append(passen.__dict__)
+        return result
 
 
 
