@@ -37,22 +37,22 @@ class Train:
         car = int(self._carriages)
         sit = int(self._seats_in_carriage)
         for passenger in passengers:
-            if int(passenger._seat.split("-")[0]) <= car or int(passenger._seat.split("-")[1]) <= sit:
+            if int(passenger._seat.split("-")[0]) > car or int(passenger._seat.split("-")[1]) > sit:
+                passengers.remove(passenger)
+            else:
                 res.append(passenger)
         return len(res)
 
-    # def get_passengers_in_carriages(self) -> dict:
-    #     # """Tagastab sõnastiku vagunite ja reisijate andmetega."""
-    #     # passengers = self._passengers
-    #     # res = []
-    #     # car = int(self._carriages)
-    #     # sit = int(self._seats_in_carriage)
-    #     # for passenger in passengers:
-    #     #     if int(passenger._seat.split("-")[0]) > car or int(passenger._seat.split("-")[1]) > sit:
-    #     #         passengers.remove(passenger)
-    #     #     else:
-    #     #         res.append(passenger)
-    #
+    def get_passengers_in_carriages(self) -> dict:
+        """Tagastab sõnastiku vagunite ja reisijate andmetega."""
+        res = []
+        car = int(self._carriages)
+        sit = int(self._seats_in_carriage)
+        for passenger in self.passengers:
+            if int(passenger._seat.split("-")[0]) > car or int(passenger._seat.split("-")[1]) > sit:
+                self.passengers.remove(passenger)
+
+
 
 
     @passengers.setter
