@@ -27,9 +27,13 @@ class Train:
 
     def get_seats_in_train(self) -> int:
         """Meetod, mis tagastab istmete koguarvu terve rongi peale."""
+        seats_count = int(self._carriages) * int(self._seats_in_carriage)
+        return seats_count
 
     @passengers.setter
     def passengers(self, value_list: list):
+        # for passenger in value_list:
+        #     if passenger
         self._passengers = value_list
 
     @carriages.setter
@@ -50,4 +54,5 @@ class Passenger:
         self._seat = seat  # istekoha number.  vaguni_nr-istekoha_nr 2-14
 
     def __dict__(self):
+        """Magic method."""
         return {'id': self._passenger_id, 'seat': self._seat}
