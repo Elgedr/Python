@@ -74,12 +74,3 @@ class Passenger:
     def __dict__(self):
         """Magic method."""
         return {'id': self.passenger_id, 'seat': self.seat.split("-")[1]}
-
-
-if __name__ == '__main__':
-    p_1 = Passenger('123', '1-9')
-    p_2 = Passenger('321', '2-11')
-    p_3 = Passenger('456', '4-5')
-    t = Train([p_1, p_2, p_3], 3, 10)
-    print(t.passengers)
-    print(t.get_passengers_in_carriages())
