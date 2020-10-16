@@ -27,13 +27,13 @@ class Train:
 
     def get_seats_in_train(self) -> int:
         """Meetod, mis tagastab istmete koguarvu terve rongi peale."""
-        self.passengers = self._passengers
+        self.passengers = self.passengers
         seats_count = self.carriages * self.seats_in_carriage
         return seats_count
 
     def get_number_of_passengers(self) -> int:
         """Tagastab rongi sisse tulevate reisijate arvu."""
-        self.passengers = self._passengers
+        self.passengers = self.passengers
         return len(self.passengers)
 
     def get_passengers_in_carriages(self) -> dict:
