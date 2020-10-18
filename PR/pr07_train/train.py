@@ -6,15 +6,15 @@ class Train:
 
     def __init__(self, passengers: list, carriages: int, seats_in_carriage: int):
         """Constructor."""
-        self._passengers = self.filtred_list(passengers)  # reisijate nimekiri
         self._carriages = carriages  # vagunite arv
         self._seats_in_carriage = seats_in_carriage  # istmete arv ühes vagunis
+        self._passengers = self.filtred_list(passengers)  # reisijate nimekiri
 
     def filtred_list(self, passengers: list):
         """Filter passangers."""
         set_list = []
         for i in passengers:
-            if int(i.seat.split("-")[0]) <= self._carriages and int(i.seat.split("-")[1]) <= self._seats_in_carriage:
+            if int(i.seat.split("-")[0]) <= self.carriages and int(i.seat.split("-")[1]) <= self.seats_in_carriage:
                 set_list.append(i)
         return set_list
 
