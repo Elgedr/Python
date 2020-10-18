@@ -32,16 +32,14 @@ class Train:
 
     def get_number_of_passengers(self) -> int:
         """Tagastab rongi sisse tulevate reisijate arvu."""
-        self.passengers = self.passengers
-        return len(self.passengers)
+        return len(self._passengers)
 
     def get_passengers_in_carriages(self) -> dict:
         """Tagastab sõnastiku vagunite ja reisijate andmetega."""
         result = {}
-        self.passengers = self.passengers
         for i in range(1, self.carriages + 1):
             result[str(i)] = []
-        for passen in self.passengers:
+        for passen in self._passengers:
             result[passen.seat.split("-")[0]].append({'id': passen.passenger_id, 'seat': passen.seat.split("-")[1]})
         return result
 
