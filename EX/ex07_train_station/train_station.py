@@ -30,7 +30,7 @@ class Train:
 
     def __dict__(self):
         """Magic metod."""
-        return {"train id": self._train_id, "carriages": self._carriages, "seats" : }
+        return {"train id": self._train_id, "carriages": self._carriages }
 
     @property
     def carriages(self) -> int:
