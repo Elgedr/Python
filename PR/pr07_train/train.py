@@ -14,7 +14,7 @@ class Train:
         """Filter passangers."""
         set_list = []
         for i in passengers:
-            if int(i.seat.split("-")[0]) <= self.carriages and int(i.seat.split("-")[1]) <= self.seats_in_carriage:
+            if int(i.seat.split("-")[0]) <= self._carriages and int(i.seat.split("-")[1]) <= self._seats_in_carriage:
                 set_list.append(i)
         return set_list
 
