@@ -6,9 +6,19 @@ class Train:
 
     def __init__(self, passengers: list, carriages: int, seats_in_carriage: int):
         """Constructor."""
-        self._passengers = passengers  # reisijate nimekiri
         self._carriages = carriages  # vagunite arv
         self._seats_in_carriage = seats_in_carriage  # istmete arv ühes vagunis
+        self._passengers = self.f_passengers(passengers)  # reisijate nimekiri
+
+    def f_passengers(self, passengers):
+        """List of passengers."""
+        res = []
+        for i in passengers:
+            if int(i.seat.split("-")[0]) <= self._carriages and int(i.seat.split("-")[1]) <= self._seats_in_carriage:
+                res.append(i)
+            else:
+                pass
+        return res
 
     @property
     def passengers(self) -> list:
@@ -45,11 +55,7 @@ class Train:
 
     @passengers.setter
     def passengers(self, value_list: list):
-        set_list = []
-        for i in value_list:
-            if int(i.seat.split("-")[0]) <= self._carriages and int(i.seat.split("-")[1]) <= self._seats_in_carriage:
-                set_list.append(i)
-        self._passengers = set_list
+        self._passengers = value_list
 
     @carriages.setter
     def carriages(self, value: int):
