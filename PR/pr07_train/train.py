@@ -6,9 +6,17 @@ class Train:
 
     def __init__(self, passengers: list, carriages: int, seats_in_carriage: int):
         """Constructor."""
-        self._passengers = passengers  # reisijate nimekiri
+        self._passengers = self.filtred_list(passengers)  # reisijate nimekiri
         self._carriages = carriages  # vagunite arv
         self._seats_in_carriage = seats_in_carriage  # istmete arv ühes vagunis
+
+    def filtred_list(self, passengers: list):
+        """Filter passangers."""
+        set_list = []
+        for i in passengers:
+            if int(i.seat.split("-")[0]) <= self._carriages and int(i.seat.split("-")[1]) <= self._seats_in_carriage:
+                set_list.append(i)
+        return set_list
 
     @property
     def passengers(self) -> list:
@@ -32,26 +40,20 @@ class Train:
 
     def get_number_of_passengers(self) -> int:
         """Tagastab rongi sisse tulevate reisijate arvu."""
-        # self.passengers = self.passengers
-        return len(self._passengers)
+        return len(self.passengers)
 
     def get_passengers_in_carriages(self) -> dict:
         """Tagastab sõnastiku vagunite ja reisijate andmetega."""
         result = {}
-        # self.passengers = self.passengers  # первый self идет в
         for i in range(1, self.carriages + 1):
             result[str(i)] = []
-        for i in self._passengers:
+        for i in self.passengers:
             result[i.seat.split("-")[0]].append(i.__dict__())
         return result
 
     @passengers.setter
     def passengers(self, value_list: list):
-        set_list = []
-        for i in value_list:
-            if int(i.seat.split("-")[0]) <= self._carriages and int(i.seat.split("-")[1]) <= self._seats_in_carriage:
-                set_list.append(i)
-        self._passengers = set_list
+        self._passengers = value_list
 
     @carriages.setter
     def carriages(self, value: int):
