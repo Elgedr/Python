@@ -35,12 +35,12 @@ class Train:
 
     def get_seats_in_train(self) -> int:
         """Meetod, mis tagastab istmete koguarvu terve rongi peale."""
-        seats_count = self.carriages * self.seats_in_carriage
+        seats_count = self._carriages * self._seats_in_carriage
         return seats_count
 
     def get_number_of_passengers(self) -> int:
         """Tagastab rongi sisse tulevate reisijate arvu."""
-        return len(self.passengers)
+        return len(self._passengers)
 
     def get_passengers_in_carriages(self) -> dict:
         """Tagastab sõnastiku vagunite ja reisijate andmetega."""
@@ -53,7 +53,7 @@ class Train:
 
     @passengers.setter
     def passengers(self, value_list: list):
-        self._passengers = value_list
+        self._passengers = self.filtred_list(value_list)
 
     @carriages.setter
     def carriages(self, value: int):
