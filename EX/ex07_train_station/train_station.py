@@ -30,7 +30,8 @@ class Train:
 
     def __dict__(self):
         """Magic metod."""
-        return {"train id": self._train_id, "carriages": self._carriages }
+        seats = self.get_seats_in_train()
+        return {"train id": self._train_id, "carriages": self._carriages, "seats": seats}
 
     @property
     def carriages(self) -> int:
@@ -62,8 +63,18 @@ class Train:
         """Meetod, mis tagastab sõnastiku vagunite ja reisijate andmetega."""
         res = {}
         for wagon_num in range(1, self._carriages + 1):
-            res[wagon_num] = []
+            res[str(wagon_num)] = []
+        for passanger in self._passengers:
+            res[passanger.split("-")[1]].append(passanger)
         return res
+
+    def add_passenger(self, passenger: Passenger):
+        """Meetod, mis lisab reisija rongi peale rongijaamast."""
+        p_id = passenger.seat.split('-')[0]
+        if p_id == self._train_id:
+            self._passengers.append(p_id)
+
+
 
     @train_id.setter
     def train_id(self, value: str):
@@ -75,8 +86,6 @@ class Train:
         """Setter."""
         self._seats_in_carriage = value
 
-    def add_passenger(self, passenger: Passenger) -> Passenger:
-        """Meetod, mis lisab reisija rongi peale rongijaamast."""
 
 
 class TrainStation:
@@ -87,6 +96,10 @@ class TrainStation:
 
     def get_station_overview(self) -> list:
         """Meetod, mis tagastab hetke seisundi aruande kõikiest rongijaamas olevatest rongidest listi kujul ning rongi info on sõnastiku kujul"""
+        res = []
+        for t in self.trains:
+            res.append(t.__dict__)
+        return res
 
     def get_number_of_passengers(self):
         """Meetod, mis tagastab rongijaama (rongidesse paigutatud) reisijate koguarvu."""
