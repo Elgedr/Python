@@ -36,7 +36,7 @@ class Train:
         return {"train_id": self._train_id, "carriages": self._carriages, "seats": seats}
 
     @property
-    def passengers_filtred(self) -> list:
+    def passengers(self) -> list:
         """Decorator."""
         return self._passengers
 
