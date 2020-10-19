@@ -25,10 +25,10 @@ class Train:
 
     def __init__(self, train_id: str, carriages: int, seats_in_carriage: int):
         """Constructor."""
+        self._passengers = []
         self._train_id = train_id  # rongi unikaalne id
         self._carriages = carriages  # vagunite arv
         self._seats_in_carriage = seats_in_carriage  # ühes vagunis olevate istmete arv
-        self._passengers_filtred = []
 
     def __dict__(self):
         """Magic metod."""
@@ -38,7 +38,7 @@ class Train:
     @property
     def passengers_filtred(self) -> list:
         """Decorator."""
-        return self._passengers_filtred
+        return self._passengers
 
     @property
     def carriages(self) -> int:
@@ -62,7 +62,7 @@ class Train:
 
     def get_number_of_passengers(self) -> int:
         """Meetod, mis tagastab rongi reisijate arvu."""
-        res = len(self._passengers_filtred)
+        res = len(self._passengers)
         return res
 
     def get_passengers_in_carriages(self) -> dict:
@@ -70,7 +70,7 @@ class Train:
         res = {}
         for wagon_num in range(1, self._carriages + 1):
             res[str(wagon_num)] = []
-        for passanger in self._passengers_filtred:
+        for passanger in self._passengers:
             res[passanger.seat.split("-")[1]].append(passanger)
         return res
 
@@ -80,10 +80,10 @@ class Train:
         p_seat = int(passenger.seat.split('-')[2])
         p_wagon = int(passenger.seat.split('-')[1])
         if p_id == self._train_id and 0 < p_wagon <= self._carriages and 0 < p_seat <= self._seats_in_carriage:
-            for passen in self._passengers_filtred:
+            for passen in self._passengers:
                 if passenger.seat == passen.seat:
                     return None
-            self._passengers_filtred.append(passenger)
+            self._passengers.append(passenger)
             return passenger
 
     @train_id.setter
@@ -200,7 +200,7 @@ if __name__ == "__main__":
                                                                                       None, None]
     basic_test("add_passengers_to_train3_without_station", [t3.add_passenger(p) for p in passengers],
                add_passenger_correct)
-    basic_test("check_for_valid_passengers_train3", [p._passenger_id for p in t3._passengers_filtred], ['11', '13', '14'])
+    basic_test("check_for_valid_passengers_train3", [p._passenger_id for p in t3._passengers], ['11', '13', '14'])
 
     print("\nTRAINS AT THE STATION")
     basic_test("get_seats_in_train", [t.get_seats_in_train() for t in trains], [25, 8])
