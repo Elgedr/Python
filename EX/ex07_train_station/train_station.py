@@ -3,7 +3,7 @@
 
 class Passenger:
     def __init__(self, passenger_id: str, seat: str):
-        """Constructor"""
+        """Constructor."""
         self._passenger_id = passenger_id  # reisija unikaalne identifikaator (id)
         self._seat = seat  # istekoha number (rongi_id-vaguni_nr-istekoha_nr)
 
@@ -33,17 +33,17 @@ class Train:
 
     @property
     def carriages(self) -> int:
-        """Decorator"""
+        """Decorator."""
         return self._carriages
 
     @property
     def train_id(self) -> str:
-        """Decorator"""
+        """Decorator."""
         return self._train_id
 
     @property
     def seats_in_carriage(self) -> int:
-        """Decorator"""
+        """Decorator."""
         return self._seats_in_carriage
 
     def get_seats_in_train(self) -> int:
@@ -95,7 +95,7 @@ class TrainStation:
         self._passengers = passengers  # rongijaama sisse tulevate reisijate nimekiri
 
     def get_station_overview(self) -> list:
-        """Meetod, mis tagastab hetke seisundi aruande kõikiest rongijaamas olevatest rongidest listi kujul ning rongi info on sõnastiku kujul"""
+        """Meetod, mis tagastab hetke seisundi aruande kõikiest rongijaamas olevatest rongidest listi kujul ning rongi info on sõnastiku kujul."""
         res = []
         for t in self.trains:
             res.append(t.__dict__)
