@@ -2,6 +2,7 @@
 
 
 class Passenger:
+    """Class."""
     def __init__(self, passenger_id: str, seat: str):
         """Constructor."""
         self._passenger_id = passenger_id  # reisija unikaalne identifikaator (id)
@@ -19,6 +20,7 @@ class Passenger:
 
 
 class Train:
+    """Class."""
     def __init__(self, train_id: str, carriages: int, seats_in_carriage: int):
         """Constructor."""
         self._train_id = train_id  # rongi unikaalne id
@@ -89,6 +91,7 @@ class Train:
 
 
 class TrainStation:
+    """Class."""
     def __init__(self, trains: list, passengers: list):
         """Constructor."""
         self._trains = trains  # rongijaama sisse tulevate rongide nimekiri
@@ -106,6 +109,7 @@ class TrainStation:
         return len(self._passengers)
 
     def passangers_in_trains(self):
+        """Filter passengers."""
         passangers_in_train = []
         passangers_in_train.extend(self._passengers)
         for pas in self._passengers:
