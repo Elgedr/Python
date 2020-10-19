@@ -66,7 +66,7 @@ class Train:
         for wagon_num in range(1, self._carriages + 1):
             res[str(wagon_num)] = []
         for passanger in self._passengers_filtred:
-            res[passanger.split("-")[1]].append(passanger)
+            res[passanger.seat.split("-")[1]].append(passanger)
         return res
 
     def add_passenger(self, passenger: Passenger):
@@ -118,11 +118,12 @@ class TrainStation:
         for pas in self._passengers:
             pass_id = pas.seat.split('_')[0]
             for tr in self._trains:
-                psng = None
                 if tr.train_id == pass_id:
-                    psng = tr.add_passenger(pas)
-                if not psng:
-                    passangers_in_train.remove(pas)
+                    if not tr.add_passenger(pas):
+                        passangers_in_train.remove(pas)
+                    else:
+                        tr.add_passenger(pas)
+
         self._passengers = passangers_in_train
 
     @property
