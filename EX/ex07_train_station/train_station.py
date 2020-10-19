@@ -32,8 +32,8 @@ class Train:
 
     def __dict__(self):
         """Magic metod."""
-        seats = f"{self.get_number_of_passengers()} / {self.get_seats_in_train()}"
-        return {"train id": self._train_id, "carriages": self._carriages, "seats": seats}
+        seats = f"{self.get_number_of_passengers()}/{self.get_seats_in_train()}"
+        return {"train_id": self._train_id, "carriages": self._carriages, "seats": seats}
 
     @property
     def passengers_filtred(self) -> list:
@@ -114,7 +114,7 @@ class TrainStation:
         """Meetod, mis tagastab hetke seisundi aruande kõikiest rongijaamas olevatest rongidest listi kujul ning rongi info on sõnastiku kujul."""
         res = []
         for t in self.trains:
-            res.append(t.__dict__)
+            res.append(t.__dict__())
         return res
 
     def get_number_of_passengers(self):
