@@ -23,13 +23,10 @@ class Decoder:
     def decode_from_base64(data: str) -> str:
         """Decode base64 string to utf-8 string."""
         message = data
-        first = message.encode("UTF-8")
-        second = base64.b64encode(first)
-        third = second.decode('UTF-8')
-        fourth = third.encode('UTF-8')
-        fifth = base64.b64decode(fourth)
-        sixth = fifth.decode('UTF-8')
-        return sixth
+        message_in_bytes = message.encode('"utf-8"')  # кодируем наше сообщение в байтовый объект с помощью encode ('ASCII')
+        nextt = base64.b64decode(message_in_bytes)
+        result = nextt.decode('"utf-8"')  # декодируем в понятный для нас язык
+        return result
 
     def calculate_cipher_step(self) -> int:
         """Calculate cipher step."""
