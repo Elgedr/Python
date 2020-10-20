@@ -6,7 +6,7 @@ def read_from_file() -> list:
     names = []
     with open("popular_names.txt", encoding='utf-8') as file:
         for line in file:
-            names.append(line.strip())
+            names.append(line.strip(''))
     return names
 
 
