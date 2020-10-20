@@ -1,3 +1,5 @@
+"""Tester."""
+
 import pytest
 
 from secret_garden import Decoder, SecretGarden  # из файла импортируем классы
