@@ -23,11 +23,13 @@ class Decoder:
     def decode_from_base64(data: str) -> str:
         """Decode base64 string to utf-8 string."""
         message = data
-        message_in_bytes = message.encode('ascii')  # кодируем наше сообщение в байтовый объект с помощью encode ('ASCII')
-        nextt = base64.b64decode(message_in_bytes)
-        result = nextt.decode('ascii')  # декодируем в понятный для нас язык
-
-        return result
+        first = message.encode("UTF-8")
+        second = base64.b64encode(first)
+        third = second.decode('UTF-8')
+        fourth = third.encode('UTF-8')
+        fifth = base64.b64decode(fourth)
+        sixth = fifth.decode('UTF-8')
+        return sixth
 
     def calculate_cipher_step(self) -> int:
         """Calculate cipher step."""
@@ -35,8 +37,6 @@ class Decoder:
         for letter in self.key:
             res.append(ord(letter))  # ord метод возвращает число, представляющее 1 символ (юникода) из строки
         return sum(res)
-
-
 
     def decode(self) -> list:
         """"""
