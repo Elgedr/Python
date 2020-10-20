@@ -9,6 +9,7 @@ key = 'Fat Chocobo'
 
 def test_decode():  # все функции в тестере должны начинаться со слова test. Название говорит о том,
     # какую функцию мы тестерим
+    """Funktsioon."""
     d = Decoder(filename, key)
 
     assert len(d.decode()) == 7
@@ -21,6 +22,7 @@ def test_decode():  # все функции в тестере должны на�
 
 
 def test_secretgarden():
+    """Funktsioon."""
     sg = SecretGarden(filename, key)
 
     assert sg.decode_messages()[0] == '-12;-1\n\nESS'
