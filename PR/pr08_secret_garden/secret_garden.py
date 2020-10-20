@@ -36,24 +36,22 @@ class Decoder:
         return sum(res)
 
     def decode(self) -> list:
-        """"""
-
-
+        """Decode file with key."""
 
 
 class SecretGarden:
     """SecretGarden class."""
 
     def __init__(self, file: str, key: str):
-        """"""
+        """SecretGarden constructor."""
         self.file = file
         self.key = key
 
     def decode_messages(self) -> list:
-        """"""
+        """Use Decoder class to decode messages."""
 
     def find_secret_locations(self) -> list:
-        """"""
+        """Find all secret locations."""
 
 
 if __name__ == '__main__':
