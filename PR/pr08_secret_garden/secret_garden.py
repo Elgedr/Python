@@ -57,6 +57,7 @@ class SecretGarden:
         self.file = file
         self.key = key
 
+
     def decode_messages(self) -> list:
         """Use Decoder class to decode messages."""
         message = Decoder(self.file, self.key)  # чтобы использовать функцию из другого класса делаем переменную, которая
