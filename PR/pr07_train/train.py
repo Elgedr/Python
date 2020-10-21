@@ -8,7 +8,7 @@ class Train:
         """Constructor."""
         self._carriages = carriages  # vagunite arv
         self._seats_in_carriage = seats_in_carriage  # istmete arv ühes vagunis
-        self._passengers = self.f_passengers(passengers)  # reisijate nimekiri
+        self._passengers = self.f_passengers(passengers)  # reisijate nimekiri. можем вызывать тут это функцию, потому что она вбирает в себя переменную.
 
     def f_passengers(self, passengers):
         """List of passengers."""

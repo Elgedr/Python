@@ -29,3 +29,4 @@ def test_secretgarden():
 
     assert sg.decode_messages()[0] == '-12;-1\n\nESS'
     assert len(sg.find_secret_locations()) == 7
+

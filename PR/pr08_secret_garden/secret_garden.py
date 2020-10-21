@@ -26,7 +26,7 @@ class Decoder:
         message = data
         message_in_bytes = message.encode('"utf-8"')  # кодируем наше сообщение в байтовый объект с помощью encode ('ASCII')
         nextt = base64.b64decode(message_in_bytes)
-        result = nextt.decode('"utf-8"')  # декодируем в понятный для нас язык
+        result = nextt.decode("utf-8")  # декодируем в понятный для нас язык (вернее символы)
         return result
 
     def calculate_cipher_step(self) -> int:
@@ -38,6 +38,15 @@ class Decoder:
 
     def decode(self) -> list:
         """Decode file with key."""
+        res = []
+        for line in self.read_code_from_file():  # чтобы использовать функцию из этого же класса пишем self.название функции
+            string = ''
+            line_decoded = self.decode_from_base64(line)
+            for letter in line_decoded:
+                num = (ord(letter) - self.calculate_cipher_step()) % 225
+                string = string + (chr(num))  # число переводит в символ основываясь по таблице юникода
+            res.append(string)
+        return res
 
 
 class SecretGarden:
@@ -50,6 +59,10 @@ class SecretGarden:
 
     def decode_messages(self) -> list:
         """Use Decoder class to decode messages."""
+        message = Decoder(self.file, self.key)  # чтобы использовать функцию из другого класса делаем переменную, которая
+        # относится к другому классу. указываем все  данные в скобках, кторые обязательны для создания нового объекта другого класса
+        res = message.decode()  # тут можеи позвать функцию другого класса
+        return res
 
     def find_secret_locations(self) -> list:
         """Find all secret locations."""
