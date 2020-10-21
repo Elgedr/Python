@@ -43,7 +43,7 @@ class Decoder:
             string = ''
             line_decoded = self.decode_from_base64(line)
             for letter in line_decoded:
-                num = (ord(letter) - self.calculate_cipher_step()) % 225
+                num = ((ord(letter) - self.calculate_cipher_step()) % 255)
                 string = string + (chr(num))  # число переводит в символ основываясь по таблице юникода
             res.append(string)
         return res
@@ -56,7 +56,6 @@ class SecretGarden:
         """SecretGarden constructor."""
         self.file = file
         self.key = key
-
 
     def decode_messages(self) -> list:
         """Use Decoder class to decode messages."""
