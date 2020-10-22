@@ -68,22 +68,20 @@ class SecretGarden:
         """Find all secret locations."""
         res = []
         for elements in self.decode_messages():
-            splitting = elements.split("\n\n")
-            coordinates = splitting[0]  # -12;-1
-            coordinate = coordinates.split(";")  # ['-12', '-1']
-            coordinate_x = int(coordinate[0])
-            coordinate_y = int(coordinate[1])
-            ewns = splitting[1]  # ESS
-            for letter in ewns:
+            coordinates, geolocation = elements.split("\n\n")  # -12;-1
+            coordinatex, coordinatey = coordinates.split(';')
+            coordinatex = int(coordinatex)
+            coordinatey = int(coordinatey)
+            for letter in geolocation:
                 if letter == "E":
-                    coordinate_x += 1
+                    coordinatex += 1
                 elif letter == "S":
-                    coordinate_y -= 1
+                    coordinatey -= 1
                 elif letter == "W":
-                    coordinate_x -= 1
+                    coordinatex -= 1
                 elif letter == "N":
-                    coordinate_y += 1
-            res.append((coordinate_x, coordinate_y))
+                    coordinatey += 1
+            res.append((coordinatex, coordinatey))
         return res
 
 
