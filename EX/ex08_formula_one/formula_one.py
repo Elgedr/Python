@@ -58,6 +58,7 @@ class Race:
                     res.append(drivers_str)
         except FileNotFoundError:
             return 'No file found!'
+        raise
 
     @staticmethod
     def extract_info(line: str) -> dict:
