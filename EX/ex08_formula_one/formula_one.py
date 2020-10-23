@@ -14,28 +14,32 @@ class Driver:
         where key is race number and value is points from that race.
         You must also save driver's points into a variable "points".
         """
-        self._name = name  # Driver name
-        self._team = team  # Driver team
-        self._points = 0  # Driver's points
-        self._driver_result = {}  # key-etapi number (int) ; value-sellelt etapilt saadud punktid (int)
+        self.name = name  # Driver name
+        self.team = team  # Driver team
+        self.points = 0  # Driver's points
+        self.driver_result = {}  # key-etapi number (int) ; value-sellelt etapilt saadud punktid (int)
 
     def get_results(self) -> dict:
         """Get all driver's results."""
-        return self._driver_result
+        return self.driver_result
 
     def get_points(self) -> int:
         """Return calculated driver points."""
-        return self._points
+        return self.points
 
     def set_points(self):
         """Set points for driver."""
+        self.points = self.count_points()
 
     def add_result(self, race_number: int, points: int):
         """Add new result to dictionary of results."""
-        self._driver_result[race_number] = points
+        self.driver_result[race_number] = points
 
-    def count_points(self):
+    @staticmethod
+    def count_points(input_data):
         """Count  driver's points"""
+        # counting something from input data
+        return input_data / 2
 
 
 class Race:
@@ -54,11 +58,11 @@ class Race:
                 next(f)  # пропускает 1ую строку
                 for line in f:
                     data = re.split(r"  +", line)  # ['Mika Häkkinen', 'McLaren-Mercedes', '42069']
-                    drivers_str = " ".join(data)  # 'Mika Häkkinen McLaren-Mercedes 42069' вернет строку составленную из элементов списка
+                    drivers_str = " ".join(
+                        data)  # 'Mika Häkkinen McLaren-Mercedes 42069' вернет строку составленную из элементов списка
                     res.append(drivers_str)
         except FileNotFoundError:
             return 'No file found!'
-        raise
 
     @staticmethod
     def extract_info(line: str) -> dict:
@@ -98,7 +102,14 @@ class Race:
         :param time: Time in milliseconds
         :return: Time as M:SS.SSS string
         """
-        return ""
+        milliseconds = int(time)
+        minutes = milliseconds // 60000
+        milliseconds -= minutes * 60000
+        seconds = milliseconds // 1000
+        milliseconds -= seconds * 1000
+        milliseconds = str(milliseconds)
+        seconds = str(seconds)
+        return f"{minutes}:{seconds.zfill(2)}.{milliseconds.zfill(3)}"
 
     @staticmethod
     def calculate_time_difference(first_time: int, second_time: int) -> str:
@@ -138,7 +149,18 @@ class Race:
         :param race_number: Race number for filtering
         :return: Final dictionary with complete data
         """
-        return []
+        final_list = []
+        filtered = self.filter_data_by_race(race_number)
+        sorted_by_time = self.sort_data_by_time(filtered)
+        for i in sorted_by_time:
+            driver_dict = self.extract_info(i)
+            driver_dict["Diff"] = self.calculate_time_difference()
+            driver = Driver(driver_dict["Name"], driver_dict["Team"])
+            driver.set_points([])
+            driver_dict["Points"] = driver.points
+            driver_dict["Place"] = None
+            final_list.append(driver_dict)
+        return final_list
 
 
 class FormulaOne:
@@ -187,7 +209,8 @@ class FormulaOne:
 
 
 if __name__ == '__main__':
-    f1 = FormulaOne("example.txt")
+    f1 = FormulaOne("ex08_example_data.txt")
+    print(Race.format_time(60000))
     f1.write_race_results_to_file(1)
     f1.write_race_results_to_csv(2)
     f1.write_championship_to_file()
