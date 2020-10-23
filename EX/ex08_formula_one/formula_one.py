@@ -67,12 +67,7 @@ class Race:
     @staticmethod
     def extract_info(line: str) -> dict:
         """ Helper method for read_file_to_list."""
-        res = {}
-        res['Name'] = line[0]
-        res['Team'] = line[1]
-        res['Time'] = int(line[2])
-        res['Diff'] = ''
-        res['Race'] = line[-1]
+        res = {'Name': line[0], 'Team': line[1], 'Time': int(line[2]), 'Diff': '', 'Race': line[-1]}
         return res
 
     def filter_data_by_race(self, race_number: int) -> list:
