@@ -137,9 +137,9 @@ class Race:
         :return: Sorted list of dictionaries
         """
         res = []
-        for dictionary in results:
-
-        return res
+        # for dictionary in results:
+        #
+        # return res
 
     def get_results_by_race(self, race_number: int) -> list:
         """
