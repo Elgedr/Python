@@ -37,9 +37,9 @@ class Driver:
         self.driver_result[race_number] = points
 
     @staticmethod
-    def count_points(input_data):
+    def count_points(data):
         """Count  driver's points"""
-        # counting something from input data
+        res = 0
         return input_data / 2
 
 
@@ -128,7 +128,7 @@ class Race:
         """
         difference = (second_time - first_time)
         difference = str(difference)
-        res = f"+{Race.format_time(difference)}"
+        res = f"+{Race.format_time(difference)}"  # чтобы позвать статик метод в другом статик методе используем "название класса."
         return res  # возвращает разницу во времени в нужном формате
 
     @staticmethod
@@ -155,14 +155,20 @@ class Race:
         :return: Final dictionary with complete data
         """
         final_list = []
-        filtered = self.filter_data_by_race(race_number)
-        sorted_by_time = self.sort_data_by_time(filtered)
+        filtered = self.filter_data_by_race(race_number)  # сортируем список из файла по номеру гонки
+        sorted_by_time = self.sort_data_by_time(filtered)  # сортируем прошлый список по времени
+        first = [dictionary['Time'] for dictionary in sorted_by_time][0]  # получаем значение ключа из словаря того,
+        # чье время меньше всего
         for i in sorted_by_time:
+            last = i.get('Time')  # получить значение ключа в словаре
             driver_dict = self.extract_info(i)
-            driver_dict["Diff"] = self.calculate_time_difference()
-            driver = Driver(driver_dict["Name"], driver_dict["Team"])
-            driver.set_points([])
-            driver_dict["Points"] = driver.points
+            driver_dict["Diff"] = self.calculate_time_difference(first, last)  # добавляем в словарь difference в
+            # правильном формате
+            driver = Driver(driver_dict["Name"], driver_dict["Team"])  # создаем объект класса Driver так как нам надо
+            # добавить в словарь points и place. Создавая объект, ссылаемся на значение ключа "Name" "Team" так как
+            # для создания объекта класса Driver нам нужны его имя и команда
+            driver.set_points()  # сначала зовем сеттер так как нам надо установить очки для драйвера и только потом добавить их в его словарь
+            driver_dict["Points"] = driver.get_points()
             driver_dict["Place"] = None
             final_list.append(driver_dict)
         return final_list
