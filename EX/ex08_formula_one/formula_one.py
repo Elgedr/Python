@@ -70,7 +70,7 @@ class Race:
     def extract_info(line: str) -> dict:
         """ Helper method for read_file_to_list."""
         res = re.split(r"  +", line)
-        result = {'Name': res[0], 'Team': res[1], 'Time': res[2], 'Diff': '', 'Race': res[3]}
+        result = {'Name': res[0], 'Team': res[1], 'Time': int(res[2]), 'Diff': '', 'Race': res[3]}
         return result
 
     def filter_data_by_race(self, race_number: int) -> list:
