@@ -85,7 +85,7 @@ class Race:
         # начальный
         res = []
         for info_of_person in copy_file:
-            if int(info_of_person[-1]) == race_number:
+            if int(info_of_person.split(" ")[3]) == race_number:
                 res.append(info_of_person)
         return res
 
@@ -139,10 +139,8 @@ class Race:
         :param results: List of dictionaries
         :return: Sorted list of dictionaries
         """
-        # res = []
-        # for dictionary in results:
-        #
-        # return res
+        res = sorted(results, key=lambda dictionary: dictionary['Time'])
+        return res
 
     def get_results_by_race(self, race_number: int) -> list:
         """
@@ -223,3 +221,4 @@ if __name__ == '__main__':
     f1.write_championship_to_file()
     print(Race.calculate_time_difference(4201, 57411))
     print(Race.extract_info("Mika Hakkinen  Mclaren-Mercedes   79694  1"))
+    print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
