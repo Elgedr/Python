@@ -20,10 +20,10 @@ class TestDriver:
         assert self.driver.set_points() == []
 
     def test_add_result(self):
-        assert self.driver.add_result() == []
+        assert self.driver.add_result(1, 10) == []
 
     def test_count_points(self):
-        assert self.driver.count_points() == []
+        assert self.driver.count_points(12) == []
 
 
 class TestRace:
@@ -53,5 +53,3 @@ class TestRace:
 
 class TestFormulaOne:
     formula = FormulaOne(filename)
-
-    def

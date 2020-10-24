@@ -16,7 +16,6 @@ def test_decode():  # все функции в тестере должны на�
     """Funktsioon."""
     d = Decoder(filename, key)
 
-
     assert len(d.decode()) == 7
     assert d.decode()[0] == '-12;-1\n\nESS'  # после . пишем функцию из класса, которую проверяем
     assert d.decode()[1] == '19;-14\n\nNEWNESSEWN'

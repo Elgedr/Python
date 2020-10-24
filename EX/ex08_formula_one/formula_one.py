@@ -2,6 +2,7 @@
 
 import re
 import csv
+import copy
 
 
 class Driver:
@@ -48,7 +49,6 @@ class Race:
     def __init__(self, file):
         """Race constructor."""
         self._file = file  # File with race data
-        pass
 
     def read_file_to_list(self):
         """Read file data to list in constructor."""
@@ -57,10 +57,12 @@ class Race:
             with open(self._file) as f:
                 next(f)  # пропускает 1ую строку
                 for line in f:
-                    data = re.split(r"  +", line)  # ['Mika Häkkinen', 'McLaren-Mercedes', '42069']
-                    drivers_str = " ".join(
-                        data)  # 'Mika Häkkinen McLaren-Mercedes 42069' вернет строку составленную из элементов списка
+                    data = re.split(r"  +", line)  # ['Mika Häkkinen', 'McLaren-Mercedes', '42069'] если 2 или больше
+                    # пробела разделяет
+                    drivers_str = " ".join(data)  # 'Mika Häkkinen McLaren-Mercedes 42069' вернет строку составленную
+                    # из элементов списка
                     res.append(drivers_str)
+                return res
         except FileNotFoundError:
             return 'No file found!'
 
@@ -78,10 +80,11 @@ class Race:
         :return: Filtered race data
         """
         file = self.read_file_to_list()
-        copy_file = file
+        copy_file = copy.copy(file)  # импортируем модуль copy. создаем копию открытого файла чтобы не изменять
+        # начальный
         res = []
         for info_of_person in copy_file:
-            if info_of_person[-1] == race_number:
+            if int(info_of_person[-1]) == race_number:
                 res.append(info_of_person)
         return res
 
@@ -98,13 +101,14 @@ class Race:
         :return: Time as M:SS.SSS string
         """
         milliseconds = int(time)
-        minutes = milliseconds // 60000
-        milliseconds -= minutes * 60000
+        minutes = milliseconds // 60000  # получим целую часть. узнаем минуты
+        milliseconds -= minutes * 60000  # отнимем полученный результат от миллисекунд
         seconds = milliseconds // 1000
         milliseconds -= seconds * 1000
         milliseconds = str(milliseconds)
         seconds = str(seconds)
-        return f"{minutes}:{seconds.zfill(2)}.{milliseconds.zfill(3)}"
+        return f"{minutes}:{seconds.zfill(2)}.{milliseconds.zfill(3)}"  # zfill(нужная длина) добавляет 0 к началу
+        # строки пока она не станет нужной длины, которую мы указали
 
     @staticmethod
     def calculate_time_difference(first_time: int, second_time: int) -> str:
@@ -120,7 +124,9 @@ class Race:
         :param second_time: Second time in milliseconds
         :return: Time difference as +M:SS.SSS string
         """
-        return ""
+        difference = str(second_time - first_time)
+        res = Race.format_time(difference)
+        return res  # возвращает разницу во времени в нужном формате
 
     @staticmethod
     def sort_data_by_time(results: list) -> list:
@@ -130,7 +136,10 @@ class Race:
         :param results: List of dictionaries
         :return: Sorted list of dictionaries
         """
-        return []
+        res = []
+        for dictionary in results:
+
+        return res
 
     def get_results_by_race(self, race_number: int) -> list:
         """
@@ -205,7 +214,7 @@ class FormulaOne:
 
 if __name__ == '__main__':
     f1 = FormulaOne("ex08_example_data.txt")
-    print(Race.format_time(60000))
+    print(Race.format_time('6000'))
     f1.write_race_results_to_file(1)
     f1.write_race_results_to_csv(2)
     f1.write_championship_to_file()
