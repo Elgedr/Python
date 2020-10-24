@@ -120,12 +120,14 @@ class Race:
 
         calculate_time_difference(4201, 57411) -> +0:53.210
 
+        :rtype: object
         :param first_time: First time in milliseconds
         :param second_time: Second time in milliseconds
         :return: Time difference as +M:SS.SSS string
         """
-        difference = str(second_time - first_time)
-        res = Race.format_time(difference)
+        difference = (second_time - first_time)
+        difference = str(difference)
+        res = f"+{Race.format_time(difference)}"
         return res  # возвращает разницу во времени в нужном формате
 
     @staticmethod
@@ -136,7 +138,7 @@ class Race:
         :param results: List of dictionaries
         :return: Sorted list of dictionaries
         """
-        res = []
+        # res = []
         # for dictionary in results:
         #
         # return res
@@ -218,3 +220,4 @@ if __name__ == '__main__':
     f1.write_race_results_to_file(1)
     f1.write_race_results_to_csv(2)
     f1.write_championship_to_file()
+    print(Race.calculate_time_difference(4201, 57411))
