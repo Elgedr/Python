@@ -108,7 +108,7 @@ class TrainStation:
         """Constructor."""
         self._trains = trains  # rongijaama sisse tulevate rongide nimekiri
         self._passengers = passengers  # rongijaama sisse tulevate reisijate nimekiri
-        self.passangers_in_trains()  # если не добавить название метода сюда, то он не будет видимым в классе
+        self.passangers_in_trains()  # он срабатывает автоматом каждый раз, когда мы создаем новый объект класса
 
     def get_station_overview(self) -> list:
         """Meetod, mis tagastab hetke seisundi aruande kõikiest rongijaamas olevatest rongidest listi kujul ning rongi info on sõnastiku kujul."""

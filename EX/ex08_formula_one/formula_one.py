@@ -3,6 +3,7 @@
 import re
 import csv
 import copy
+import os.path
 
 
 class Driver:
@@ -40,7 +41,7 @@ class Driver:
     def count_points(data):
         """Count  driver's points"""
         res = 0
-        return input_data / 2
+        return False
 
 
 class Race:
@@ -49,27 +50,27 @@ class Race:
     def __init__(self, file):
         """Race constructor."""
         self._file = file  # File with race data
+        self._opend_file = []
+        self.read_file_to_list()  # пишем метод сюда, чтобы
 
     def read_file_to_list(self):
         """Read file data to list in constructor."""
-        res = []
-        try:
+        if os.path.isfile(self._file):  # проверяем существует ли файл
             with open(self._file) as f:
                 next(f)  # пропускает 1ую строку
                 for line in f:
-                    data = re.split(r"  +", line)  # ['Mika Häkkinen', 'McLaren-Mercedes', '42069'] если 2 или больше
-                    # пробела разделяет
-                    drivers_str = " ".join(data)  # 'Mika Häkkinen McLaren-Mercedes 42069' вернет строку составленную
+                    data = re.split(r"  +", line.rstrip())  # ['Mika Häkkinen', 'McLaren-Mercedes', '42069'] если 2 или больше
+                    # пробела разделяет. rstrip удаляет все элементы справа если это /n, /r, /t. так что в скобках можно ничего не указывать
+                    drivers_str = " ".join(data)  # 'Mika Häkkinen McLaren-Mercedes 42069 2' вернет строку составленную
                     # из элементов списка
-                    res.append(drivers_str)
-                return res
-        except FileNotFoundError:
-            return 'No file found!'
+                    self._opend_file.append(drivers_str)
+        else:
+            raise FileNotFoundError("No file found!")  # raise работает как return. после него код не работает
 
     @staticmethod
     def extract_info(line: str) -> dict:
         """ Helper method for read_file_to_list."""
-        res = re.split(r"  +", line)
+        res = re.split(r"\s\s+", line)  # r пишем так как у нас регулярное выражение. \s значит
         result = {'Name': res[0], 'Team': res[1], 'Time': int(res[2]), 'Diff': '', 'Race': int(res[3])}
         return result
 
@@ -155,23 +156,24 @@ class Race:
         :return: Final dictionary with complete data
         """
         final_list = []
+        points = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1]
+        place = 1
         filtered = self.filter_data_by_race(race_number)  # сортируем список из файла по номеру гонки
         sorted_by_time = self.sort_data_by_time(filtered)  # сортируем прошлый список по времени
         first = [dictionary['Time'] for dictionary in sorted_by_time][0]  # получаем значение ключа из словаря того,
         # чье время меньше всего
-        for i in sorted_by_time:
-            last = i.get('Time')  # получить значение ключа в словаре
-            driver_dict = self.extract_info(i)
-            driver_dict["Diff"] = self.calculate_time_difference(first, last)  # добавляем в словарь difference в
-            # правильном формате
-            driver = Driver(driver_dict["Name"], driver_dict["Team"])  # создаем объект класса Driver так как нам надо
-            # добавить в словарь points и place. Создавая объект, ссылаемся на значение ключа "Name" "Team" так как
-            # для создания объекта класса Driver нам нужны его имя и команда
-            driver.set_points()  # сначала зовем сеттер так как нам надо установить очки для драйвера и только потом добавить их в его словарь
-            driver_dict["Points"] = driver.get_points()
-            driver_dict["Place"] = None
-            final_list.append(driver_dict)
-        return final_list
+        for dictionary in sorted_by_time:
+            last = dictionary.get('Time')  # получить значение ключа в словаре
+            dictionary["Diff"] = self.calculate_time_difference(first, last)  # добавляем в словарь difference в правильном формате
+            dictionary["Place"] = place
+            if place <= 10:
+                point = points[place - 1]
+                dictionary["Points"] = point
+            else:
+                dictionary["Points"] = 0
+            place += 1
+            final_list.append(sorted_by_time)
+            return final_list
 
 
 class FormulaOne:
@@ -195,7 +197,9 @@ class FormulaOne:
 
         :param race_number: Race to write to file
         """
-        pass
+        filename = 'results_for_race_%d.txt' % race_number
+        headers_dictionary = {}
+        # with open(filename, )
 
     def write_race_results_to_csv(self, race_number: int):
         """
@@ -228,3 +232,4 @@ if __name__ == '__main__':
     print(Race.calculate_time_difference(4201, 57411))
     print(Race.extract_info("Mika Hakkinen  Mclaren-Mercedes   79694  1"))
     print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
+    r1 = Race('ex08_example_data.txt')
