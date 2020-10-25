@@ -85,7 +85,7 @@ class Race:
         """
         res = []
         for info_of_person in self._opend_file:
-            if self.extract_info(info_of_person)['Race'] == race_number:
+            if int(self.extract_info(info_of_person)['Race']) == race_number:
                 res.append(info_of_person)
         return res
 
