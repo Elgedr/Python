@@ -65,7 +65,7 @@ class Race:
 
     @staticmethod
     def extract_info(line: str) -> dict:
-        """ Helper method for read_file_to_list."""
+        """Helper method for read_file_to_list."""
         res = re.split(r"\s\s+", line)  # r пишем так как у нас регулярное выражение. \s значит
         result = {'Name': res[0], 'Team': res[1], 'Time': int(res[2]), 'Diff': '', 'Race': int(res[3])}
         return result
@@ -93,7 +93,7 @@ class Race:
         format_time('123456') -> 2:03.456
 
         :param time: Time in milliseconds
-        :return: Time as M:SS.SSS string
+        :return: Time as M:SS.SSS string.
         """
         milliseconds = int(time)
         minutes = milliseconds // 60000  # получим целую часть. узнаем минуты
@@ -207,7 +207,6 @@ class FormulaOne:
                            f'{dictionaries["Time"]}{(15 - len(str(dictionaries["Time"]))) * " "}'
                            f'{dictionaries["Diff"]}{(15 - len(dictionaries["Diff"])) * " "}'
                            f'{dictionaries["Points"]}{(6 - len(str(dictionaries["Points"]))) * " "}\n')
-
 
     def write_race_results_to_csv(self, race_number: int):
         """
