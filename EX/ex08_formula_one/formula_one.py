@@ -173,7 +173,7 @@ class Race:
                 dictionary["Points"] = 0
             place += 1
             final_list.append(dictionary)
-            return final_list
+        return final_list
 
 
 class FormulaOne:
@@ -245,3 +245,4 @@ if __name__ == '__main__':
     # print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
     r1 = Race('ex08_example_data.txt')
     print(r1.filter_data_by_race(1))
+    print(len(r1.get_results_by_race(2)))
