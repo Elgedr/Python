@@ -11,6 +11,7 @@ class Driver:
     def __init__(self, name: str, team: str):
         """
         Driver constructor.
+
         Here you should save driver's results as dictionary,
         where key is race number and value is points from that race.
         You must also save driver's points into a variable "points".
