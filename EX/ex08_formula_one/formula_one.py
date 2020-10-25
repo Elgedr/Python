@@ -38,12 +38,6 @@ class Driver:
         """Add new result to dictionary of results."""
         self.driver_result[race_number] = points
 
-    @staticmethod
-    def count_points(data):
-        """Count  driver's points"""
-        res = 0
-        return False
-
 
 class Race:
     """Race class."""
@@ -165,6 +159,8 @@ class Race:
         for dictionary in sorted_by_time:
             last = dictionary.get('Time')  # получить значение ключа в словаре
             dictionary["Diff"] = self.calculate_time_difference(first, last)  # добавляем в словарь difference в правильном формате
+            time = self.format_time(dictionary["Time"])
+            dictionary["Time"] = time
             dictionary["Place"] = place
             if place <= 10:
                 point = points[place - 1]
@@ -201,7 +197,7 @@ class FormulaOne:
         dictionary_for_header = {'PLACE': 10, 'NAME': 25, 'TEAM': 25, 'TIME': 15, 'DIFF': 15, 'POINTS': 6}
         # ключ- название заголовка.Значение-длина столбца
         header = ""
-        for k, v in dictionary_for_header:
+        for k, v in dictionary_for_header.items():
             header += k.format(':<%d' % v)  # делаем заголовок для ключа словаря.всё, что не достает до числа
             # значения(длины), заполнится пробелами
         header += '\n'
@@ -245,4 +241,4 @@ if __name__ == '__main__':
     # print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
     r1 = Race('ex08_example_data.txt')
     print(r1.filter_data_by_race(1))
-    print(len(r1.get_results_by_race(2)))
+    print(r1.get_results_by_race(2))

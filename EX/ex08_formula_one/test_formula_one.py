@@ -8,47 +8,26 @@ filename = "ex08_example_data.txt"
 
 
 class TestDriver:
-    driver = Driver("Name", "Team")  # пишем данные одного из водителей из нашего документа
+    driver = Driver("Mika Hakkinen", "Mclaren-Mercedes")  # пишем данные одного из водителей из нашего документа
 
     def test_get_results(self):
-        assert self.driver.get_results() == []
+        assert self.driver.get_results() == {}
 
     def test_get_points(self):
-        assert self.driver.get_points() == []
+        assert self.driver.get_points() == 0
 
     def test_set_points(self):
-        assert self.driver.set_points() == []
+        assert self.driver.set_points() == None
 
     def test_add_result(self):
-        assert self.driver.add_result(1, 10) == []
-
-    def test_count_points(self):
-        assert self.driver.count_points(12) == []
+        assert self.driver.add_result(1, 10) == None
 
 
 class TestRace:
     race = Race(filename)
 
-    def test_read_file_to_list(self):
-        assert False
-
-    def test_extract_info(self):
-        assert False
-
-    def test_filter_data_by_race(self):
-        assert False
-
-    def test_format_time(self):
-        assert False
-
-    def test_calculate_time_difference(self):
-        assert False
-
-    def test_sort_data_by_time(self):
-        assert False
-
     def test_get_results_by_race(self):
-        assert False
+        assert len(self.race.get_results_by_race(1)) == 7
 
 
 class TestFormulaOne:
