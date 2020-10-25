@@ -2,7 +2,6 @@
 
 import re
 import csv
-import copy
 import os.path
 
 
@@ -84,11 +83,8 @@ class Race:
         :param race_number: Race number
         :return: Filtered race data
         """
-        file = self.read_file_to_list()
-        copy_file = copy.copy(file)  # импортируем модуль copy. создаем копию открытого файла чтобы не изменять
-        # начальный
         res = []
-        for info_of_person in copy_file:
+        for info_of_person in self._file:
             if int(info_of_person.split(" ")[3]) == race_number:
                 res.append(info_of_person)
         return res
