@@ -84,8 +84,8 @@ class Race:
         :return: Filtered race data
         """
         res = []
-        for info_of_person in self._file:
-            if int(info_of_person.split(" ")[3]) == race_number:
+        for info_of_person in self._opend_file:
+            if int(info_of_person.split(" ")[-1]) == race_number:
                 res.append(info_of_person)
         return res
 
@@ -235,12 +235,13 @@ class FormulaOne:
 
 
 if __name__ == '__main__':
-    f1 = FormulaOne("ex08_example_data.txt")
-    print(Race.format_time('6000'))
-    f1.write_race_results_to_file(1)
-    f1.write_race_results_to_csv(2)
-    f1.write_championship_to_file()
-    print(Race.calculate_time_difference(4201, 57411))
-    print(Race.extract_info("Mika Hakkinen  Mclaren-Mercedes   79694  1"))
-    print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
+    # f1 = FormulaOne("ex08_example_data.txt")
+    # print(Race.format_time('6000'))
+    # f1.write_race_results_to_file(1)
+    # f1.write_race_results_to_csv(2)
+    # f1.write_championship_to_file()
+    # print(Race.calculate_time_difference(4201, 57411))
+    # print(Race.extract_info("Mika Hakkinen  Mclaren-Mercedes   79694  1"))
+    # print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
     r1 = Race('ex08_example_data.txt')
+    print(r1.filter_data_by_race(1))
