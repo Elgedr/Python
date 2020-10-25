@@ -165,7 +165,7 @@ class Race:
             if place <= 10:
                 point = points[place - 1]
                 dictionary["Points"] = point
-            if dictionary['Points'] == 25:
+            if dictionary['Place'] == 1:
                 dictionary['Diff'] = ''
             else:
                 dictionary["Points"] = 0
