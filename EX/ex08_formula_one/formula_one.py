@@ -198,7 +198,8 @@ class FormulaOne:
         filename = f'results_for_race_{race_number}.txt'
         filtered_file = self._race.get_results_by_race(race_number)
         with open(filename, 'w') as file:
-            file.write(f'PLACE{5 * " "}NAME{21 * " "}TEAM{21 * " "}TIME{11 * " "}DIFF{11 * " "}POINTS{6 * " "}\n{96 * "-"}\n')
+            file.write(f'PLACE{5 * " "}NAME{21 * " "}TEAM{21 * " "}TIME{11 * " "}DIFF{11 * " "}POINTS{0 * " "}\n'
+                       f'{96 * "-"}\n')
             for dictionaries in filtered_file:
                 file.write(f'{dictionaries["Place"]}{(10 - len(str(dictionaries["Place"]))) * " "}'
                            f'{dictionaries["Name"]}{(25 - len(dictionaries["Name"])) * " "}'
