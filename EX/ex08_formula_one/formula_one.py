@@ -86,7 +86,7 @@ class Race:
     @staticmethod
     def format_time(time: str) -> str:
         """
-        Format time from milliseconds to M:SS.SSS
+        Format time from milliseconds to M:SS.SSS.
 
         format_time('12') -> 0:00.012
         format_time('1234') -> 0:01.234
@@ -118,7 +118,7 @@ class Race:
         :rtype: object
         :param first_time: First time in milliseconds
         :param second_time: Second time in milliseconds
-        :return: Time difference as +M:SS.SSS string
+        :return: Time difference as +M:SS.SSS string.
         """
         difference = (second_time - first_time)
         difference = str(difference)
