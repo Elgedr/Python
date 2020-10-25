@@ -31,7 +31,9 @@ class Driver:
 
     def set_points(self):
         """Set points for driver."""
-        self.points = self.count_points()
+        self.points = 0
+        for points in self.driver_result.values():
+            self.points += points
 
     def add_result(self, race_number: int, points: int):
         """Add new result to dictionary of results."""
@@ -51,13 +53,14 @@ class Race:
         """Race constructor."""
         self._file = file  # File with race data
         self._opend_file = []
-        self.read_file_to_list()  # пишем метод сюда, чтобы
+        self.read_file_to_list()  # пишем метод сюда, чтобы он сработал автоматом
+        self._amount_of_race = self._opend_file.pop(0)  # поп удаляет элемент по указанному индексу и возвращает его. теперь в нашем открытом файле нет 3ойки
 
     def read_file_to_list(self):
         """Read file data to list in constructor."""
         if os.path.isfile(self._file):  # проверяем существует ли файл
             with open(self._file) as f:
-                next(f)  # пропускает 1ую строку
+                # next(f) пропускает 1ую строку
                 for line in f:
                     data = re.split(r"  +", line.rstrip())  # ['Mika Häkkinen', 'McLaren-Mercedes', '42069'] если 2 или больше
                     # пробела разделяет. rstrip удаляет все элементы справа если это /n, /r, /t. так что в скобках можно ничего не указывать
@@ -158,7 +161,8 @@ class Race:
         final_list = []
         points = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1]
         place = 1
-        filtered = self.filter_data_by_race(race_number)  # сортируем список из файла по номеру гонки
+        filtered = self.filter_data_by_race(race_number)  # сортируем список из файла по номеру гонки.
+        # получаем лист из словарей, относящихся к определенной гонке
         sorted_by_time = self.sort_data_by_time(filtered)  # сортируем прошлый список по времени
         first = [dictionary['Time'] for dictionary in sorted_by_time][0]  # получаем значение ключа из словаря того,
         # чье время меньше всего
@@ -172,7 +176,7 @@ class Race:
             else:
                 dictionary["Points"] = 0
             place += 1
-            final_list.append(sorted_by_time)
+            final_list.append(dictionary)
             return final_list
 
 
@@ -186,7 +190,7 @@ class FormulaOne:
         It is reasonable to create Race instance here to collect all data from file.
         """
         self._file = file  # File with race data
-        pass
+        self._race = Race(file)
 
     def write_race_results_to_file(self, race_number: int):
         """
@@ -197,9 +201,20 @@ class FormulaOne:
 
         :param race_number: Race to write to file
         """
-        filename = 'results_for_race_%d.txt' % race_number
-        headers_dictionary = {}
-        # with open(filename, )
+        filename = 'results_for_race_%d.txt' % race_number  # d значит, что у нас число
+        dictionary_for_header = {'PLACE': 10, 'NAME': 25, 'TEAM': 25, 'TIME': 15, 'DIFF': 15, 'POINTS': 6}
+        # ключ- название заголовка.Значение-длина столбца
+        header = ""
+        for k, v in dictionary_for_header:
+            header += k.format(':<%d' % v)  # делаем заголовок для ключа словаря.всё, что не достает до числа
+            # значения(длины), заполнится пробелами
+        header += '\n'
+        header += '-' * 25
+        with open(filename, 'w') as file:
+            file.write(header)
+            for dictionary in self._race.get_results_by_race(race_number):
+                content = dictionary['Place'].format(':<%d' % dictionary_for_header.get('PLACE')) + dictionary["Name"].format(':<%d' % dictionary_for_header.get('NAME'))
+                file.write()
 
     def write_race_results_to_csv(self, race_number: int):
         """
