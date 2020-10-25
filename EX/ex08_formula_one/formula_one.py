@@ -61,11 +61,11 @@ class Race:
             with open(self._file) as f:
                 # next(f) пропускает 1ую строку
                 for line in f:
-                    data = re.split(r"  +", line.rstrip())  # ['Mika Häkkinen', 'McLaren-Mercedes', '42069'] если 2 или больше
+                    data = line.rstrip()  # ['Mika Häkkinen', 'McLaren-Mercedes', '42069'] если 2 или больше
                     # пробела разделяет. rstrip удаляет все элементы справа если это /n, /r, /t. так что в скобках можно ничего не указывать
-                    drivers_str = " ".join(data)  # 'Mika Häkkinen McLaren-Mercedes 42069 2' вернет строку составленную
+                    # drivers_str = " ".join(data)  # 'Mika Häkkinen McLaren-Mercedes 42069 2' вернет строку составленную
                     # из элементов списка
-                    self._opend_file.append(drivers_str)
+                    self._opend_file.append(data)
         else:
             raise FileNotFoundError("No file found!")  # raise работает как return. после него код не работает
 
@@ -85,7 +85,7 @@ class Race:
         """
         res = []
         for info_of_person in self._opend_file:
-            if int(info_of_person.split(" ")[-1]) == race_number:
+            if self.extract_info(info_of_person)['Race'] == race_number:
                 res.append(info_of_person)
         return res
 
