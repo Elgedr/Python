@@ -221,7 +221,7 @@ class FormulaOne:
         file_name = f'race_{race_number}_results.csv'
         with open(file_name, mode="w", newline="") as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
-            writer.writerow(['Place', 'Name', 'Team', ' Time', ' Diff', ' Points', 'Race'])
+            writer.writerow(['Place', 'Name', 'Team', 'Time', 'Diff', 'Points', 'Race'])
             for dictionary in self._race.get_results_by_race(race_number):
                 writer.writerow([dictionary["Place"], dictionary["Name"], dictionary["Team"], dictionary["Diff"], dictionary["Points"], dictionary["Race"]])
 
