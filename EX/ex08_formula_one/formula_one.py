@@ -195,20 +195,20 @@ class FormulaOne:
 
         :param race_number: Race to write to file
         """
-        filename = 'results_for_race_%d.txt' % race_number  # d значит, что у нас число
-        dictionary_for_header = {'PLACE': 10, 'NAME': 25, 'TEAM': 25, 'TIME': 15, 'DIFF': 15, 'POINTS': 6}
-        # ключ- название заголовка.Значение-длина столбца
-        header = ""
-        for k, v in dictionary_for_header.items():
-            header += k.format(':<%d' % v)  # делаем заголовок для ключа словаря.всё, что не достает до числа
-            # значения(длины), заполнится пробелами
-        header += '\n'
-        header += '-' * 25
+        filename = f'results_for_race_{race_number}.txt'
+        filtered_file = self._race.get_results_by_race(race_number)
         with open(filename, 'w') as file:
-            file.write(header)
-            for dictionary in self._race.get_results_by_race(race_number):
-                content = dictionary['Place'].format(':<%d' % dictionary_for_header.get('PLACE')) + dictionary["Name"].format(':<%d' % dictionary_for_header.get('NAME'))
-                file.write()
+            file.write(f'PLACE{(10 - len("PLACE")) * " "}NAME{(25 - len("NAME")) * " "}TEAM{(25 - len("TEAM")) * " "}'
+                       f'TIME{(15 - len("TEAM")) * " "}DIFF{(15 - len("TEAM")) * " "}POINTS{(6 - len("TEAM")) * " "}\n'
+                       f'{96 * "-"}\n')
+            for dictionaries in filtered_file:
+                file.write(f'{dictionaries["Place"]}{(10 - len(str(dictionaries["Place"]))) * " "}'
+                           f'{dictionaries["Name"]}{(25 - len(dictionaries["Name"])) * " "}'
+                           f'{dictionaries["Team"]}{(25 - len(str(dictionaries["Team"]))) * " "}'
+                           f'{dictionaries["Time"]}{(15 - len(str(dictionaries["Time"]))) * " "}'
+                           f'{dictionaries["Diff"]}{(15 - len(dictionaries["Diff"])) * " "}'
+                           f'{dictionaries["Points"]}{(6 - len(str(dictionaries["Points"]))) * " "}\n')
+
 
     def write_race_results_to_csv(self, race_number: int):
         """
@@ -233,14 +233,14 @@ class FormulaOne:
 
 
 if __name__ == '__main__':
-    # f1 = FormulaOne("ex08_example_data.txt")
-    # print(Race.format_time('6000'))
-    # f1.write_race_results_to_file(1)
-    # f1.write_race_results_to_csv(2)
-    # f1.write_championship_to_file()
-    # print(Race.calculate_time_difference(4201, 57411))
-    # print(Race.extract_info("Mika Hakkinen  Mclaren-Mercedes   79694  1"))
-    # print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
+    f1 = FormulaOne("ex08_example_data.txt")
+    print(Race.format_time('6000'))
+    f1.write_race_results_to_file(1)
+    f1.write_race_results_to_csv(2)
+    f1.write_championship_to_file()
+    print(Race.calculate_time_difference(4201, 57411))
+    print(Race.extract_info("Mika Hakkinen  Mclaren-Mercedes   79694  1"))
+    print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
     r1 = Race('ex08_example_data.txt')
     print(r1.filter_data_by_race(1))
     print(r1.get_results_by_race(2))
