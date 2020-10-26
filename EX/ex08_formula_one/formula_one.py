@@ -50,6 +50,7 @@ class Race:
         self._amount_of_race = self._opend_file.pop(0)  # поп удаляет элемент по указанному индексу и возвращает его. теперь в нашем открытом файле нет 3ойки
 
     def get_amount_of_race(self):
+        """Getter."""
         return self._amount_of_race
 
     def read_file_to_list(self):
