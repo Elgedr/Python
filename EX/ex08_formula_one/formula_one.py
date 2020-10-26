@@ -31,9 +31,7 @@ class Driver:
 
     def set_points(self):
         """Set points for driver."""
-        self.points = 0
-        for points in self.driver_result.values():
-            self.points += points
+        self.points = sum(self.driver_result.values())
 
     def add_result(self, race_number: int, points: int):
         """Add new result to dictionary of results."""
