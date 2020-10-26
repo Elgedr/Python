@@ -18,9 +18,8 @@ class Driver:
         """
         self.name = name  # Driver name
         self.team = team  # Driver team
-        self.driver_result = {}  # key-race number (int) ; value-saadud punktid race eest (int)
         self.points = 0  # Driver's points
-
+        self.driver_result = {}  # key-race number (int) ; value-saadud punktid race eest (int)
 
     def get_results(self) -> dict:
         """Get all driver's results."""
@@ -28,6 +27,7 @@ class Driver:
 
     def get_points(self) -> int:
         """Return calculated driver points."""
+        self.set_points()
         return self.points
 
     def set_points(self):
