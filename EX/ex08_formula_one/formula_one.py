@@ -246,12 +246,12 @@ class FormulaOne:
                     driver.add_result(number_of_race, diction['Points'])
                     driver.set_points()
                     info_of_drivers[diction['Name']] = driver
-        sorted_dict = sorted(info_of_drivers.values(), key=lambda d: d.points, reverse=True)
+        sorted_list = sorted(info_of_drivers.values(), key=lambda d: d.points, reverse=True)
         place = 1
         filename = 'championship_results.txt'
         with open(filename, 'w') as file:
             file.write(f'PLACE{5 * " "}NAME{21 * " "}TEAM{21 * " "}POINTS{0 * " "}\n{66 * "-"}\n')
-            for i in sorted_dict:
+            for i in sorted_list:
                 file.write(f'{place}{(10 - len(str(place))) * " "}'
                            f'{i.name}{(25 - len(str(i.name))) * " "}'
                            f'{i.team}{(25 - len(str(i.team))) * " "}'
@@ -261,14 +261,14 @@ class FormulaOne:
 
 if __name__ == '__main__':
     f1 = FormulaOne("ex08_example_data.txt")
-    # print(Race.format_time('6000'))
+    print(Race.format_time('6000'))
     f1.write_race_results_to_file(1)
     f1.write_race_results_to_csv(2)
     f1.write_race_results_to_csv(1)
     f1.write_championship_to_file()
-    # print(Race.calculate_time_difference(4201, 57411))
-    # print(Race.extract_info("Mika Hakkinen  Mclaren-Mercedes   79694  1"))
-    # print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
+    print(Race.calculate_time_difference(4201, 57411))
+    print(Race.extract_info("Mika Hakkinen  Mclaren-Mercedes   79694  1"))
+    print([{'Name': "ellina", 'Time': 200, 'Race': 2}, {'Name': "robi", 'Time': 100, 'Race': 10}, {'Name': "milja", 'Time': 900, 'Race': 7}])
     r1 = Race('ex08_example_data.txt')
     print(r1.filter_data_by_race(1))
     print(r1.get_results_by_race(2))
