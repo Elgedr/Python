@@ -240,27 +240,26 @@ class FormulaOne:
         for number_of_race in range(1, int(self._race.get_amount_of_race()) + 1):
             for diction in self._race.get_results_by_race(number_of_race):
                 if diction['Name'] in info_of_drivers:
-                    driver.add_result(number_of_race, diction['Points'])
-                    driver.set_points()
-                    info_of_drivers[diction['Name']] = driver
+                    info_of_drivers[diction['Name']].add_result(number_of_race, diction['Points'])
+                    info_of_drivers[diction['Name']].set_points()
                 else:
                     driver = Driver(diction['Name'], diction["Team"])
                     driver.add_result(number_of_race, diction['Points'])
                     driver.set_points()
                     info_of_drivers[diction['Name']] = driver
 
-        # print(info_of_drivers)
-        # sorted_dict = sorted(info_of_drivers, key=lambda x: x['Name'])
+        print(info_of_drivers)
+        sorted_dict = sorted(info_of_drivers.values(), key=lambda d: d.points, reverse=True)
         place = 1
         filename = 'championship_results.txt'
         with open(filename, 'w') as file:
-            file.write(f'PLACE{5 * " "}NAME{21 * " "}TEAM{21 * " "}POINTS{0 * " "}\n{96 * "-"}\n')
-            for i in info_of_drivers:
+            file.write(f'PLACE{5 * " "}NAME{21 * " "}TEAM{21 * " "}POINTS{0 * " "}\n{66 * "-"}\n')
+            for i in sorted_dict:
                 file.write(f'{place}{(10 - len(str(place))) * " "}'
                            f'{i.name}{(25 - len(str(i.name))) * " "}'
                            f'{i.team}{(25 - len(str(i.team))) * " "}'
-                           f'{i.points}{(6 - len(str(i.points))) * " "}')
-            place += 1
+                           f'{i.points}{(6 - len(str(i.points))) * " "}\n')
+                place += 1
 
 
 if __name__ == '__main__':
