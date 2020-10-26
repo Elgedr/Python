@@ -27,7 +27,6 @@ class Driver:
 
     def get_points(self) -> int:
         """Return calculated driver points."""
-        self.set_points()
         return self.points
 
     def set_points(self):
@@ -37,6 +36,7 @@ class Driver:
     def add_result(self, race_number: int, points: int):
         """Add new result to dictionary of results."""
         self.driver_result[race_number] = points
+        self.set_points()
 
 
 class Race:
