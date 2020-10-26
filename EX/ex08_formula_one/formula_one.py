@@ -168,6 +168,8 @@ class Race:
                 dictionary["Points"] = point
             if dictionary['Place'] == 1:
                 dictionary['Diff'] = ''
+            elif place > 10:
+                dictionary["Points"] = 0
             place += 1
             final_list.append(dictionary)
         return final_list
