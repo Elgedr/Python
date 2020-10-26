@@ -19,7 +19,7 @@ class Driver:
         self.name = name  # Driver name
         self.team = team  # Driver team
         self.points = 0  # Driver's points
-        self.driver_result = {}  # key-etapi number (int) ; value-sellelt etapilt saadud punktid (int)
+        self.driver_result = {}  # key-race number (int) ; value-saadud punktid race eest (int)
 
     def get_results(self) -> dict:
         """Get all driver's results."""
@@ -49,6 +49,9 @@ class Race:
         self._opend_file = []
         self.read_file_to_list()  # пишем метод сюда, чтобы он сработал автоматом
         self._amount_of_race = self._opend_file.pop(0)  # поп удаляет элемент по указанному индексу и возвращает его. теперь в нашем открытом файле нет 3ойки
+
+    def get_amount_of_race(self):
+        return self._amount_of_race
 
     def read_file_to_list(self):
         """Read file data to list in constructor."""
@@ -223,7 +226,7 @@ class FormulaOne:
             writer = csv.writer(csvfile, delimiter=',')
             writer.writerow(['Place', 'Name', 'Team', 'Time', 'Diff', 'Points', 'Race'])
             for dictionary in self._race.get_results_by_race(race_number):
-                writer.writerow([dictionary["Place"], dictionary["Name"], dictionary["Team"],dictionary["Time"], dictionary["Diff"], dictionary["Points"], race_number])
+                writer.writerow([dictionary["Place"], dictionary["Name"], dictionary["Team"], dictionary["Time"], dictionary["Diff"], dictionary["Points"], race_number])
 
     def write_championship_to_file(self):
         """
@@ -233,7 +236,31 @@ class FormulaOne:
         using methods from Driver class.
         Exact specifications are described in the text.
         """
-        pass
+        info_of_drivers = {}
+        for number_of_race in range(1, int(self._race.get_amount_of_race()) + 1):
+            for diction in self._race.get_results_by_race(number_of_race):
+                if diction['Name'] in info_of_drivers:
+                    driver.add_result(number_of_race, diction['Points'])
+                    driver.set_points()
+                    info_of_drivers[diction['Name']] = driver
+                else:
+                    driver = Driver(diction['Name'], diction["Team"])
+                    driver.add_result(number_of_race, diction['Points'])
+                    driver.set_points()
+                    info_of_drivers[diction['Name']] = driver
+
+        # print(info_of_drivers)
+        # sorted_dict = sorted(info_of_drivers, key=lambda x: x['Name'])
+        place = 1
+        filename = 'championship_results.txt'
+        with open(filename, 'w') as file:
+            file.write(f'PLACE{5 * " "}NAME{21 * " "}TEAM{21 * " "}POINTS{0 * " "}\n{96 * "-"}\n')
+            for i in info_of_drivers:
+                file.write(f'{place}{(10 - len(str(place))) * " "}'
+                           f'{i.name}{(25 - len(str(i.name))) * " "}'
+                           f'{i.team}{(25 - len(str(i.team))) * " "}'
+                           f'{i.points}{(6 - len(str(i.points))) * " "}')
+            place += 1
 
 
 if __name__ == '__main__':
