@@ -11,22 +11,16 @@ class TestDriver:
     """Class."""
 
     driver = Driver("Mika Hakkinen", "Mclaren-Mercedes")  # пишем данные одного из водителей из нашего документа
+    driver.add_result(1, 15)
+    driver.add_result(2, 10)
 
     def test_get_results(self):
         """Test."""
-        assert self.driver.get_results() == {}
+        assert self.driver.get_results() == {1: 15, 2: 10}
 
     def test_get_points(self):
         """Test."""
-        assert self.driver.get_points() == 0
-
-    # def test_set_points(self):
-    #     """Test."""
-    #     assert self.driver.set_points() == None
-    #
-    # def test_add_result(self):
-    #     """Test."""
-    #     assert self.driver.add_result(1, 10) == None
+        assert self.driver.get_points() == 25
 
 
 class TestRace:
@@ -59,3 +53,24 @@ class TestFormulaOne:
     """Class."""
 
     formula = FormulaOne(filename)
+
+    def test_write_race_results_to_file(self):
+        """Test."""
+        self.formula.write_race_results_to_file(1)
+        with open('results_for_race_1.txt', 'r') as f:
+            listt = f.readlines()
+        assert listt[2] == "1         Jenson Button            Williams-BMW             1:17.606                      25    \n"
+
+    def test_write_race_results_to_csv(self):
+        """Test."""
+        self.formula.write_race_results_to_csv(1)
+        with open('race_1_results.csv') as f:
+            res = f.readlines()
+        assert res[2] == '2,Heinz-Harald Frentzen,Jordan-Mugen-Honda,1:17.690,+0:00.084,18,1\n'
+
+    def test_write_championship_to_file(self):
+        """Test."""
+        self.formula.write_championship_to_file()
+        with open('championship_results.txt') as f:
+            res = f.readlines()
+        assert res[2] == '1         Jenson Button            Williams-BMW             50    \n'

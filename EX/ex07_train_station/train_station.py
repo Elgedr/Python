@@ -25,7 +25,7 @@ class Train:
 
     def __init__(self, train_id: str, carriages: int, seats_in_carriage: int):
         """Constructor."""
-        self._passengers = []
+        self._passengers = []  # selle rongi passaziirid
         self._train_id = train_id  # rongi unikaalne id
         self._carriages = carriages  # vagunite arv
         self._seats_in_carriage = seats_in_carriage  # ühes vagunis olevate istmete arv
@@ -129,7 +129,7 @@ class TrainStation:
             pass_id = pas.seat.split('-')[0]
             for tr in self._trains:
                 if tr.train_id == pass_id:
-                    if not tr.add_passenger(pas):
+                    if not tr.add_passenger(pas):  # kui see funktsion ei tagasta midagi (none)
                         passangers_in_train.remove(pas)
 
         self._passengers = passangers_in_train
