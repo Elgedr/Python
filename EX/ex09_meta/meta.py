@@ -19,14 +19,14 @@ def tree(length):
     """
     if length < 5:
         return
-    # else:
-    #     t.forward(length)
-    #     t.left(120)
-    #     tree(3 * length / 5)
-    #     t.right(120)
-    #     tree(3 * length / 5)
-    #     t.left(120)
-    #     t.backward(length)
+    else:
+        t.forward(length)
+        t.left(120)
+        tree(3 * length / 5)
+        t.right(120)
+        tree(3 * length / 5)
+        t.left(120)
+        t.backward(length)
 
         # t.right(120)
         # tree(shrink * length)
@@ -128,21 +128,21 @@ def save(t: Turtle):
 
 
 if __name__ == '__main__':
-    # t = Turtle()
-    # t.getscreen().bgcolor("#1c262b")
-    # t.color("#96004f")
-    # t.pensize(2)
-    # t.left(90)
-    # tree(200)
-    #
-    # '''
-    # s = curve("Fa", 8)
-    # s = format_curve(s)
-    # l = get_line_length(100, 8)
-    # draw_dragon(s, l)
-    # '''
-    # save(t)
-    # t.getscreen().exitonclick()
+    t = Turtle()
+    t.getscreen().bgcolor("#1c262b")
+    t.color("#96004f")
+    t.pensize(2)
+    t.left(90)
+    tree(200)
+
+    '''
+    s = curve("Fa", 8)
+    s = format_curve(s)
+    l = get_line_length(100, 8)
+    draw_dragon(s, l)
+    '''
+    save(t)
+    t.getscreen().exitonclick()
     print(apply_dragon_rules('FRaFRb'))  # FRaRbFRFRLFaLb
     print(curve("Fa", 2))  # "FaRbFRRLFaLbFR"
     print(format_curve("t"))
