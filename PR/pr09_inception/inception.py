@@ -58,7 +58,7 @@ def stonks(coins, rate, years):
     if years == 0:
         return coins
     else:
-        interest = coins * (rate/100)
+        interest = coins * (rate / 100)
         return int(stonks(coins + interest, rate, years - 1))
 
 
@@ -105,6 +105,13 @@ def sum_squares(nested_list):
     :param nested_list: list of lists of lists of lists of lists ... and ints
     :return: sum of squares
     """
+    if not nested_list:
+        return 0
+    if isinstance(nested_list[0], list):
+        return sum_squares(nested_list[0]) + sum_squares(nested_list[1::])
+    else:
+        return nested_list[0] ** 2 + sum_squares(nested_list[1::])
+
 
 
 
@@ -128,3 +135,4 @@ if __name__ == "__main__":
     print(sum_squares([1, 2, 3]))  # -> 14
     print(sum_squares([[1, 2], 3]))  # -> 14
     print(sum_squares([[[[[[[[[2]]]]]]]]]))  # -> 4
+
