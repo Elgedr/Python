@@ -19,21 +19,20 @@ def tree(length):
     """
     if length < 5:
         return
-    else:
-        t.forward(length)
-        t.left(120)
-        tree(3 * length / 5)
-        t.right(120)
-        tree(3 * length / 5)
-        t.left(120)
-        t.backward(length)
+    # else:
+    #     t.forward(length)
+    #     t.left(120)
+    #     tree(3 * length / 5)
+    #     t.right(120)
+    #     tree(3 * length / 5)
+    #     t.left(120)
+    #     t.backward(length)
         # t.right(120)
         # tree(shrink * length)
         # t.right(60)
         # tree(shrink * length)
         # t.left(45)
         # t.backward(length)
-
 
 
 def apply_dragon_rules(string):
@@ -50,7 +49,12 @@ def apply_dragon_rules(string):
     :param string: sentence with "a" and "b" characters that need to be replaced
     :return: new sentence with "a" and "b" characters replaced
     """
-    pass
+    if string == '':
+        return ''
+    elif string[0] == "a":
+        return "aRbFR" + apply_dragon_rules(string[1::])
+    elif string[0] == "b":
+        return "LFaLb" + apply_dragon_rules(string[1::])
 
 
 def curve(string, depth):
@@ -106,18 +110,19 @@ def save(t: Turtle):
 
 
 if __name__ == '__main__':
-    t = Turtle()
-    t.getscreen().bgcolor("#1c262b")
-    t.color("#96004f")
-    t.pensize(2)
-    t.left(90)
-    tree(200)
-
-    '''
-    s = curve("Fa", 8)
-    s = format_curve(s)
-    l = get_line_length(100, 8)
-    draw_dragon(s, l)
-    '''
-    save(t)
-    t.getscreen().exitonclick()
+    # t = Turtle()
+    # t.getscreen().bgcolor("#1c262b")
+    # t.color("#96004f")
+    # t.pensize(2)
+    # t.left(90)
+    # tree(200)
+    #
+    # '''
+    # s = curve("Fa", 8)
+    # s = format_curve(s)
+    # l = get_line_length(100, 8)
+    # draw_dragon(s, l)
+    # '''
+    # save(t)
+    # t.getscreen().exitonclick()
+    print(apply_dragon_rules('abb'))

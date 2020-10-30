@@ -136,3 +136,6 @@ if __name__ == "__main__":
 
 listt = [[1, 2], 3]
 print(listt[1::])
+
+a = 'hello'
+print(a[1])
