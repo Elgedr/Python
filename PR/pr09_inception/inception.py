@@ -113,8 +113,6 @@ def sum_squares(nested_list):
         return nested_list[0] ** 2 + sum_squares(nested_list[1::])
 
 
-
-
 if __name__ == "__main__":
     # print(countdown(5))  # -> [5, 4, 3, 2, 1, 0]
     # print(countdown(8))  # -> [8, 7, 6, 5, 4, 3, 2, 1, 0]
@@ -135,4 +133,3 @@ if __name__ == "__main__":
     print(sum_squares([1, 2, 3]))  # -> 14
     print(sum_squares([[1, 2], 3]))  # -> 14
     print(sum_squares([[[[[[[[[2]]]]]]]]]))  # -> 4
-
