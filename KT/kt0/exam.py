@@ -46,6 +46,12 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
         elif num - 1 == nr:
             num_list.insert(ind, nr)
             break
+        elif nr < num:
+            num_list.insert(ind, nr)
+            break
+        elif nr > num:
+            num_list.insert(ind + 1, nr)
+            break
     return num_list
 
 
@@ -57,4 +63,4 @@ if __name__ == '__main__':
     print(nr_into_num_list(5, [1, 2, 3, 4]))
     print(nr_into_num_list(0, [1, 2, 3, 4, 5]))
     print(nr_into_num_list(5, [1, 2, 3, 4, 6, 7, 8]))
-    print(nr_into_num_list(777, []))
+    print(nr_into_num_list(1, [777]))
