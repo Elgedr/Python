@@ -16,7 +16,7 @@ def create_car(model: str, price: int) -> 'Car':
     Create a new car object with the current year if price is above 0.
     """
     if price > 0:
-        car3 = Car(model, 2020, 10000)
+        car3 = Car(model, 2020, price)
     else:
         return None
     return car3
