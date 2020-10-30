@@ -55,6 +55,9 @@ def apply_dragon_rules(string):
         return "aRbFR" + apply_dragon_rules(string[1::])
     elif string[0] == "b":
         return "LFaLb" + apply_dragon_rules(string[1::])
+    else:
+        return string[0] + apply_dragon_rules(string[1::])
+    #todo fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 
 
 def curve(string, depth):
@@ -125,4 +128,4 @@ if __name__ == '__main__':
     '''
     save(t)
     t.getscreen().exitonclick()
-    print(apply_dragon_rules('abb'))
+    print(apply_dragon_rules('FRaFRb'))  # FRaRbFRFRLFaLb

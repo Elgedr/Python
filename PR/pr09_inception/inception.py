@@ -138,4 +138,5 @@ listt = [[1, 2], 3]
 print(listt[1::])
 
 a = 'hello'
-print(a[1])
+if "p" not in a:
+    print("yes")
