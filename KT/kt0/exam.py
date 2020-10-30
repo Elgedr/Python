@@ -37,6 +37,7 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
     """
     if not num_list:
         num_list.append(nr)
+        return num_list
     for num in num_list:
         ind = num_list.index(num)
         if nr == num or num + 1 == nr:
@@ -56,3 +57,4 @@ if __name__ == '__main__':
     print(nr_into_num_list(5, [1, 2, 3, 4]))
     print(nr_into_num_list(0, [1, 2, 3, 4, 5]))
     print(nr_into_num_list(5, [1, 2, 3, 4, 5, 6]))
+    print(nr_into_num_list(777, []))
