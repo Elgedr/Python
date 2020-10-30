@@ -133,3 +133,6 @@ if __name__ == "__main__":
     print(sum_squares([1, 2, 3]))  # -> 14
     print(sum_squares([[1, 2], 3]))  # -> 14
     print(sum_squares([[[[[[[[[2]]]]]]]]]))  # -> 4
+
+listt = [[1, 2], 3]
+print(listt[1::])
