@@ -31,7 +31,7 @@ def get_most_expensive_car_below_price(cars: list, max_price: int) -> 'Car':
     """
     res = []
     for car in cars:
-        if car.price < max_price and car.price not in res[car.price]:
+        if car.price < max_price and car.price not in res:
             res.append(car)
         res = sorted(res, key=lambda x: x.price, reverse=True)
         if not res:
@@ -75,4 +75,5 @@ def get_ordered_cars(cars: list) -> list:
 if __name__ == '__main__':
     car1 = Car("BMW", 2020, 500)
     car2 = Car("Audi", 2000, 15000)
-    print()
+    listt = [car1, car2]
+    print(get_most_expensive_car_below_price(listt, 10000))
