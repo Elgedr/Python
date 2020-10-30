@@ -56,5 +56,5 @@ if __name__ == '__main__':
     print(nr_of_common_characters("memm", ""))
     print(nr_into_num_list(5, [1, 2, 3, 4]))
     print(nr_into_num_list(0, [1, 2, 3, 4, 5]))
-    print(nr_into_num_list(5, [1, 2, 3, 4, 5, 6]))
+    print(nr_into_num_list(5, [1, 2, 3, 4, 6, 7, 8]))
     print(nr_into_num_list(777, []))
