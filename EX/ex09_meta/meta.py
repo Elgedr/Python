@@ -57,7 +57,6 @@ def apply_dragon_rules(string):
         return "LFaLb" + apply_dragon_rules(string[1::])
     else:
         return string[0] + apply_dragon_rules(string[1::])
-    #todo fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 
 
 def curve(string, depth):
@@ -71,7 +70,13 @@ def curve(string, depth):
     :param depth: how many times the rules are applied
     :return: instructionset at iteration 'depth'
     """
-    pass
+    a = depth
+    if depth < 1:
+        return string
+    else:
+        a -= 1
+        return curve(apply_dragon_rules(string), a)
+
 
 
 def format_curve(string):
@@ -129,3 +134,4 @@ if __name__ == '__main__':
     save(t)
     t.getscreen().exitonclick()
     print(apply_dragon_rules('FRaFRb'))  # FRaRbFRFRLFaLb
+    print(curve("Fa", 2))  # "FaRbFRRLFaLbFR"
