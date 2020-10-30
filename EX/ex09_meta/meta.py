@@ -27,6 +27,7 @@ def tree(length):
         tree(3 * length / 5)
         t.left(120)
         t.backward(length)
+
         # t.right(120)
         # tree(shrink * length)
         # t.right(60)
@@ -89,7 +90,16 @@ def format_curve(string):
     :param string: instruction string
     :return: clean instructions with only "F", "R", and "L" characters
     """
-    pass
+    if string == '':
+        return ''
+    elif string[0] == "F":
+        return string[0] + format_curve(string[1::])
+    elif string[0] == "R":
+        return string + format_curve(string[1::])
+    elif string[0] == "L":
+        return string[0] + format_curve(string[1::])
+    else:
+        return format_curve(string[1::])
 
 
 def draw_dragon(string, length):
@@ -135,3 +145,4 @@ if __name__ == '__main__':
     t.getscreen().exitonclick()
     print(apply_dragon_rules('FRaFRb'))  # FRaRbFRFRLFaLb
     print(curve("Fa", 2))  # "FaRbFRRLFaLbFR"
+    print(format_curve("FaRbFR"))
