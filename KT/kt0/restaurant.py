@@ -7,14 +7,21 @@ class Restaurant:
     def __init__(self, name: str):
         """Restaurant constructor."""
         self.name = name
+        self.dishes = []
+        self.menu = []
 
     def add_dish(self, dish: 'Dish') -> bool:
         """Add a dish if not already in restaurant."""
-
+        if dish in self.dishes:
+            return False
+        else:
+            self.dishes.append(dish)
+            return True
 
     def get_dishes(self) -> list:
         """Return all the dishes in the restaurant."""
-        pass
+        dishes = self.dishes
+        return dishes
 
     def add_menu(self, menu: 'Menu') -> bool:
         """
@@ -24,7 +31,17 @@ class Restaurant:
         - it has no dishes
         - the menu with the same dishes (in any order) already exists
         """
-        pass
+        if not menu.dishes:
+            return False
+        elif menu.dishes in self.menu:
+            return False
+        for dish in menu.dishes:
+            if dish not in self.dishes:
+                return False
+        else:
+            self.menu.append(menu.dishes)
+            return True
+
 
     def get_menus(self) -> list:
         """Return all the menus in the restaurant."""
