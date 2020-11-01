@@ -35,18 +35,15 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
     nr_into_num_list(0, [1,2,3,4,5]) -> [0,1,2,3,4,5,]
 
     """
-    # res = []
-    # num_list.append(nr)
-    # for num in num_list:
-    #     if num == min(num_list):
-    #         res.append(num)
-    #         num_list.rep
-    #     else:
-    #         pass
-    # return res
-    # for num in num_list:
-    #     if num
-
+    if not num_list:
+        num_list.append(nr)
+    elif nr >= num_list[-1]:
+        num_list.append(nr)
+    for num in num_list:
+        if num > nr:
+            num_list.insert(num_list.index(num), nr)
+            break
+    return num_list
 
 
 if __name__ == '__main__':
