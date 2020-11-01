@@ -92,14 +92,14 @@ def format_curve(string):
     """
     if string == '':
         return ''
-    elif string[0] == "F":
-        return string[0] + format_curve(string[1::])
-    elif string[0] == "R":
-        return string + format_curve(string[1::])
-    elif string[0] == "L":
-        return string[0] + format_curve(string[1::])
+    elif string[-1] == "F":
+        return format_curve(string[:-1:]) + string[-1]
+    elif string[-1] == "R":
+        return format_curve(string[:-1:]) + string[-1]
+    elif string[-1] == "L":
+        return format_curve(string[:-1:]) + string[-1]
     else:
-        return format_curve(string[1::])
+        return format_curve(string[:-1:])
 
 
 def draw_dragon(string, length):
@@ -145,4 +145,4 @@ if __name__ == '__main__':
     t.getscreen().exitonclick()
     print(apply_dragon_rules('FRaFRb'))  # FRaRbFRFRLFaLb
     print(curve("Fa", 2))  # "FaRbFRRLFaLbFR"
-    print(format_curve("t"))
+    print(format_curve("FaRbFR"))

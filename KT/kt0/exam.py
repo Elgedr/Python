@@ -35,24 +35,16 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
     nr_into_num_list(0, [1,2,3,4,5]) -> [0,1,2,3,4,5,]
 
     """
-    if not num_list:
-        num_list.append(nr)
-        return num_list
+    res = []
+    num_list.append(nr)
     for num in num_list:
-        ind = num_list.index(num)
-        if nr == num or num + 1 == nr:
-            num_list.insert(ind + 1, nr)
-            break
-        elif num - 1 == nr:
-            num_list.insert(ind, nr)
-            break
-        elif nr < num:
-            num_list.insert(ind, nr)
-            break
-        elif nr > num:
-            num_list.insert(ind + 1, nr)
-            break
-    return num_list
+        if num == min(num_list):
+            res.append(num)
+            num_list.rep
+        else:
+            pass
+    return res
+
 
 
 if __name__ == '__main__':
