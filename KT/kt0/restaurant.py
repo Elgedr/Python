@@ -42,7 +42,6 @@ class Restaurant:
             self.menu.append(menu.dishes)
             return True
 
-
     def get_menus(self) -> list:
         """Return all the menus in the restaurant."""
         pass
