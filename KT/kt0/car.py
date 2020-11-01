@@ -62,17 +62,29 @@ def update_prices(cars: list, discount_per_year: int) -> None:
         Car year is 2000, price is 100, discount_per_year = 7
         The new price for the car is 0.
     """
-    pass
+    our_year = 2020
+    for car in cars:
+        price = car.price - ((our_year - car.year) * discount_per_year)
+        if price < 0:
+            car.price = 0
+        else:
+            car.price = price
 
 
 def get_cars_with_model(cars: list, model: str) -> list:
     """Return list of cars with the given model."""
-    pass
+    res = []
+    for car in cars:
+        if car.model == model:
+            res.append(car)
+    return res
 
 
 def get_ordered_cars(cars: list) -> list:
     """Return a new sorted list of cars by: year (newer first), price (cheaper first), model (from a to z)."""
-    pass
+    ret = [] + cars
+    res = sorted(ret, key=lambda x: (-x.year, x.price, x.model))
+    return res
 
 
 if __name__ == '__main__':
