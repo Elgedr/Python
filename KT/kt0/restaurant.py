@@ -105,7 +105,7 @@ class Menu:
         - the order is not important (menu A,B is the same as B,A)
         If the menus are the same, return True. Oterhwise False.
         """
-        for dishes in self.dishes:
-            if dishes in menu.dishes:
-                return True
-            if
+        # for dishes in self.dishes:
+        #     if dishes in menu.dishes:
+        #         return True
+        #     if
