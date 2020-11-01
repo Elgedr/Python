@@ -112,7 +112,18 @@ def draw_dragon(string, length):
     :param string: instructions left to process
     :param length: how many pixels to move forward, left or right
     """
-    pass
+    if len(string) > 0:
+        if string[0] == "L":
+            t.left(40)
+            t.forward(length)
+            draw_dragon(string[1::], length)
+        elif string[0] == 'R':
+            t.right(40)
+            t.forward(length)
+            draw_dragon(string[1::], length)
+        elif string[0] == "F":
+            t.forward(length)
+            draw_dragon(string[1::], length)
 
 
 def get_line_length(dragon_width, depth):
@@ -141,7 +152,6 @@ if __name__ == '__main__':
     draw_dragon(s, l)
     '''
     save(t)
-    t.getscreen().exitonclick()
     print(apply_dragon_rules('FRaFRb'))  # FRaRbFRFRLFaLb
     print(curve("Fa", 2))  # "FaRbFRRLFaLbFR"
     print(format_curve("FaRbFR"))

@@ -33,7 +33,8 @@ class Restaurant:
         """
         if not menu.dishes:
             return False
-        elif menu.dishes in self.menu:
+        elif menu.compare_to() is True:
+            #TODO   CJFNVKFDNOIFVNPLFDNJFNSBVNF[VJWIN
             return False
         for dish in menu.dishes:
             if dish not in self.dishes:
@@ -44,15 +45,19 @@ class Restaurant:
 
     def get_menus(self) -> list:
         """Return all the menus in the restaurant."""
-        pass
+        menues = self.menu
+        return menues
 
     def get_dishes_available_in_menu(self) -> list:
         """Return unique dishes which are in one of the menues."""
-        pass
+        available_dishes = set(self.menu)
+        return available_dishes
 
     def get_menus_ordered_by_price(self) -> list:
         """A new list of menus ordered by total price (highest first), then by dish count (lower first)."""
-        pass
+        prices = []
+        for menu in self.menu:
+
 
 
 class Dish:
