@@ -44,8 +44,8 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
     #     else:
     #         pass
     # return res
-    for num in num_list:
-        if num
+    # for num in num_list:
+    #     if num
 
 
 

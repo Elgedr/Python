@@ -44,7 +44,6 @@ def get_most_expensive_car_below_price(cars: list, max_price: int) -> 'Car':
     return cars_list[0]
 
 
-
 def update_prices(cars: list, discount_per_year: int) -> None:
     """
     Update each car price so that for every year of their age they get discount_per_year lower price.
