@@ -6,11 +6,11 @@ class Restaurant:
 
     def __init__(self, name: str):
         """Restaurant constructor."""
-        pass
+        self.name = name
 
     def add_dish(self, dish: 'Dish') -> bool:
         """Add a dish if not already in restaurant."""
-        pass
+
 
     def get_dishes(self) -> list:
         """Return all the dishes in the restaurant."""
@@ -44,15 +44,18 @@ class Dish:
 
     def __init__(self, name: str, price: int):
         """Dish constructor."""
-        pass
+        self.name = name
+        self.price = price
 
     def get_name(self) -> str:
         """Return the name of the dish."""
-        pass
+        name = self.name
+        return name
 
     def get_price(self) -> int:
         """Return the price of the dish."""
-        pass
+        price = self.price
+        return price
 
 
 class Menu:
@@ -60,15 +63,20 @@ class Menu:
 
     def __init__(self):
         """Menu constructor."""
-        pass
+        self.dishes = []  # dishes from Dich class
 
     def add_dish(self, dish: Dish) -> bool:
         """Add dish to menu if it does not exist already."""
-        pass
+        if dish in self.dishes:
+            return False
+        else:
+            self.dishes.append(dish)
+            return True
 
     def get_dishes(self) -> list:
         """Return all the dishes in menu."""
-        pass
+        dishes = self.dishes
+        return dishes
 
     def compare_to(self, menu: 'Menu') -> bool:
         """
