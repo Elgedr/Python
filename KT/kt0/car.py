@@ -30,14 +30,18 @@ def get_most_expensive_car_below_price(cars: list, max_price: int) -> 'Car':
     If there are no cars with which have the price lower than max_price, return None.
     """
     res = []
+    cars_list = []
     for car in cars:
-        if car.price < max_price and car.price not in res:
+        if car.price < max_price:
             res.append(car)
         if not res:
             return None
     res = sorted(res, key=lambda x: x.price, reverse=True)
-    return res[0]
-
+    maximum = max(res)
+    for carr in res:
+        if carr.price == maximum.price:
+            cars_list.append(carr)
+    return cars_list[0]
 
 
 

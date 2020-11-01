@@ -79,7 +79,6 @@ def curve(string, depth):
         return curve(apply_dragon_rules(string), a)
 
 
-
 def format_curve(string):
     """
     Use recursions to remove  a  and  b  symbols from the instruction string.
