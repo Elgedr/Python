@@ -27,18 +27,27 @@ def get_most_expensive_car_below_price(cars: list, max_price: int) -> 'Car':
     If several cars have the same price, return the first.
     If there are no cars with which have the price lower than max_price, return None.
     """
+    # res = []
+    # cars_list = []
+    # for car in cars:
+    #     if car.price < max_price:
+    #         res.append(car)
+    # if not res:
+    #     return None
+    # res = sorted(res, key=lambda x: x.price, reverse=True)
+    # for carr in res:
+    #     if carr.price == res[-1].price:
+    #         cars_list.append(carr)
+    # return cars_list[0]
     res = []
-    cars_list = []
+    price = 0
     for car in cars:
-        if car.price < max_price:
+        if price < car.price < max_price:
+            price = car.price
             res.append(car)
-    if not res:
-        return None
-    res = sorted(res, key=lambda x: x.price, reverse=True)
-    for carr in res:
-        if carr.price == res[-1].price:
-            cars_list.append(carr)
-    return cars_list[0]
+        if not res:
+            return None
+    return res[-1]
 
 
 def update_prices(cars: list, discount_per_year: int) -> None:
