@@ -50,11 +50,12 @@ class Restaurant:
     def get_dishes_available_in_menu(self) -> list:
         """Return unique dishes which are in one of the menues."""
         dishes = []
-        for dish in self.dishes:
-            if dish in dishes:
-                pass
-            else:
-                dishes.append(dish)
+        for menue in self.menu:
+            for dish in menue:
+                if dish in dishes:
+                    pass
+                else:
+                    dishes.append(dish)
         return dishes
 
     def get_menus_ordered_by_price(self) -> list:
