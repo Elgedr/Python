@@ -53,14 +53,14 @@ class Restaurant:
         for dish in self.dishes:
             if dish in dishes:
                 pass
-            else: dishes.append(dish)
+            else:
+                dishes.append(dish)
         return dishes
 
     def get_menus_ordered_by_price(self) -> list:
         """A new list of menus ordered by total price (highest first), then by dish count (lower first)."""
         # prices = []
         # for menu in self.menu:
-
 
 
 class Dish:
@@ -112,6 +112,8 @@ class Menu:
         - the order is not important (menu A,B is the same as B,A)
         If the menus are the same, return True. Oterhwise False.
         """
+        if len(menu.dishes) != len(self.dishes):
+            return False
         menu_dict = {}
         for food in menu.get_dishes():
             menu_dict[food.name] = food.price
@@ -119,3 +121,11 @@ class Menu:
             if items.name in menu_dict and items.price == menu_dict[items.price]:
                 return True
         return False
+
+
+if __name__ == '__main__':
+    dish1 = Dish('Kartul', 20)
+    dish2 = Dish('soup', 30)
+    dish3 = Dish("puree", 15)
+    dishes = [dish1, dish2, dish3]
+    restur1 = Restaurant('macdonalds')
