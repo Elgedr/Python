@@ -128,4 +128,4 @@ if __name__ == '__main__':
     dish2 = Dish('soup', 30)
     dish3 = Dish("puree", 15)
     dishes = [dish1, dish2, dish3]
-    restur1 = Restaurant('macdonalds')
+    rest1 = Restaurant('macdonalds')
