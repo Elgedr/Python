@@ -33,14 +33,13 @@ class Restaurant:
         """
         if not menu.dishes:
             return False
-        elif menu.compare_to() is True:
-            #TODO   CJFNVKFDNOIFVNPLFDNJFNSBVNF[VJWIN
+        elif menu.compare_to(menu) is True:
             return False
         for dish in menu.dishes:
             if dish not in self.dishes:
                 return False
         else:
-            self.menu.append(menu.dishes)
+            self.menu.append(menu)
             return True
 
     def get_menus(self) -> list:
@@ -50,13 +49,17 @@ class Restaurant:
 
     def get_dishes_available_in_menu(self) -> list:
         """Return unique dishes which are in one of the menues."""
-        available_dishes = set(self.menu)
-        return available_dishes
+        dishes = []
+        for dish in self.dishes:
+            if dish in dishes:
+                pass
+            else: dishes.append(dish)
+        return dishes
 
     def get_menus_ordered_by_price(self) -> list:
         """A new list of menus ordered by total price (highest first), then by dish count (lower first)."""
-        prices = []
-        for menu in self.menu:
+        # prices = []
+        # for menu in self.menu:
 
 
 
@@ -84,7 +87,7 @@ class Menu:
 
     def __init__(self):
         """Menu constructor."""
-        self.dishes = []  # dishes from Dich class
+        self.dishes = []  # dishes from Dish class
 
     def add_dish(self, dish: Dish) -> bool:
         """Add dish to menu if it does not exist already."""
@@ -109,7 +112,10 @@ class Menu:
         - the order is not important (menu A,B is the same as B,A)
         If the menus are the same, return True. Oterhwise False.
         """
-        # for dishes in self.dishes:
-        #     if dishes in menu.dishes:
-        #         return True
-        #     if
+        menu_dict = {}
+        for food in menu.get_dishes():
+            menu_dict[food.name] = food.price
+        for items in self.dishes:
+            if items.name in menu_dict and items.price == menu_dict[items.price]:
+                return True
+        return False

@@ -21,19 +21,12 @@ def tree(length):
         return
     else:
         t.forward(length)
-        t.left(120)
+        t.left(60)
         tree(3 * length / 5)
         t.right(120)
         tree(3 * length / 5)
-        t.left(120)
+        t.left(60)
         t.backward(length)
-
-        # t.right(120)
-        # tree(shrink * length)
-        # t.right(60)
-        # tree(shrink * length)
-        # t.left(45)
-        # t.backward(length)
 
 
 def apply_dragon_rules(string):
@@ -112,18 +105,19 @@ def draw_dragon(string, length):
     :param string: instructions left to process
     :param length: how many pixels to move forward, left or right
     """
+    format_curve(string)
     if len(string) > 0:
-        if string[0] == "L":
-            t.left(40)
+        if format_curve(string)[0] == "L":
+            t.left(90)
             t.forward(length)
-            draw_dragon(string[1::], length)
-        elif string[0] == 'R':
-            t.right(40)
+            draw_dragon(format_curve(string)[1::], length)
+        elif format_curve(string)[0] == 'R':
+            t.right(90)
             t.forward(length)
-            draw_dragon(string[1::], length)
-        elif string[0] == "F":
+            draw_dragon(format_curve(string)[1::], length)
+        elif format_curve(string)[0] == "F":
             t.forward(length)
-            draw_dragon(string[1::], length)
+            draw_dragon(format_curve(string)[1::], length)
 
 
 def get_line_length(dragon_width, depth):
@@ -143,7 +137,8 @@ if __name__ == '__main__':
     t.color("#96004f")
     t.pensize(2)
     t.left(90)
-    tree(200)
+    draw_dragon('FRaLRbFFLLRLLFF', 60)
+    # tree(200)
 
     '''
     s = curve("Fa", 8)
@@ -152,6 +147,7 @@ if __name__ == '__main__':
     draw_dragon(s, l)
     '''
     save(t)
-    print(apply_dragon_rules('FRaFRb'))  # FRaRbFRFRLFaLb
+    print(apply_dragon_rules('FRLRFFLLRLLFF'))  # FRaRbFRFRLFaLb
     print(curve("Fa", 2))  # "FaRbFRRLFaLbFR"
-    print(format_curve("FaRbFR"))
+    print(format_curve("FaRbFRRLFaLbFR, 300"))
+
