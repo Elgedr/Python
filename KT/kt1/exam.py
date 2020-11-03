@@ -132,7 +132,7 @@ class ContactBook:
 
     def get_sorted_contacts(self) -> list:
         """Sort contacts alphabetically by full name."""
-        return sorted(self.contacts, key=lambda x: x.fullname)
+        return sorted(self.contacts, key=lambda x: x.firstname)
 
 
 class FridgeItem:
