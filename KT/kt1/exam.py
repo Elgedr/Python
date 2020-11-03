@@ -128,7 +128,10 @@ class ContactBook:
         for peson in self.contacts:
             if peson.phone_number == number:
                 people.append(peson)
+        if not people:
+            return None
         return people[0]
+
 
     def get_sorted_contacts(self) -> list:
         """Sort contacts alphabetically by full name."""
