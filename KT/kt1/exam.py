@@ -137,7 +137,6 @@ class ContactBook:
         """Sort contacts alphabetically by full name."""
         return sorted(self.contacts, key=lambda x: x.firstname)
 
-
 class FridgeItem:
     """Fridge item class."""
 
@@ -172,3 +171,93 @@ class FridgeItem:
         :return:
         """
         pass
+
+
+class Fridge:
+    """Fridge class."""
+
+    def __init__(self):
+        """Constructor."""
+        self.food_in_fridge = []
+
+    def add_items(self, items: list):
+        """
+        Add given items to items list.
+
+        If an item is in the list already, don't add it.
+        """
+        for i in items:
+            if i in self.food_in_fridge:
+                pass
+            else:
+                self.food_in_fridge.append(i)
+
+    def get_items(self) -> list:
+        """Return items in the fridge."""
+        return self.food_in_fridge
+
+    def remove_item(self, item: FridgeItem) -> None:
+        """Remove FridgeItem from items list if it's there."""
+        if item in self.food_in_fridge:
+            self.food_in_fridge.remove(item)
+
+    def clean_the_fridge(self) -> None:
+        """Remove all the items from the fridge that have expired."""
+
+
+    def get_items_that_wont_have_expired_in_n_days(self, n: int) -> list:
+        """
+        Return list of items that won't have expired in given n days.
+
+        An item hasn't expired on its 0. day till expiration.
+
+        Example:
+        item 1 expires in 3 days
+        item 2 expires in 4 days
+        item 3 expires in 5 days
+        calling this method with n = 4 returns items 2 and 3.
+        """
+        pass
+
+    def get_sorted_items(self) -> list:
+        """
+        Sort FridgeItems by days till expiration (first should be expired items, then first expiring).
+
+        If they have the same amount of days till expiration, sort them by name (descending).
+        :return: sorted list of FridgeItems
+        """
+        pass
+
+    def get_items_of_type(self, type: str) -> list:
+        """Return list of items that are the given type (case-sensitive)."""
+        pass
+
+    def get_items_with_name(self, name: str):
+        """
+        Return list of items with which name you can form the required name by re-arranging letters in the name.
+
+        Capital and non-capital letters are equal here (case-insensitive).
+        Example:
+        if the parameter name = "milk" then items with names "Milk" and "LIMK" will be returned.
+        """
+        pass
+
+
+if __name__ == '__main__':
+    p1 = Person("Peeter", "Mets", "12345678")
+    print(p1.get_full_name())  # Peeter Mets
+
+    p2 = Person("Kaarel", "", "54323456")
+    print(p2.get_full_name())  # Kaarel
+
+    contact_book = ContactBook()
+    contact_book.add_person_to_contacts(p1)
+    contact_book.add_person_to_contacts(p2)
+    print(len(contact_book.contacts))  # 2
+
+    for contact in contact_book.get_sorted_contacts():
+        print(contact.get_full_name())
+    """Kaarel
+       Peeter Mets"""
+
+    print(contact_book.find_contact_by_number("12345678").get_full_name())  # Peeter Mets
