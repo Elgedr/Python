@@ -40,19 +40,19 @@ def sum_half_evens(nums: list) -> int:
     """
     num = []
     numss = []
-    for i in nums:
-        if i % 2 == 0:
-            num.append(i)
-        else:
-            pass
-    length = len(num)
+    # for i in nums:
+    #     if i % 2 == 0:
+    #         num.append(i)
+    #     else:
+    #         pass
+    length = len(nums)
     if length % 2 == 0:
-        bb = len(num) / 2
-        for i in range(bb + 1):
+        bb = round(len(nums) / 2)
+        for i in range(bb):
             numss.append(i)
     elif length % 2 != 0:
-        rangee = len(num)
-        for i in range((rangee + 1) / 2):
+        rangee = round(len(nums)) + 1 / 2
+        for i in range(rangee + 1):
             numss.append(i)
     return sum(nums)
     # if len(nums) % 2 == 0:
@@ -75,9 +75,97 @@ def max_block(s: str) -> int:
     max_block("abbCCCddBBBxx") => 3
     max_block("") => 0
     """
-    pass
+    if len(s) == 0:
+        return 0
+    # elif
 
 
 if __name__ == '__main__':
     # print(positive_or_not([3, 4, -2, 1, -78, 0], False))
     print(sum_half_evens([2, 1, 2, 3, 4]))
+
+class Person:
+    """Person class."""
+
+    def __init__(self, firstname: str, lastname: str, phone_number: str):
+        """Constructor."""
+        self.firstname = firstname
+        self.lastname = lastname
+        self.phone_number = phone_number
+
+    def get_full_name(self) -> str:
+        """
+        Get full name of the person.
+
+        Return firstname and lastname separated by space.
+        If the lastname is empty, then return only the firstname.
+        """
+        if self.lastname == '':
+            return self.firstname
+        return f'{self.firstname} {self.lastname}'
+
+
+class ContactBook:
+    """Contacat book class."""
+
+    def __init__(self):
+        """Constructor."""
+        self.contacts = []
+
+    def add_person_to_contacts(self, person: Person) -> None:
+        """Add person to contact book if phone number and firstname are not empty strings."""
+        if person.phone_number != '' and person.firstname != '' and person.lastname != '':
+            self.contacts.append(person)
+
+    def find_contact_by_number(self, number) -> Person:
+        """
+        Return person who has the given number.
+
+        If there are several people with the given number, return the first.
+        If there is no person with the given number, return None.
+        """
+        people = []
+        for peson in self.contacts:
+            if peson.phone_number == number:
+                people.append(peson)
+        return people[0]
+
+    def get_sorted_contacts(self) -> list:
+        """Sort contacts alphabetically by full name."""
+        return sorted(self.contacts, key=lambda x: x.fullname)
+
+
+class FridgeItem:
+    """Fridge item class."""
+
+    def __init__(self, name: str, type: str, days_till_expiration: int):
+        """Constructor."""
+        pass
+
+    def __repr__(self):
+        """
+        Return FridgeItem in nice string form.
+
+        For example:
+        name = "apple", type = "fruit", days_till_expiration = 4
+        "Name: apple, type: fruit, expires in 4 days."
+
+        If the item expires today (expires in 0 days):
+        name = "apple", type = "fruit", days_till_expiration = 0
+        "Name: apple, type: fruit, expires today."
+
+        If the item has already expired:
+        name = "apple", type = "fruit", days_till_expiration = -2
+        "Name: apple, type: fruit, expired 2 days ago."
+
+        If the item expired yesterday (one day ago):
+        name = "apple", type = "fruit", days_till_expiration = -1
+        "Name: apple, type: fruit, expired 1 day ago."
+
+        If the item expires tomorrow (in one day):
+        name = "apple", type = "fruit", days_till_expiration = 1
+        "Name: apple, type: fruit, expires in 1 day."
+
+        :return:
+        """
+        pass
