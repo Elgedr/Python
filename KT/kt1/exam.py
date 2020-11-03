@@ -38,7 +38,6 @@ def sum_half_evens(nums: list) -> int:
     sum_half_evens([1, 3, 5, 8]) => 8
     sum_half_evens([2, 3, 5, 7, 8, 9, 10, 11]) => 10
     """
-    num = []
     numss = []
     # for i in nums:
     #     if i % 2 == 0:
@@ -64,7 +63,6 @@ def sum_half_evens(nums: list) -> int:
     #     for i in range(renge):
 
 
-
 def max_block(s: str) -> int:
     """
     Given a string, return the length of the largest "block" in the string.
@@ -83,6 +81,7 @@ def max_block(s: str) -> int:
 if __name__ == '__main__':
     # print(positive_or_not([3, 4, -2, 1, -78, 0], False))
     print(sum_half_evens([2, 1, 2, 3, 4]))
+
 
 class Person:
     """Person class."""
@@ -131,7 +130,6 @@ class ContactBook:
         if not people:
             return None
         return people[0]
-
 
     def get_sorted_contacts(self) -> list:
         """Sort contacts alphabetically by full name."""
@@ -205,7 +203,6 @@ class Fridge:
     def clean_the_fridge(self) -> None:
         """Remove all the items from the fridge that have expired."""
         # if
-
 
     def get_items_that_wont_have_expired_in_n_days(self, n: int) -> list:
         """
