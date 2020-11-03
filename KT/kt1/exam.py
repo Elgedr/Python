@@ -188,7 +188,7 @@ class Fridge:
         If an item is in the list already, don't add it.
         """
         for i in items:
-            if not i in self.food_in_fridge:
+            if i not in self.food_in_fridge:
                 self.food_in_fridge.append(i)
 
     def get_items(self) -> list:
