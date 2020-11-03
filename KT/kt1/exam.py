@@ -38,7 +38,31 @@ def sum_half_evens(nums: list) -> int:
     sum_half_evens([1, 3, 5, 8]) => 8
     sum_half_evens([2, 3, 5, 7, 8, 9, 10, 11]) => 10
     """
-    pass
+    num = []
+    numss = []
+    for i in nums:
+        if i % 2 == 0:
+            num.append(i)
+        else:
+            pass
+    length = len(num)
+    if length % 2 == 0:
+        bb = len(num) / 2
+        for i in range(bb + 1):
+            numss.append(i)
+    elif length % 2 != 0:
+        rangee = len(num)
+        for i in range((rangee + 1) / 2):
+            numss.append(i)
+    return sum(nums)
+    # if len(nums) % 2 == 0:
+    #    rangee = len(nums) / 2
+    #    for i in range(rangee):
+    #
+    # elif len(nums) % 2 != 0:
+    #     renge = len(nums) + 1 / 2
+    #     for i in range(renge):
+
 
 
 def max_block(s: str) -> int:
@@ -55,4 +79,5 @@ def max_block(s: str) -> int:
 
 
 if __name__ == '__main__':
-    print(positive_or_not([3, 4, -2, 1, -78, 0], False))
+    # print(positive_or_not([3, 4, -2, 1, -78, 0], False))
+    print(sum_half_evens([2, 1, 2, 3, 4]))
