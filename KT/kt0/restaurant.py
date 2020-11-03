@@ -50,8 +50,8 @@ class Restaurant:
     def get_dishes_available_in_menu(self) -> list:
         """Return unique dishes which are in one of the menues."""
         dishes = []
-        for dish in self.dishes:
-            for menu in self.menu:
+        for dish in self.get_dishes():
+            for menu in self.get_menus():
                 if dish in menu:
                     dishes.append(dish)
                     break
@@ -59,8 +59,11 @@ class Restaurant:
 
     def get_menus_ordered_by_price(self) -> list:
         """A new list of menus ordered by total price (highest first), then by dish count (lower first)."""
-        # prices = []
-        # for menu in self.menu:
+        ret = [] + self.menu
+        prices = {}
+        for menue in self.menu:
+            for dish in menue:
+                prices[menue] = sum()
 
 
 class Dish:
