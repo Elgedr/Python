@@ -137,12 +137,15 @@ class ContactBook:
         """Sort contacts alphabetically by full name."""
         return sorted(self.contacts, key=lambda x: x.firstname)
 
+
 class FridgeItem:
     """Fridge item class."""
 
     def __init__(self, name: str, type: str, days_till_expiration: int):
         """Constructor."""
-        pass
+        self.name = name
+        self.type = type
+        self.days_till_expiration = days_till_expiration
 
     def __repr__(self):
         """
