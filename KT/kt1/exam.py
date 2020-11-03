@@ -51,7 +51,7 @@ def sum_half_evens(nums: list) -> int:
         for i in range(bb):
             numss.append(i)
     elif length % 2 != 0:
-        rangee = round(len(nums)) + 1 / 2
+        rangee = round((round(len(nums)) / 2) + 0.5)
         for i in range(rangee + 1):
             numss.append(i)
     return sum(nums)
@@ -204,6 +204,7 @@ class Fridge:
 
     def clean_the_fridge(self) -> None:
         """Remove all the items from the fridge that have expired."""
+        # if
 
 
     def get_items_that_wont_have_expired_in_n_days(self, n: int) -> list:
