@@ -114,7 +114,7 @@ class ContactBook:
 
     def add_person_to_contacts(self, person: Person) -> None:
         """Add person to contact book if phone number and firstname are not empty strings."""
-        if person.phone_number != '' and person.firstname != '' and person.lastname != '':
+        if person.phone_number != '' and person.firstname != '':
             self.contacts.append(person)
 
     def find_contact_by_number(self, number) -> Person:
