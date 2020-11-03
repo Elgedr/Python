@@ -188,7 +188,7 @@ class Fridge:
         If an item is in the list already, don't add it.
         """
         for i in items:
-            if i not in self.food_in_fridge:
+            if not i in self.food_in_fridge:
                 self.food_in_fridge.append(i)
 
     def get_items(self) -> list:
@@ -202,7 +202,9 @@ class Fridge:
 
     def clean_the_fridge(self) -> None:
         """Remove all the items from the fridge that have expired."""
-        # if
+        for i in self.food_in_fridge:
+            if i.days_till_expiration < 0:
+                self.food_in_fridge.remove(i)
 
     def get_items_that_wont_have_expired_in_n_days(self, n: int) -> list:
         """
@@ -216,7 +218,11 @@ class Fridge:
         item 3 expires in 5 days
         calling this method with n = 4 returns items 2 and 3.
         """
-        pass
+        res = []
+        for i in self.food_in_fridge:
+            if i.days_till_expiration >= n:
+                res.append(i)
+        return res
 
     def get_sorted_items(self) -> list:
         """
@@ -225,7 +231,7 @@ class Fridge:
         If they have the same amount of days till expiration, sort them by name (descending).
         :return: sorted list of FridgeItems
         """
-        pass
+        return sorted(self.food_in_fridge, key=lambda i: (i.days_till_expiration, i.name))
 
     def get_items_of_type(self, type: str) -> list:
         """Return list of items that are the given type (case-sensitive)."""
