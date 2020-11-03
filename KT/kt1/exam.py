@@ -14,7 +14,17 @@ def positive_or_not(nums: list, pos: bool) -> list:
     :param nums:
     :return:
     """
-    pass
+    positive = []
+    negative = []
+    for num in nums:
+        if num <= 0:
+            negative.append(num)
+        elif num > 0:
+            positive.append(num)
+    if pos is True:
+        return positive
+    elif pos is False:
+        return negative
 
 
 def sum_half_evens(nums: list) -> int:
@@ -42,3 +52,7 @@ def max_block(s: str) -> int:
     max_block("") => 0
     """
     pass
+
+
+if __name__ == '__main__':
+    print(positive_or_not([3, 4, -2, 1, -78, 0], False))
