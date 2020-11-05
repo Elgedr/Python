@@ -123,7 +123,6 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
         return res
 
 
-
 def add_result_to_student(student: Student, grades_count: int, new_grade: int, credit_points) -> Student:
     """
     Update student average grade and credit points by adding a new grade (result).
@@ -156,7 +155,11 @@ def add_result_to_student(student: Student, grades_count: int, new_grade: int, c
 
     Return the modified student object.
     """
-    pass
+    average = student.average_grade * grades_count
+    newawerage = (average + new_grade) / (grades_count + 1)
+    student.average_grade = round(newawerage, 3)
+    student.credit_points = student.credit_points + credit_points
+    return student
 
 
 def get_ordered_students(students: list) -> list:
