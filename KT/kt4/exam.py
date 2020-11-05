@@ -38,6 +38,8 @@ def list_move(initial_list: list, amount: int, factor: int) -> list:
     list_move([1, 2, 3], 4, 1) => [[1, 2, 3], [3, 1, 2], [2, 3, 1], [1, 2, 3]]
     list_move([], 3, 4) => [[], [], []]
     """
+    if amount == 0:
+        return []
     listt = initial_list
     counter = amount
     res = [initial_list]
@@ -296,7 +298,7 @@ if __name__ == '__main__':
     student2 = Student("Mart", 19.9, 40)
     listt = [student1, student2]
     # print(get_top_student_with_credit_points(listt, 0))
-    print(list_move([], 3, 4))
+    print(list_move(["a"], 0, 3))
     # hotel = Hotel()
     # room1 = Room(1, 100)
     # room1.add_feature("tv")
