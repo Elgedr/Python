@@ -115,7 +115,7 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
     """
     studentss = []
     for student in students:
-        if student.credit_points >= min_credit_points:
+        if student.credit_points > min_credit_points:
             studentss.append(student)
         res = sorted(studentss, key=lambda x: -x.average_grade)
         if not res:
@@ -302,7 +302,3 @@ if __name__ == '__main__':
     assert hotel.get_most_profitable_feature() == 'tv'
 
     # TODO: try to add a room so that two or more features have the same profit
-
-
-# if __name__ == '__main__':
-#     print(odd_sums_of_consecutive_elements([8, 10]))
