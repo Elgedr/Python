@@ -42,10 +42,14 @@ def list_move(initial_list: list, amount: int, factor: int) -> list:
     counter = amount
     res = [initial_list]
     while counter > 1:
-        updated = listt[-factor:] + listt[:-factor]
-        res.append(updated)
-        listt = updated
-        counter -= 1
+        if not initial_list:
+            res.append([])
+            counter -= 1
+        else:
+            updated = listt[-factor:] + listt[:-factor]
+            res.append(updated)
+            listt = updated
+            counter -= 1
     return res
 
 
@@ -292,7 +296,7 @@ if __name__ == '__main__':
     student2 = Student("Mart", 19.9, 40)
     listt = [student1, student2]
     # print(get_top_student_with_credit_points(listt, 0))
-    print(list_move(["a", "b", "c"], 3, 1))
+    print(list_move([], 3, 4))
     # hotel = Hotel()
     # room1 = Room(1, 100)
     # room1.add_feature("tv")
