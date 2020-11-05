@@ -177,7 +177,9 @@ class Room:
 
     def __init__(self, number: int, price: int):
         """Constructor."""
-        pass
+        self.number = number
+        self.price = price
+        self.features = []
 
     def add_feature(self, feature: str) -> bool:
         """
@@ -188,19 +190,21 @@ class Room:
         - the room is booked.
         Otherwise, add the feature to the room and return True
         """
+        if feature in self.features:
+            return False
         pass
 
     def get_features(self) -> list:
         """Return all the features of the room."""
-        pass
+        return self.features
 
     def get_price(self) -> int:
         """Return the price."""
-        pass
+        return self.price
 
     def get_number(self) -> int:
         """Return the room number."""
-        pass
+        return self.number
 
 
 class Hotel:
@@ -208,7 +212,7 @@ class Hotel:
 
     def __init__(self):
         """Constructor."""
-        pass
+        self.rooms = []
 
     def add_room(self, room: Room) -> bool:
         """
@@ -217,7 +221,12 @@ class Hotel:
         If a room with the given number already exists, do not add a room and return False.
         Otherwise add the room to hotel and return True.
         """
-        pass
+        for roo in self.rooms:
+            if roo.number == room.number:
+                return False
+            else:
+                self.rooms.append(room)
+                return True
 
     def book_room(self, required_features: list) -> Optional[Room]:
         """
@@ -227,7 +236,7 @@ class Hotel:
         If there are several with the same amount of matching features, return the one with the smallest room number.
         If there is no available rooms, return None
         """
-        pass
+
 
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
