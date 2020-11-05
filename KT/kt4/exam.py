@@ -38,11 +38,13 @@ def list_move(initial_list: list, amount: int, factor: int) -> list:
     list_move([1, 2, 3], 4, 1) => [[1, 2, 3], [3, 1, 2], [2, 3, 1], [1, 2, 3]]
     list_move([], 3, 4) => [[], [], []]
     """
+    listt = initial_list
     counter = amount
     res = [initial_list]
-    while counter == 0:
-        hhhh = initial_list.insert(factor, initial_list.pop())
-        res.append(hhhh)
+    while counter > 1:
+        updated = listt[-factor:] + listt[:-factor]
+        res.append(updated)
+        listt = updated
         counter -= 1
     return res
 
@@ -198,7 +200,6 @@ class Room:
         if feature in self.features:
             return False
 
-
     def get_features(self) -> list:
         """Return all the features of the room."""
         return self.features
@@ -241,7 +242,6 @@ class Hotel:
         If there are several with the same amount of matching features, return the one with the smallest room number.
         If there is no available rooms, return None
         """
-
 
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
@@ -291,7 +291,8 @@ if __name__ == '__main__':
     student1 = Student('ellina', 14.5, 12)
     student2 = Student("Mart", 19.9, 40)
     listt = [student1, student2]
-    print(get_top_student_with_credit_points(listt, 0))
+    # print(get_top_student_with_credit_points(listt, 0))
+    print(list_move(["a", "b", "c"], 3, 1))
     # hotel = Hotel()
     # room1 = Room(1, 100)
     # room1.add_feature("tv")
