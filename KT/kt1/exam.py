@@ -171,7 +171,14 @@ class FridgeItem:
 
         :return:
         """
-        pass
+        if self.days_till_expiration == 0:
+            return f'Name: {self.name}, type: {self.type}, expires today.'
+        elif self.days_till_expiration < 0:
+            return f"Name: {self.name}, type: {self.type}, expired {abs(self.days_till_expiration)}days ago."
+        elif self.days_till_expiration + 1 == 0:
+            return f"Name: {self.name}, type: {self.type}, expired 1 day ago."
+        else:
+            return f"Name: {self.name}, type: {self.type}, expires in {self.days_till_expiration} day."
 
 
 class Fridge:
@@ -235,7 +242,11 @@ class Fridge:
 
     def get_items_of_type(self, type: str) -> list:
         """Return list of items that are the given type (case-sensitive)."""
-        pass
+        res = []
+        for i in res:
+            if i.type == type:
+                res.append(i)
+        return res
 
     def get_items_with_name(self, name: str):
         """
@@ -245,7 +256,12 @@ class Fridge:
         Example:
         if the parameter name = "milk" then items with names "Milk" and "LIMK" will be returned.
         """
-        pass
+        res = []
+        string = name.lower()
+        for i in self.food_in_fridge:
+            if i.name.lower == string:
+                res.append(i)
+        return res
 
 
 if __name__ == '__main__':
