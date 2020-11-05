@@ -102,7 +102,7 @@ def create_student(name: str, grades: list, credit_points: int) -> Student:
         return Student(name, average, credit_points)
     else:
         average = round(sum(grades) / len(grades), 3)
-        student1 = Student(name, average, credit_points)
+        Student(name, average, credit_points)
     return student1
 
 
