@@ -39,10 +39,10 @@ def list_move(initial_list: list, amount: int, factor: int) -> list:
     list_move([], 3, 4) => [[], [], []]
     """
     counter = amount
-    res = []
+    res = [initial_list]
     while counter == 0:
-        listt = initial_list.insert(factor, initial_list.pop())
-        res.append(listt)
+        hhhh = initial_list.insert(factor, initial_list.pop())
+        res.append(hhhh)
         counter -= 1
     return res
 
