@@ -113,13 +113,13 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
     If there are no students with enough credit points, return None.
     If several students have the same average score, return the first.
     """
-    studentss = []
+    stud = []
     for student in students:
         if student.credit_points >= min_credit_points:
-            studentss.append(student)
-    if not studentss:
+            stud.append(student)
+    if not stud:
         return None
-    res = sorted(studentss, key=lambda x: -x.average_grade)
+    res = sorted(stud, key=lambda x: -x.average_grade)
     return res[0]
 
 
@@ -192,7 +192,7 @@ class Room:
         """
         if feature in self.features:
             return False
-        pass
+
 
     def get_features(self) -> list:
         """Return all the features of the room."""
@@ -240,15 +240,15 @@ class Hotel:
 
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
-        pass
+        return self.rooms
 
     def get_rooms(self) -> list:
         """Return all the rooms (both booked and available)."""
-        pass
+        return self.rooms
 
     def get_booked_rooms(self) -> list:
         """Return all the booked rooms."""
-        pass
+        return self.rooms
 
     def get_feature_profits(self) -> dict:
         """
