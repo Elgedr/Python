@@ -286,5 +286,5 @@ if __name__ == '__main__':
     # TODO: try to add a room so that two or more features have the same profit
 
 
-if __name__ == '__main__':
-    print(odd_sums_of_consecutive_elements([8, 10]))
+# if __name__ == '__main__':
+#     print(odd_sums_of_consecutive_elements([8, 10]))
