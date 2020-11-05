@@ -118,9 +118,9 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
         if student.credit_points >= min_credit_points:
             studentss.append(student)
         res = sorted(studentss, key=lambda x: x.average_grade)
-    if not res:
-        return None
-    return res
+        if not res:
+            return None
+        return res
 
 
 
