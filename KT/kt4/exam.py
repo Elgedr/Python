@@ -38,7 +38,13 @@ def list_move(initial_list: list, amount: int, factor: int) -> list:
     list_move([1, 2, 3], 4, 1) => [[1, 2, 3], [3, 1, 2], [2, 3, 1], [1, 2, 3]]
     list_move([], 3, 4) => [[], [], []]
     """
-    pass
+    counter = amount
+    res = []
+    while counter == 0:
+        listt = initial_list.insert(factor, initial_list.pop())
+        res.append(listt)
+        counter -= 1
+    return res
 
 
 def fizzbuzz_series_up(nr: int) -> list:
@@ -103,7 +109,6 @@ def create_student(name: str, grades: list, credit_points: int) -> Student:
     else:
         average = round(sum(grades) / len(grades), 3)
         return Student(name, average, credit_points)
-
 
 
 def get_top_student_with_credit_points(students: list, min_credit_points: int):
