@@ -106,7 +106,7 @@ def fizzbuzz_series_up(nr: int) -> list:
         else:
             res.append(i)
     for i in range(0, nr + 1):
-        while counter < nr:
+        while counter <= nr:
             ress.extend(res[:counter])
             counter += 1
     return ress
