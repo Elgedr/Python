@@ -94,6 +94,8 @@ def fizzbuzz_series_up(nr: int) -> list:
     if nr <= 0:
         return []
     res = []
+    ress = []
+    counter = 1
     for i in range(1, nr + 1):
         if i % 3 == 0 and i % 5 == 0:
             res.append("fizzbuzz")
@@ -103,7 +105,11 @@ def fizzbuzz_series_up(nr: int) -> list:
             res.append("fizz")
         else:
             res.append(i)
-    return res
+    for i in range(0, nr + 1):
+        while counter < nr:
+            ress.extend(res[:counter])
+            counter += 1
+    return ress
 
 
 class Student:
