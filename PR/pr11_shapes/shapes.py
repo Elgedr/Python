@@ -139,7 +139,7 @@ class Paint:
         """Return only circles."""
         res = []
         for i in self.shapes:
-            if "Circle" in i:
+            if i == "Circle":
                 res.append(i)
             else:
                 pass
