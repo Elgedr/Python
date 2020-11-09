@@ -172,5 +172,4 @@ if __name__ == '__main__':
     print(paint.add_shape(square))
     print(paint.get_shapes())
     print(paint.calculate_total_area())
-    print(paint.get_circles())
-    print(paint.get_squares())
+
