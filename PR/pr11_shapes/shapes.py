@@ -51,7 +51,7 @@ class Circle(Shape):
 
         Area of the circle is pi * r * r.
         """
-        res = 3,14 * self.radius * self.radius
+        res = float(3.14) * self.radius * self.radius
         return res
 
 
@@ -131,10 +131,8 @@ class Paint:
         """
         res = []
         for shape in self.shapes:
-            if shape == 'circle':
-                shape = Circle(shape)
-                shape.get_area()
-
+            res.append(shape.get_area())
+        return sum(res)
 
     def get_circles(self) -> list:
         """Return only circles."""
