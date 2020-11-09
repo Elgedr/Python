@@ -123,7 +123,7 @@ class Paint:
         """
         Return all the shapes.
         """
-        res = self.shapes[::-1]
+        res = self.shapes
         return res
 
     def calculate_total_area(self) -> float:
