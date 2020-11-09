@@ -120,16 +120,12 @@ class Paint:
         self.shapes.append(shape)
 
     def get_shapes(self) -> list:
-        """
-        Return all the shapes.
-        """
+        """Return all the shapes."""
         res = self.shapes
         return res
 
     def calculate_total_area(self) -> float:
-        """
-        Calculate total area of the shapes.
-        """
+        """Calculate total area of the shapes."""
         res = []
         for shape in self.shapes:
             res.append(shape.get_area())
@@ -172,4 +168,3 @@ if __name__ == '__main__':
     print(paint.add_shape(square))
     print(paint.get_shapes())
     print(paint.calculate_total_area())
-
