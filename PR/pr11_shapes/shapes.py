@@ -139,18 +139,17 @@ class Paint:
         """Return only circles."""
         res = []
         for i in self.shapes:
-            if i == "Circle":
+            if isinstance(i, Circle):
                 res.append(i)
-            else:
-                pass
         return res
 
     def get_squares(self) -> list:
         """Return only squares."""
         res = []
         for shape in self.shapes:
-            if shape == "square":
+            if isinstance(shape, Square):
                 res.append(shape)
+
         return res
 
     def get_rectangles(self) -> list:
@@ -158,7 +157,7 @@ class Paint:
         """Return only squares."""
         res = []
         for shape in self.shapes:
-            if shape == "rectangle":
+            if isinstance(shape, Rectangle):
                 res.append(shape)
         return res
 
@@ -170,7 +169,8 @@ if __name__ == '__main__':
     paint.add_shape(circle)
     paint.add_shape(square)
     print(paint.get_shapes())
-#     print(paint.add_shape(square))
-#     print(paint.get_shapes())
-#     # print(paint.calculate_total_area())
-#     print(paint.get_circles())
+    print(paint.add_shape(square))
+    print(paint.get_shapes())
+    print(paint.calculate_total_area())
+    print(paint.get_circles())
+    print(paint.get_squares())
