@@ -123,7 +123,8 @@ class Paint:
         """
         Return all the shapes.
         """
-        return self.shapes
+        res = self.shapes[::-1]
+        return res
 
     def calculate_total_area(self) -> float:
         """
@@ -137,9 +138,11 @@ class Paint:
     def get_circles(self) -> list:
         """Return only circles."""
         res = []
-        for shape in self.shapes:
-            if shape == "circle":
-                res.append(shape)
+        for i in self.shapes:
+            if "Circle" in i:
+                res.append(i)
+            else:
+                pass
         return res
 
     def get_squares(self) -> list:
@@ -166,5 +169,8 @@ if __name__ == '__main__':
     square = Square("red", 11)
     paint.add_shape(circle)
     paint.add_shape(square)
-    print(paint.calculate_total_area())
-    print(paint.get_circles())
+    print(paint.get_shapes())
+#     print(paint.add_shape(square))
+#     print(paint.get_shapes())
+#     # print(paint.calculate_total_area())
+#     print(paint.get_circles())
