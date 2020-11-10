@@ -27,8 +27,8 @@ class Person:
         """
         self.first_name = first_name
         self.last_name = last_name
-        self._age = age
-        self._bank_account = None
+        self.age = age
+        self.bank_account = None
 
     @property
     def full_name(self) -> str:
@@ -38,7 +38,7 @@ class Person:
     @property
     def age(self) -> int:
         """Get person's age."""
-        return self._age
+        return self.age
 
     @age.setter
     def age(self, value: int):
@@ -46,7 +46,7 @@ class Person:
         if value <= 0:
             raise PersonError
         else:
-            self._age = value
+            self.age = value
 
     def __repr__(self) -> str:
         """
@@ -92,7 +92,7 @@ class Bank:
         """
         if person in self._customers:
             self._customers.remove(person)
-            person._bank_account = None
+            person.bank_account = None
             return True
         return False
 
