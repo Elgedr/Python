@@ -1,5 +1,5 @@
-"""Tester."""
-
-import pytest
-
-from bank import
+# """Tester."""
+#
+# import pytest
+#
+# from bank import
