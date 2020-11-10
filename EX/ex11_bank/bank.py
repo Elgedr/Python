@@ -25,20 +25,20 @@ class Person:
         :param last_name: last name
         :param age: age, must be greater than 0
         """
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
-        self.bank_account = None
+        self._first_name = first_name
+        self._last_name = last_name
+        self._age = age
+        self._bank_account = None
 
     @property
     def full_name(self) -> str:
         """Get person's full name. Combination of first and last name."""
-        return f"{self.first_name} {self.last_name}"
+        return f"{self._first_name} {self._last_name}"
 
     @property
     def age(self) -> int:
         """Get person's age."""
-        return self.age
+        return self._age
 
     @age.setter
     def age(self, value: int):
@@ -46,7 +46,7 @@ class Person:
         if value <= 0:
             raise PersonError
         else:
-            self.age = value
+            self._age = value
 
     def __repr__(self) -> str:
         """
@@ -66,9 +66,9 @@ class Bank:
 
         :param name: name of the bank
         """
-        self.name = name
-        self.customers = []
-        self.transactions = []
+        self._name = name
+        self._customers = []
+        self._transactions = []
 
     def add_customer(self, person: Person) -> bool:
         """
@@ -77,8 +77,8 @@ class Bank:
         :param person: person object
         :return: was customer successfully added
         """
-        if person not in self.customers:
-            self.customers.append(person)
+        if person not in self._customers:
+            self._customers.append(person)
             return True
         return False
     # todo  fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -90,9 +90,9 @@ class Bank:
         :param person: person object
         :return: was customer successfully removed
         """
-        if person in self.customers:
-            self.customers.remove(person)
-            person.bank_account = None
+        if person in self._customers:
+            self._customers.remove(person)
+            person._bank_account = None
             return True
         return False
 
@@ -102,7 +102,7 @@ class Bank:
 
         :return: name of the bank
         """
-        return self.name
+        return self._name
 
 
 class Transaction:
@@ -119,11 +119,11 @@ class Transaction:
         :param receiver_account: receiver's object
         :param is_from_atm: is transaction from atm
         """
-        self.amount = amount
-        self.date = date
-        self.sender_account = sender_account
-        self.receiver_account = receiver_account
-        self.is_from_atm = is_from_atm
+        self._amount = amount
+        self._date = date
+        self._sender_account = sender_account
+        self._receiver_account = receiver_account
+        self._is_from_atm = is_from_atm
 
     def __repr__(self) -> str:
         """
@@ -131,10 +131,10 @@ class Transaction:
 
         :rtype: object's values displayed in a nice format
         """
-        if self.is_from_atm is True:
-            return f"([{self.amount}] €) ATM"
+        if self._is_from_atm is True:
+            return f"([{self._amount}] €) ATM"
         else:
-            return f"([{self.amount}] €) [{self.sender_account.person.full_name}] -> [{self.receiver_account.person.full_name}]"
+            return f"([{self._amount}] €) [{self._sender_account._person.full_name}] -> [{self._receiver_account._person.full_name}]"
 
 
 class Account:
@@ -148,10 +148,10 @@ class Account:
         :param person: person object
         :param bank: bank object
         """
-        self.balance = balance
-        self.person = person
-        self.bank = bank
-        self.transactions = []
+        # self.balance = balance
+        self._person = person
+        self._bank = bank
+        self._transactions = []
 
     @property
     def balance(self) -> float:
