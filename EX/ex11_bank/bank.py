@@ -25,15 +25,15 @@ class Person:
         :param last_name: last name
         :param age: age, must be greater than 0
         """
-        self._first_name = first_name
-        self._last_name = last_name
+        self.first_name = first_name
+        self.last_name = last_name
         self._age = age
         self._bank_account = None
 
     @property
     def full_name(self) -> str:
         """Get person's full name. Combination of first and last name."""
-        return f"{self._first_name} {self._last_name}"
+        return f"{self.first_name} {self.last_name}"
 
     @property
     def age(self) -> int:
