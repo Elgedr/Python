@@ -120,11 +120,11 @@ class Transaction:
         :param receiver_account: receiver's object
         :param is_from_atm: is transaction from atm
         """
-        self._amount = amount
-        self._date = date
-        self._sender_account = sender_account
-        self._receiver_account = receiver_account
-        self._is_from_atm = is_from_atm
+        self.amount = amount
+        self.date = date
+        self.sender_account = sender_account
+        self.receiver_account = receiver_account
+        self.is_from_atm = is_from_atm
 
     def __repr__(self) -> str:
         """
@@ -132,10 +132,10 @@ class Transaction:
 
         :rtype: object's values displayed in a nice format
         """
-        if self._is_from_atm is True:
-            return f"([{self._amount}] €) ATM"
+        if self.is_from_atm is True:
+            return f"([{self.amount}] €) ATM"
         else:
-            return f"([{self._amount}] €) [{self._sender_account.person.full_name}] -> [{self._receiver_account.person.full_name}]"
+            return f"([{self.amount}] €) [{self.sender_account.person.full_name}] -> [{self.receiver_account.person.full_name}]"
 
 
 class Account:
