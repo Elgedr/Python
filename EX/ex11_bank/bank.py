@@ -149,7 +149,7 @@ class Account:
         :param person: person object
         :param bank: bank object
         """
-        # self.balance = balance
+        self._balance = balance
         self.person = person
         self.bank = bank
         self.transactions = []
@@ -157,7 +157,7 @@ class Account:
     @property
     def balance(self) -> float:
         """Get account's balance."""
-        return
+        return self._balance
 
     def deposit(self, amount: float, is_from_atm: bool = True):
         """Deposit money to account."""
