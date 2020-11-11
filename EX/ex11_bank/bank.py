@@ -133,9 +133,9 @@ class Transaction:
         :rtype: object's values displayed in a nice format
         """
         if self.is_from_atm is True:
-            return f"([{self.amount}] €) ATM"
+            return f"({self.amount} €) ATM"
         else:
-            return f"([{self.amount}] €) [{self.sender_account.person.full_name}] -> [{self.receiver_account.person.full_name}]"
+            return f"({self.amount} €) {self.sender_account.person.full_name} -> {self.receiver_account.person.full_name}"
 
 
 class Account:
