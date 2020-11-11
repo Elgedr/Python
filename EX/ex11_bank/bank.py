@@ -43,10 +43,10 @@ class Person:
     @age.setter
     def age(self, value: int):
         """Set person's age. Must be greater than 0."""
-        if value <= 0:
-            raise PersonError
-        else:
+        if value > 0:
             self._age = value
+        else:
+            raise PersonError
 
     def __repr__(self) -> str:
         """
@@ -215,3 +215,4 @@ class Account:
 
 if __name__ == '__main__':
     person1 = Person("Ellina", "Gedrojets", 10)
+    person1.age = -10
