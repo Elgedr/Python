@@ -79,9 +79,10 @@ class Bank:
         """
         if person not in self.customers:
             self.customers.append(person)
+            person.bank_account = 0
             return True
         return False
-    # todo  fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    # todo  ffff
 
     def remove_customer(self, person: Person) -> bool:
         """
