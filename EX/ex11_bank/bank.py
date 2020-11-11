@@ -79,7 +79,8 @@ class Bank:
         """
         if person not in self.customers:
             self.customers.append(person)
-            person.bank_account = 0
+            account = Account(0, person, self)
+            person.bank_account = account
             return True
         return False
     # todo  ffff
