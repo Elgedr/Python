@@ -78,12 +78,11 @@ class Bank:
         :return: was customer successfully added
         """
         if person not in self.customers:
-            self.customers.append(person)
             account = Account(0, person, self)
             person.bank_account = account
+            self.customers.append(person)
             return True
         return False
-    # todo  ffff
 
     def remove_customer(self, person: Person) -> bool:
         """
@@ -136,7 +135,7 @@ class Transaction:
         if self._is_from_atm is True:
             return f"([{self._amount}] €) ATM"
         else:
-            return f"([{self._amount}] €) [{self._sender_account._person.full_name}] -> [{self._receiver_account._person.full_name}]"
+            return f"([{self._amount}] €) [{self._sender_account.person.full_name}] -> [{self._receiver_account.person.full_name}]"
 
 
 class Account:
@@ -151,9 +150,9 @@ class Account:
         :param bank: bank object
         """
         # self.balance = balance
-        self._person = person
-        self._bank = bank
-        self._transactions = []
+        self.person = person
+        self.bank = bank
+        self.transactions = []
 
     @property
     def balance(self) -> float:
