@@ -27,7 +27,7 @@ class Person:
         """
         self.first_name = first_name
         self.last_name = last_name
-        self.age = age
+        self._age = age
         self.bank_account = None
 
     @property
@@ -38,7 +38,7 @@ class Person:
     @property
     def age(self) -> int:
         """Get person's age."""
-        return self.age
+        return self._age
 
     @age.setter
     def age(self, value: int):
@@ -46,7 +46,7 @@ class Person:
         if value <= 0:
             raise PersonError
         else:
-            self.age = value
+            self._age = value
 
     def __repr__(self) -> str:
         """
@@ -211,3 +211,7 @@ class Account:
         :return: account number
         """
         pass
+
+
+if __name__ == '__main__':
+    person1 = Person("Ellina", "Gedrojets", 10)

@@ -137,17 +137,17 @@ if __name__ == '__main__':
     t.color("#96004f")
     t.pensize(2)
     t.left(90)
-    # draw_dragon('FRaLRbFFLLRLLFF', 60)
-    tree(200)
+    draw_dragon('FRaLRbFFLLRLLFF', 60)
+    # tree(200)
     #
     # '''
-    # s = curve("Fa", 8)
-    # s = format_curve(s)
-    # l = get_line_length(100, 8)
-    # draw_dragon(s, l)
-    # '''
-    # save(t)
-    # print(apply_dragon_rules('FRLRFFLLRLLFF'))  # FRaRbFRFRLFaLb
-    # print(curve("Fa", 2))  # "FaRbFRRLFaLbFR"
-    # print(format_curve("FaRbFRRLFaLbFR, 300"))
+    s = curve("Fa", 8)
+    s = format_curve(s)
+    l = get_line_length(100, 8)
+    draw_dragon(s, l)
+
+    save(t)
+    print(apply_dragon_rules('FRLRFFLLRLLFF'))  # FRaRbFRFRLFaLb
+    print(curve("Fa", 2))  # "FaRbFRRLFaLbFR"
+    print(format_curve("FaRbFRRLFaLbFR", 300))
 
