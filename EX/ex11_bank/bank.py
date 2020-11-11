@@ -66,9 +66,9 @@ class Bank:
 
         :param name: name of the bank
         """
-        self._name = name
-        self._customers = []
-        self._transactions = []
+        self.name = name
+        self.customers = []
+        self.transactions = []
 
     def add_customer(self, person: Person) -> bool:
         """
@@ -77,8 +77,8 @@ class Bank:
         :param person: person object
         :return: was customer successfully added
         """
-        if person not in self._customers:
-            self._customers.append(person)
+        if person not in self.customers:
+            self.customers.append(person)
             return True
         return False
     # todo  fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -90,8 +90,8 @@ class Bank:
         :param person: person object
         :return: was customer successfully removed
         """
-        if person in self._customers:
-            self._customers.remove(person)
+        if person in self.customers:
+            self.customers.remove(person)
             person.bank_account = None
             return True
         return False
@@ -102,7 +102,7 @@ class Bank:
 
         :return: name of the bank
         """
-        return self._name
+        return self.name
 
 
 class Transaction:
