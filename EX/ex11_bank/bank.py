@@ -6,11 +6,13 @@ import string
 
 class PersonError(Exception):
     """Person error."""
+
     pass
 
 
 class TransactionError(Exception):
     """Transaction error."""
+
     pass
 
 
@@ -235,6 +237,7 @@ class Account:
         return self.number
 
     def rando(self):
+        """Generate bank number."""
         res = "EE"
         for i in range(18):
             res += str(random.randint(0, 9))
@@ -245,5 +248,7 @@ if __name__ == '__main__':
     person1 = Person("Ellina", "Gedrojets", 10)
     bank = Bank('Seb')
     account = Account(10, person1, bank)
-    print(account.deposit(2))
-    print(account.balance)
+    # print(account.deposit(2))
+    # print(account.balance)
+    # print(account.withdraw(5))
+    # print(account.balance)
