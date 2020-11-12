@@ -34,7 +34,7 @@ class Person:
         """Funct."""
         if age <= 0:
             raise PersonError
-        self._age = age
+        return age
 
     @property
     def full_name(self) -> str:
@@ -242,4 +242,4 @@ class Account:
 
 
 if __name__ == '__main__':
-    person1 = Person("Ellina", "Gedrojets", -10)
+    person1 = Person("Ellina", "Gedrojets", 10)
