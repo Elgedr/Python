@@ -226,7 +226,7 @@ class Account:
 
         :return: account number
         """
-        pass
+        return self.number
 
     def rando(self):
         res = "EE"
