@@ -171,7 +171,7 @@ class Account:
         if amount <= 0:
             raise TransactionError
         elif is_from_atm:
-            self._balance += self._balance + amount
+            self._balance += amount
             transaction1 = Transaction(amount, datetime.date.today(), self, self, True)
             self.transactions.append(transaction1)
             self.bank.transactions.append(transaction1)
@@ -243,3 +243,7 @@ class Account:
 
 if __name__ == '__main__':
     person1 = Person("Ellina", "Gedrojets", 10)
+    bank = Bank('Seb')
+    account = Account(10, person1, bank)
+    print(account.deposit(2))
+    print(account.balance)
