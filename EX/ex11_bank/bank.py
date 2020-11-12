@@ -153,6 +153,7 @@ class Account:
         self.person = person
         self.bank = bank
         self.transactions = []
+        self.number = self.rando()
 
     @property
     def balance(self) -> float:
@@ -161,11 +162,25 @@ class Account:
 
     def deposit(self, amount: float, is_from_atm: bool = True):
         """Deposit money to account."""
-        pass
+        if amount <= 0:
+            raise TransactionError
+        elif is_from_atm:
+            self._balance += self._balance + amount
+            transaction1 = Transaction(amount, datetime.date.today(), self, self, True)
+            self.transactions.append(transaction1)
+            self.bank.transactions.append(transaction1)
 
     def withdraw(self, amount: float, is_from_atm: bool = True):
         """Withdraw money from account."""
-        pass
+        if amount <= 0:
+            raise TransactionError
+        elif amount > self._balance:
+            raise TransactionError
+        elif is_from_atm:
+            transact2 = Transaction(-amount, datetime.date.today(), self, self, True)
+            self.transactions.append(transact2)
+            self.bank.transactions.append(transact2)
+            self._balance -= amount
 
     def transfer(self, amount: float, receiver_account: 'Account'):
         """Transfer money from one account to another."""
@@ -212,6 +227,12 @@ class Account:
         :return: account number
         """
         pass
+
+    def rando(self):
+        res = "EE"
+        for i in range(18):
+            res += str(random.randint(0, 9))
+        return res
 
 
 if __name__ == '__main__':
