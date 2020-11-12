@@ -27,8 +27,13 @@ class Person:
         """
         self.first_name = first_name
         self.last_name = last_name
-        self._age = age
+        self._age = self.age_control(age)
         self.bank_account = None
+
+    def age_control(self, age):
+        """Funct."""
+        if age <= 0:
+            raise PersonError
 
     @property
     def full_name(self) -> str:
