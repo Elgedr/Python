@@ -86,8 +86,8 @@ class Bank:
         :return: was customer successfully added
         """
         if person not in self.customers:
-            account1 = Account(0, person, self)
-            person.bank_account = account1
+            account = Account(0, person, self)
+            person.bank_account = account
             self.customers.append(person)
             return True
         return False
@@ -269,7 +269,7 @@ if __name__ == '__main__':
     person1 = Person("Ellina", "Gedrojets", 10)
     bank = Bank('Seb')
     account = Account(10, person1, bank)
-    # print(account.deposit(2))
-    # print(account.balance)
-    # print(account.withdraw(5))
-    # print(account.balance)
+    print(account.deposit(2))
+    print(account.balance)
+    print(account.withdraw(5))
+    print(account.balance)
