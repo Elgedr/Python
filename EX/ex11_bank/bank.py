@@ -86,8 +86,8 @@ class Bank:
         :return: was customer successfully added
         """
         if person not in self.customers:
-            account = Account(0, person, self)
-            person.bank_account = account
+            account1 = Account(0, person, self)
+            person.bank_account = account1
             self.customers.append(person)
             return True
         return False
@@ -192,7 +192,28 @@ class Account:
 
     def transfer(self, amount: float, receiver_account: 'Account'):
         """Transfer money from one account to another."""
-        pass
+        if receiver_account.bank != self.bank:
+            if self._balance < 5 and receiver_account == self:
+                raise TransactionError
+            elif amount >= 0:
+                self._balance -= 5
+                self.withdraw(amount, True)
+                receiver_account.deposit(amount, True)
+                transact2 = Transaction(amount, datetime.date.today(), self, receiver_account, True)
+                self.transactions.append(transact2)
+                receiver_account.transactions.append(transact2)
+                self.bank.transactions.append(transact2)
+                receiver_account.bank.transactions.append(transact2)
+        if receiver_account.bank == self.bank:
+            if receiver_account == self:
+                raise TransactionError
+            elif amount > 0:
+                receiver_account.deposit(amount, True)
+                self.withdraw(amount, True)
+                transact3 = Transaction(amount, datetime.date.today(), self, receiver_account, True)
+                self.transactions.append(transact3)
+                receiver_account.transactions.append(transact3)
+                self.bank.transactions.append(transact3)
 
     def account_statement(self, from_date: datetime.date, to_date: datetime.date) -> list:
         """All transactions in given period."""
