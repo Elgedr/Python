@@ -1,7 +1,6 @@
 """Bank."""
 import datetime
 import random
-import string
 
 
 class PersonError(Exception):
@@ -217,7 +216,11 @@ class Account:
 
     def account_statement(self, from_date: datetime.date, to_date: datetime.date) -> list:
         """All transactions in given period."""
-        pass
+        res = []
+        for transaction in self.transactions:
+            if from_date <= transaction.date <= to_date:
+                res.append(transaction)
+        return res
 
     def get_debit_turnover(self, from_date: datetime.date, to_date: datetime.date) -> float:
         """
@@ -227,7 +230,12 @@ class Account:
         :param to_date: to date object (included)
         :return: debit turnover number
         """
-        pass
+        amount = 0
+        for trans in self.transactions:
+            if from_date <= trans.date <= to_date and trans.receiver_account == self:
+                if trans.amount > 0:
+                    amount += trans.amount
+        return amount
 
     def get_credit_turnover(self, from_date: datetime.date, to_date: datetime.date) -> float:
         """
@@ -237,7 +245,12 @@ class Account:
         :param to_date: to date object (included)
         :return: credit turnover number
         """
-        pass
+        amount = 0
+        for trans in self.transactions:
+            if from_date <= trans.date <= to_date and trans.receiver_account != self:
+                if trans.amount < 0:
+                    amount += abs(trans.amount)
+        return -amount
 
     def get_net_turnover(self, from_date: datetime.date, to_date: datetime.date) -> float:
         """
@@ -247,7 +260,10 @@ class Account:
         :param to_date: to date object (included)
         :return: net turnover number
         """
-        pass
+        a = self.get_credit_turnover(from_date, to_date)
+        b = self.get_debit_turnover(from_date, to_date)
+        res = a + b
+        return res
 
     def __repr__(self) -> str:
         """
