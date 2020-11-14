@@ -90,6 +90,17 @@ def create_movie(name_with_year: str, genre1: str, genre2: str):
     Remove trailing space from name.
     "film (1999)" => should give "film" 1999
     """
+    if len(name_with_year) <= 6:
+        return None
+    name = name_with_year.split(' (')[0]
+    year = name_with_year.split(' (')[1]
+    yearr = int(year[:-1])
+    if 2020 < yearr < 1900:
+        return None
+    else:
+        film = Movie(name, yearr, [genre1, genre2])
+    return film
+
 
 
 def get_ordered_movies(movies: list) -> list:
