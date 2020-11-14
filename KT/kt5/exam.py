@@ -45,8 +45,6 @@ def divisible_numbers(nums: list):
     return res
 
 
-
-
 def min_max_diff(nums):
     """
     Find the diff between the smallest and the biggest diff between two integer numbers in the list.
@@ -92,7 +90,6 @@ def create_movie(name_with_year: str, genre1: str, genre2: str):
     Remove trailing space from name.
     "film (1999)" => should give "film" 1999
     """
-    pass
 
 
 def get_ordered_movies(movies: list) -> list:
@@ -101,7 +98,8 @@ def get_ordered_movies(movies: list) -> list:
 
     If both year and count of genres are the same, keep the original order.
     """
-    pass
+    res = sorted(movies, key=lambda x: (-x.year, x.genres))
+    return res
 
 
 def add_genres(movies: list, genres: list) -> None:
@@ -270,4 +268,4 @@ class Hospital:
 
 if __name__ == '__main__':
     print(min_max_diff([1, 9, 19]))
-    print(divisible_numbers([1, 2, 3]))
+    print(divisible_numbers([1, 2, 4, 8, 16]))
