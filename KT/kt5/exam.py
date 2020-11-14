@@ -108,7 +108,10 @@ def add_genres(movies: list, genres: list) -> None:
 
     A genre is added if it does not already exist.
     """
-    pass
+    for i in movies:
+        for genre in genres:
+            if genre not in i.genres:
+                i.genres.append(genre)
 
 
 def remove_movies_by_genre(movies: list, genre: str) -> list:
