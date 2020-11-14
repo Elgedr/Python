@@ -17,7 +17,12 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     take_partial("abcdef", 0, 1) => "abcdef"
     take_partial("abcdef", 1, 0) => ""
     """
-    pass
+    if take_count == 0:
+        return ''
+    if leave_count == 0 and take_count == 1:
+        return text
+    # else:
+    #     while
 
 
 def divisible_numbers(nums: list):
@@ -157,6 +162,7 @@ class Patient:
         """Constructor."""
         self.name = name
         self.diseases = []
+        self.coast = 0
 
     def get_diseases(self):
         """Return diseases list."""
