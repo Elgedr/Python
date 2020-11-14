@@ -36,7 +36,14 @@ def divisible_numbers(nums: list):
     :param nums:
     :return:
     """
-    pass
+    res = {}
+    for num in nums:
+        for i in range(len(nums)):
+            if nums[i] % num == 0:
+                res[num] = [nums[i]]
+    return res
+
+
 
 
 def min_max_diff(nums):
@@ -262,3 +269,4 @@ class Hospital:
 
 if __name__ == '__main__':
     print(min_max_diff([1, 9, 19]))
+    print(divisible_numbers([1, 2, 3]))
