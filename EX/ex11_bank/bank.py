@@ -191,25 +191,26 @@ class Account:
 
     def transfer(self, amount: float, receiver_account: 'Account'):
         """Transfer money from one account to another."""
+
         if receiver_account.bank != self.bank:
-            if self._balance < 5 and receiver_account == self:
+            if self._balance < 5 + amount or receiver_account == self:
                 raise TransactionError
-            elif amount >= 0:
+            elif amount > 0:
                 self._balance -= 5
-                self.withdraw(amount, True)
-                receiver_account.deposit(amount, True)
-                transact2 = Transaction(amount, datetime.date.today(), self, receiver_account, True)
+                self.withdraw(amount, False)
+                receiver_account.deposit(amount, False)
+                transact2 = Transaction(amount, datetime.date.today(), self, receiver_account, False)
                 self.transactions.append(transact2)
                 receiver_account.transactions.append(transact2)
                 self.bank.transactions.append(transact2)
                 receiver_account.bank.transactions.append(transact2)
         if receiver_account.bank == self.bank:
-            if receiver_account == self:
+            if receiver_account == self or self._balance < amount:
                 raise TransactionError
             elif amount > 0:
-                receiver_account.deposit(amount, True)
-                self.withdraw(amount, True)
-                transact3 = Transaction(amount, datetime.date.today(), self, receiver_account, True)
+                receiver_account.deposit(amount, False)
+                self.withdraw(amount, False)
+                transact3 = Transaction(amount, datetime.date.today(), self, receiver_account, False)
                 self.transactions.append(transact3)
                 receiver_account.transactions.append(transact3)
                 self.bank.transactions.append(transact3)
