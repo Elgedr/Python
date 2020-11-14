@@ -196,7 +196,8 @@ class Account:
             if self._balance < 5 + amount or receiver_account == self:
                 raise TransactionError
             elif amount > 0:
-                self.withdraw(amount + 5, False)
+                self.withdraw(5, False)
+                self.withdraw(amount, False)
                 receiver_account.deposit(amount, False)
                 transact2 = Transaction(amount, datetime.date.today(), self, receiver_account, False)
                 self.transactions.append(transact2)
