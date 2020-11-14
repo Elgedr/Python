@@ -38,9 +38,10 @@ def divisible_numbers(nums: list):
     """
     res = {}
     for num in nums:
+        res[num] = []
         for i in range(len(nums)):
             if nums[i] % num == 0:
-                res[num] = [nums[i]]
+                res[num].append(nums[i])
     return res
 
 
