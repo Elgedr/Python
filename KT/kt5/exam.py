@@ -121,7 +121,11 @@ def remove_movies_by_genre(movies: list, genre: str) -> list:
     The order of movies should remain the same.
     The original movies list should remain unchanged.
     """
-    pass
+    new = movies
+    for movie in new:
+        if genre in movie.genres:
+            new.remove(movie)
+    return new
 
 
 class Disease:
