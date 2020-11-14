@@ -215,8 +215,13 @@ class Hospital:
         if len(patient.diseases) == 0:
             self.cure_patients.append(patient)
             return False
+        if len(self.active_patients) >= self.max_patients:
+            return False
         if patient in self.active_patients:
             return False
+        else:
+            self.active_patients.append(patient)
+            return True
 
     def get_active_patients(self):
         """Return the list of active patients in the order of adding."""
