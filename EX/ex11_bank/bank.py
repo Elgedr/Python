@@ -176,6 +176,8 @@ class Account:
             transaction1 = Transaction(amount, datetime.date.today(), self, self, True)
             self.transactions.append(transaction1)
             self.bank.transactions.append(transaction1)
+        else:
+            self._balance += amount
 
     def withdraw(self, amount: float, is_from_atm: bool = True):
         """Withdraw money from account."""
@@ -188,6 +190,8 @@ class Account:
             self.transactions.append(transact2)
             self.bank.transactions.append(transact2)
             self._balance -= amount
+        else:
+            self._balance -= amount
 
     def transfer(self, amount: float, receiver_account: 'Account'):
         """Transfer money from one account to another."""
@@ -195,7 +199,7 @@ class Account:
         if receiver_account.bank != self.bank:
             if self._balance < 5 + amount or receiver_account == self:
                 raise TransactionError
-            elif amount > 0:
+            if amount > 0:
                 self.withdraw(5, False)
                 self.withdraw(amount, False)
                 receiver_account.deposit(amount, False)
