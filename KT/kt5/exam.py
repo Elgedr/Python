@@ -102,7 +102,6 @@ def create_movie(name_with_year: str, genre1: str, genre2: str):
     return film
 
 
-
 def get_ordered_movies(movies: list) -> list:
     """
     Return sorted movies by year (desc, newer first) and count of genres (asc).
@@ -144,11 +143,11 @@ class Disease:
 
     def __init__(self, name):
         """Constructor."""
-        pass
+        self.name = name
 
     def get_name(self):
         """Return name."""
-        pass
+        return self.name
 
 
 class Patient:
@@ -156,15 +155,16 @@ class Patient:
 
     def __init__(self, name):
         """Constructor."""
-        pass
+        self.name = name
+        self.diseases = []
 
     def get_diseases(self):
         """Return diseases list."""
-        pass
+        return self.diseases
 
     def get_name(self):
         """Return patient name."""
-        pass
+        return self.name
 
     def add_disease(self, disease: Disease) -> bool:
         """
@@ -173,7 +173,10 @@ class Patient:
         If the patient already has the disease with the same name, return False.
         Otherwise add the disease to the patient and return True.
         """
-        pass
+        if disease not in self.diseases:
+            self.diseases.append(disease)
+            return True
+        return False
 
 
 class Hospital:
@@ -187,7 +190,9 @@ class Hospital:
         the hospital can hold.
         This value is guaranteed to be non-negative.
         """
-        pass
+        self.max_patients = max_patients
+        self.active_patients = []
+        self.cure_patients = []
 
     def add_patient(self, patient: Patient) -> bool:
         """
@@ -207,11 +212,15 @@ class Hospital:
 
         For simplicity the patient who has been cured will not return to the hospital.
         """
-        pass
+        if len(patient.diseases) == 0:
+            self.cure_patients.append(patient)
+            return False
+        if patient in self.active_patients:
+            return False
 
     def get_active_patients(self):
         """Return the list of active patients in the order of adding."""
-        pass
+        return self.active_patients
 
     def cure(self, disease: Disease, amount: int, cost: int):
         """
@@ -261,7 +270,7 @@ class Hospital:
 
         There is no limit how many patients can be in this list.
         """
-        pass
+        return self.cure_patients
 
     def get_cost_by_patient(self) -> dict:
         """
