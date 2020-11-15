@@ -196,7 +196,7 @@ class Account:
     def transfer(self, amount: float, receiver_account: 'Account'):
         """Transfer money from one account to another."""
         if receiver_account.bank != self.bank:
-            if self._balance < 5 or receiver_account == self:
+            if self._balance < (5 + amount) or receiver_account == self:
                 raise TransactionError
             if amount > 0:
                 self.withdraw(5, False)
