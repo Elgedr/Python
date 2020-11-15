@@ -252,9 +252,8 @@ class Account:
         """
         amount = 0
         for trans in self.transactions:
-            if from_date <= trans.date <= to_date and trans.receiver_account != self:
-                if trans.amount < 0:
-                    amount += abs(trans.amount)
+            if from_date <= trans.date <= to_date and (trans.receiver_account != self or trans.amount < 0):
+                amount += abs(trans.amount)
         return -amount
 
     def get_net_turnover(self, from_date: datetime.date, to_date: datetime.date) -> float:
