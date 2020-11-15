@@ -285,12 +285,12 @@ class Account:
             res += str(random.randint(0, 9))
         return res
 
-
-if __name__ == '__main__':
-    person1 = Person("Ellina", "Gedrojets", 10)
-    bank = Bank('Seb')
-    account = Account(10, person1, bank)
-    print(account.deposit(2))
-    print(account.balance)
-    print(account.withdraw(5))
-    print(account.balance)
+#
+# if __name__ == '__main__':
+#     person1 = Person("Ellina", "Gedrojets", 10)
+#     bank = Bank('Seb')
+#     account = Account(10, person1, bank)
+#     print(account.deposit(2))
+#     print(account.balance)
+#     print(account.withdraw(5))
+#     print(account.balance)
