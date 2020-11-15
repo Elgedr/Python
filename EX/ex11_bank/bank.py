@@ -170,7 +170,7 @@ class Account:
     def deposit(self, amount: float, is_from_atm: bool = True):
         """Deposit money to account."""
         if amount <= 0:
-            raise TransactionError
+            raise TransactionError()
         elif is_from_atm:
             self._balance += amount
             transaction1 = Transaction(amount, datetime.date.today(), self, self, True)
@@ -182,9 +182,9 @@ class Account:
     def withdraw(self, amount: float, is_from_atm: bool = True):
         """Withdraw money from account."""
         if amount <= 0:
-            raise TransactionError
-        elif amount > self._balance:
-            raise TransactionError
+            raise TransactionError()
+        elif amount > self.balance:
+            raise TransactionError()
         elif is_from_atm:
             transact2 = Transaction(-amount, datetime.date.today(), self, self, True)
             self.transactions.append(transact2)
@@ -196,8 +196,8 @@ class Account:
     def transfer(self, amount: float, receiver_account: 'Account'):
         """Transfer money from one account to another."""
         if receiver_account.bank != self.bank:
-            if self._balance < (5 + amount) or receiver_account == self:
-                raise TransactionError
+            if self.balance < (5 + amount) or receiver_account == self:
+                raise TransactionError()
             if amount > 0:
                 self.withdraw(5, False)
                 self.withdraw(amount, False)
@@ -208,8 +208,8 @@ class Account:
                 self.bank.transactions.append(transact2)
                 receiver_account.bank.transactions.append(transact2)
         if receiver_account.bank == self.bank:
-            if receiver_account == self or self._balance < amount:
-                raise TransactionError
+            if receiver_account == self or self.balance < amount:
+                raise TransactionError()
             elif amount > 0:
                 receiver_account.deposit(amount, False)
                 self.withdraw(amount, False)
