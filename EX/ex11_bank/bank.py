@@ -195,12 +195,12 @@ class Account:
 
     def transfer(self, amount: float, receiver_account: 'Account'):
         """Transfer money from one account to another."""
-        if amount < 0:
+        if amount <= 0:
             raise TransactionError
         if receiver_account.bank != self.bank:
             if self.balance < (amount + 5) or receiver_account == self:
                 raise TransactionError()
-            if amount > 0:
+            else:
                 self.withdraw(5, False)
                 self.withdraw(amount, False)
                 receiver_account.deposit(amount, False)
@@ -212,7 +212,7 @@ class Account:
         if receiver_account.bank == self.bank:
             if receiver_account == self or amount > self.balance:
                 raise TransactionError()
-            elif amount > 0:
+            else:
                 receiver_account.deposit(amount, False)
                 self.withdraw(amount, False)
                 transact3 = Transaction(amount, datetime.date.today(), self, receiver_account, False)
