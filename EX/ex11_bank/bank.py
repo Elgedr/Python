@@ -208,7 +208,7 @@ class Account:
                 self.bank.transactions.append(transact2)
                 receiver_account.bank.transactions.append(transact2)
         if receiver_account.bank == self.bank:
-            if receiver_account == self or self.balance < amount:
+            if receiver_account == self or amount > self.balance:
                 raise TransactionError()
             elif amount > 0:
                 receiver_account.deposit(amount, False)
