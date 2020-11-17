@@ -1,7 +1,6 @@
 """A small exercise in zookeeping."""
 import math
 from functools import reduce
-from operator import itemgetter
 
 
 class Animal:
@@ -71,7 +70,8 @@ def sort_alphabetically_by_scientific_name(animal_list: list) -> list:
     :param animal_list: input list
     :return: sorted list of animals
     """
-    pass
+    res = sorted(animal_list, key=lambda x: x.scientific_name)
+    return res
 
 
 def find_animals_whose_height_is_less_than(animal_list: list, height_limit: int) -> list:
@@ -96,7 +96,9 @@ def filter_animals_based_on_diet(animal_list: list, diet: str) -> list:
     :param diet: the type of diet we are looking for
     :return: list of animals who eat this type of food
     """
-    pass
+    # a = list(map(lambda x: x if x.diet == diet else None, animal_list))  # returns [African bush elephant, Little red flying-fox, Giraffe, None, None]
+    b = list(filter(lambda x: x.diet == diet, animal_list))
+    return b
 
 
 def find_animal_with_longest_lifespan(animal_list: list) -> Animal:
