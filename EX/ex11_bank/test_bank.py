@@ -110,10 +110,10 @@ def test_transfer():
     acc3 = Account(250, person3, bank3)
     acc4 = Account(0, person4, bank3)
     with pytest.raises(TransactionError):
-        assert acc1.transfer(-200, acc2)
+        assert acc1.transfer(10000, acc2)
 
     """different banks transfer."""
-    acc1.transfer(20, acc2)
+    acc1.transfer(10, acc2)
     assert acc1.transactions == acc2.transactions == bank1.transactions == bank2.transactions
 
     """Same banks transfer."""
@@ -140,11 +140,10 @@ def test_get_debit_turnover():
     person1 = Person("Ellina", "Gedrojets", 18)
     bank1 = Bank("Swed")
     acc1 = Account(20, person1, bank1)
-    acc1.deposit(10)
+    acc1.deposit(300)
     acc1.deposit(10)
     acc1.withdraw(50)
-    assert acc1.get_debit_turnover(datetime.date.today(), datetime.date.today()) == 20
-
+    assert acc1.get_debit_turnover(datetime.date.today(), datetime.date.today()) == 310
 
 def test_get_credit_turnover():
     """Test."""
