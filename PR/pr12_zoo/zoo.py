@@ -43,7 +43,6 @@ def list_species_and_scientific_names(animal_list: list) -> list:
     :param animal_list: input list of animals
     :return: list of tuples, where we have the species name and scientific name
     """
-
     a = list(map(lambda x: (x.species, x.scientific_name), animal_list))
     return a
 
