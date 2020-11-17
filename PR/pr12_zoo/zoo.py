@@ -1,6 +1,7 @@
 """A small exercise in zookeeping."""
 import math
 from functools import reduce
+from operator import itemgetter
 
 
 class Animal:
@@ -32,7 +33,8 @@ def find_smallest_animal_by_weight(animal_list: list) -> Animal:
     :param animal_list: input list of animals
     :return: Animal object
     """
-
+    res = min(animal_list, key=lambda x: x.weight_range[1])  # используем 1 для того, чтобы искал максимум по первому числу в tuple
+    return res
 
 
 def list_species_and_scientific_names(animal_list: list) -> list:
@@ -42,7 +44,9 @@ def list_species_and_scientific_names(animal_list: list) -> list:
     :param animal_list: input list of animals
     :return: list of tuples, where we have the species name and scientific name
     """
-    pass
+
+    a = list(map(lambda x: (x.species, x.scientific_name), animal_list))
+    return a
 
 
 def find_how_many_pumpkins_are_needed_to_feed_animals(animal_list: list) -> int:
