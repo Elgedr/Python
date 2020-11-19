@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/PR/pr08_secret_garden" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EX/ex08_formula_one" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EX/ex11_bank" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EX/ex12_trees" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
