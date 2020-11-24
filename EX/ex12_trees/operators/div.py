@@ -15,7 +15,7 @@ class Div(Operator):
     @property
     def priority(self):
         """priority of the operation."""
-        return -1
+        return self._left / self._right
 
     @property
     def default_operator(self):
@@ -27,6 +27,6 @@ class Div(Operator):
         """:return a dictionary of custom operations."""
         return {
             (set, set): {},  # set exclusion
-            (set, int): {},  # remove from set
-            (int, int): -1  # integer division
+            (set, int): lambda x, y: x.remove(y),  # remove from set
+            (int, int): lambda x, y: x / y  # integer division
         }

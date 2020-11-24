@@ -20,7 +20,7 @@ class Mul(Operator):
     @property
     def default_operator(self):
         """Make use of the 'operator' library or use a lambda function."""
-        return DefaultOperator(lambda x, y: -1, "?")
+        return DefaultOperator(lambda x, y: x * y, "*")
 
     @property
     def actions(self):
@@ -28,5 +28,5 @@ class Mul(Operator):
         return {
             (set, set): {},  # cartesian product
             (set, int): {},  # {1, 3} * 2 == {{1, 2}, {3, 2}}
-            (int, set): {}  # 2 * {1, 3} == {{2, 1}, {2, 3}}
+            # (int, set): lambda x, y:  # 2 * {1, 3} == {{2, 1}, {2, 3}}
         }

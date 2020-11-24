@@ -16,11 +16,11 @@ class TreeNode(metaclass=ABCMeta):
         else:
             self._value = element
 
-    @property
-    @abstractmethod
-    def default_operator(self):
-        """a."""
-        return lambda *x: x
+    # @property
+    # @abstractmethod
+    # def default_operator(self):
+    #     """a."""
+    #     return lambda *x: x
 
     @abstractmethod
     def apply(self):

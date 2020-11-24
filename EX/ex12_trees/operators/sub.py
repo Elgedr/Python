@@ -25,6 +25,4 @@ class Sub(Operator):
     @property
     def actions(self):
         """:return a dictionary of custom operations."""
-        return {
-            (set, int): {}  # set without the element
-        }
+        return {}

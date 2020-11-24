@@ -15,12 +15,12 @@ class And(Operator):
     @property
     def priority(self):
         """priority of the operation."""
-        return -1
+        return self._left * self._right
 
     @property
     def default_operator(self):
         """Make use of the 'operator' library or use a lambda function."""
-        return DefaultOperator(lambda x, y: -1, "?")
+        return DefaultOperator(lambda x, y: x * y, "&")
 
     @property
     def actions(self):
