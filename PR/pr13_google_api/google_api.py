@@ -48,7 +48,7 @@ def get_links_from_spreadsheet(id: str, token: str) -> list:
     else:
         for row in values:
             res.append(row[0])
-    print(res)
+    return res
 
 
 def get_links_from_playlist(link: str, developer_key: str) -> list:
