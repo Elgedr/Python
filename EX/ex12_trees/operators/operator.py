@@ -32,11 +32,11 @@ class Operator(TreeNode):
             return True
         return False
 
-    # @property
-    # @abstractmethod
-    # def default_operator(self):
-    #     """abstract method which should be overridden to return the default_operator object."""
-    #     pass
+    @property
+    @abstractmethod
+    def default_operator(self):
+        """abstract method which should be overridden to return the default_operator object."""
+        pass
 
     @property
     @abstractmethod
