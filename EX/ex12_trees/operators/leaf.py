@@ -6,6 +6,9 @@ from tree_node import TreeNode
 class Leaf(TreeNode):
     """Leaf node."""
 
+    def default_operator(self):
+        pass
+
     def __init__(self, value):
         """default constructor."""
         super().__init__(value)
