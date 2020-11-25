@@ -8,7 +8,6 @@ import os
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
-
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
@@ -68,7 +67,7 @@ def get_links_from_playlist(link: str, developer_key: str) -> list:
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=developer_keyy)
 
-    request = youtube.playlistItems().list(part='snippet', playlistId=id)
+    request = youtube.playlistItems().list(part='snippet', playlistId=id, maxResults=50)
     response = request.execute()
     res = []
     for itemz in response['items']:
