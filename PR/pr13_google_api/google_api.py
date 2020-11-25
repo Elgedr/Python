@@ -2,10 +2,7 @@ from __future__ import print_function
 import pickle
 import os.path
 from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
 import os
-import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
 # If modifying these scopes, delete the file token.pickle.
@@ -55,7 +52,6 @@ def get_links_from_spreadsheet(id: str, token: str) -> list:
 
 def get_links_from_playlist(link: str, developer_key: str) -> list:
     """Should get a list of links to songs in the Youtube playlist with the given address."""
-    scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
     api_service_name = "youtube"
