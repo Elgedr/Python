@@ -39,21 +39,15 @@ class TreeNode(metaclass=ABCMeta):
 
     def __eq__(self, other):
         """:return True when 2 object trees have the same shape and values."""
-        op = self.default_operator
-        if op.__str__() == '':
-            if self._value == other._value:
-                return True
-        else:
-            return self._left.__eq__(other._left) and self._right.__eq__(other._right)
+        if self is other:
+            return True
+        return False
 
     def __ne__(self, other):
         """:return True when 2 object trees have a different shape and/or values."""
-        op = self.default_operator
-        if op.__str__() == "":
-            if other._value != self._value:
-                return True
-        else:
-            return self._left.__ne__(other._left) and self._right.__ne__(other._right)
+        if self is not other:
+            return True
+        return False
 
     # def __encase(self, node):
     #     if your_code_here:
