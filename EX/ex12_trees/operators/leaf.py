@@ -9,6 +9,7 @@ class Leaf(TreeNode):
 
     @property
     def default_operator(self):
+        """Func."""
         return DefaultOperator(lambda x: x, "")
 
     def __init__(self, value):
@@ -29,6 +30,7 @@ class Leaf(TreeNode):
         return str(self.__value)
 
     def __eq__(self, other):
+        """Equlizer."""
         if self.__value == other.apply() and self.class_str() == other.class_str():
             return True
         return False
