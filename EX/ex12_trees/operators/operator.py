@@ -10,10 +10,16 @@ class Operator(TreeNode):
     def __init__(self, *args):
         """Store the given arguments somehow."""
         super().__init__(*args)
+        self.__value = args[0]
 
     def apply(self):
         """Make use of the *args to compute the value of the given subtree. Recursion is your friend."""
-        return self.default_operator(self._left.apply(), self._right.apply())
+        first = [item.apply() for item in self.__value]
+        type_of_item = tuple(type(item) for item in first)
+        if self.actions.get(type_of_item):
+            return self.actions[type_of_item](*first)
+        else:
+            return self.default_operator(*first)
 
     def class_str(self):
         """:return class string representation of the object."""
