@@ -29,4 +29,3 @@ def test_subtract_subtracts_when_given_leaves_with_numbers():
 def test_addition_adds_when_given_leaves_with_numbers_deeper():
     """."""
     assert Add(Add(Add(Add(Leaf(6), Leaf(6)), Leaf(6)), Leaf(6)), Leaf(6)).apply() == 30
- #fdda
