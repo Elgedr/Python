@@ -1,13 +1,15 @@
 """."""
 
 from tree_node import TreeNode
+from default_operator import DefaultOperator
 
 
 class Leaf(TreeNode):
     """Leaf node."""
 
+    @property
     def default_operator(self):
-        pass
+        return DefaultOperator(lambda x: x, "")
 
     def __init__(self, value):
         """default constructor."""
@@ -25,3 +27,8 @@ class Leaf(TreeNode):
     def __str__(self):
         """return string format of value."""
         return str(self.__value)
+
+    def __eq__(self, other):
+        if self.__value == other.apply() and self.class_str() == other.class_str():
+            return True
+        return False

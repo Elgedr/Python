@@ -20,7 +20,7 @@ class Xor(Operator):
     @property
     def default_operator(self):
         """Make use of the 'operator' library or use a lambda function."""
-        return DefaultOperator(lambda x, y: bool(x) != bool(y), " xor ")
+        return DefaultOperator(lambda x, y: x ^ y, "^")
 
     @property
     def actions(self):

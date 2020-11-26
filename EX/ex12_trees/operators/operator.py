@@ -28,9 +28,9 @@ class Operator(TreeNode):
     def associativity(self):
         """abstract method witch should be overridden to return a boolean when the node is not associative."""
         our_operan = self.default_operator
-        if our_operan == "+" or our_operan == "-" or our_operan == "&" or our_operan == "v" or our_operan == "xor":
-            return True
-        return False
+        if our_operan == "-" or our_operan == "**" or our_operan == "/":
+            return False
+        return True
 
     @property
     @abstractmethod
