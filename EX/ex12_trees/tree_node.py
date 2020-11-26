@@ -16,12 +16,6 @@ class TreeNode(metaclass=ABCMeta):
         else:
             self._value = element
 
-    # @property
-    # @abstractmethod
-    # def default_operator(self):
-    #     """a."""
-    #     return lambda *x: x
-
     @abstractmethod
     def apply(self):
         """abstract method which should be overridden to compute the value of the given abstract tree."""
