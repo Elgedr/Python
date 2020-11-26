@@ -48,8 +48,3 @@ class TreeNode(metaclass=ABCMeta):
         if self is not other:
             return True
         return False
-
-    # def __encase(self, node):
-    #     if your_code_here:
-    #         return str(node)
-    #     return str(f"({node})")

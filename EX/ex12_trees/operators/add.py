@@ -27,5 +27,5 @@ class Add(Operator):
         """:return a dictionary of custom operations."""
         return {
             (set, set): lambda x, y: x | y,  # set union
-            (set, int): {}  # add to set
+            (set, int): lambda x, y: x | {y}  # add to set
         }
