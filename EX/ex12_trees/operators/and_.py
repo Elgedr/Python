@@ -15,7 +15,7 @@ class And(Operator):
     @property
     def priority(self):
         """priority of the operation."""
-        return self._left * self._right
+        return
 
     @property
     def default_operator(self):

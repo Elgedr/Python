@@ -26,7 +26,7 @@ class Mul(Operator):
     def actions(self):
         """:return a dictionary of custom operations. Make use of frozensets."""
         return {
-            (set, set): {},  # cartesian product
-            (set, int): {},  # {1, 3} * 2 == {{1, 2}, {3, 2}}
+            (set, set): lambda x, y: {frozenset({itema, itemb}) for itema in x for itemb in y},  # cartesian product
+            (set, int): lambda x, y: {frozenset({a, y}) for a in x},  # {1, 3} * 2 == {{1, 2}, {3, 2}}
             # (int, set): lambda x, y:  # 2 * {1, 3} == {{2, 1}, {2, 3}}
         }
