@@ -31,11 +31,10 @@ class TreeNode(metaclass=ABCMeta):
         """:return string representation of the object."""
         pass
 
+    @abstractmethod
     def __eq__(self, other):
         """:return True when 2 object trees have the same shape and values."""
-        if self._value == other.apply() and self.class_str() == other.class_str():
-            return True
-        return False
+        pass
 
     def __ne__(self, other):
         """:return True when 2 object trees have a different shape and/or values."""
