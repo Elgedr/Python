@@ -33,7 +33,7 @@ class TreeNode(metaclass=ABCMeta):
 
     def __eq__(self, other):
         """:return True when 2 object trees have the same shape and values."""
-        if self is other:
+        if self._value == other.apply() and self.class_str() == other.class_str():
             return True
         return False
 
