@@ -31,6 +31,6 @@ class Leaf(TreeNode):
 
     def __eq__(self, other):
         """Equlizer."""
-        if self.__value == other.apply() and self.class_str() == other.class_str():
+        if self.__value[0] == other.apply() and self.class_str() == other.class_str() :
             return True
         return False
