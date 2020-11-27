@@ -31,6 +31,7 @@ class TreeNode(metaclass=ABCMeta):
         """:return string representation of the object."""
         pass
 
+    @abstractmethod
     def __eq__(self, other):
         """:return True when 2 object trees have the same shape and values."""
         pass

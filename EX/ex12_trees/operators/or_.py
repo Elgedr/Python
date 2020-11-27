@@ -8,6 +8,9 @@ from tree_node import TreeNode
 class Or(Operator):
     """Custom operation."""
 
+    def __eq__(self, other):
+        pass
+
     def __init__(self, left: TreeNode, right: TreeNode):
         """default constructor."""
         super().__init__((left, right))
