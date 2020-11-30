@@ -15,9 +15,14 @@ class Statistics:
 
     def get(self, path: str):
         """Get a path."""
-        tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
-        func = getattr(self, 'get_' + tokens[0])  # get_game
-        return func(tokens[0])
+        if path == '/total/{result_type}':
+            tokens = path[1:].split("/")[1]
+            needed = tokens[1:-1]
+            self.get_total_result_type(needed)
+        else:
+            tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
+            func = getattr(self, 'get_' + tokens[0])  # get_game
+            return func(tokens[0])
 
     def read_from_file(self, filename: str):
         with open(filename, encoding='utf-8') as f:
@@ -87,6 +92,14 @@ class Statistics:
                 res.append(game)
         return len(res)
 
+    def get_total_result_type(self, typ):
+        counter = 0
+        for values in self.games.values():
+            for game in values:
+                if game.result_type == typ:
+                    counter += 1
+        return counter
+
 
 class Gameplay:
     """One game class."""
@@ -142,3 +155,4 @@ if __name__ == '__main__':
     print(statistics.get("/players"))
     print(statistics.get("/games"))
     print(statistics.get("/total"))
+    print(statistics.get('/total/{points}'))
