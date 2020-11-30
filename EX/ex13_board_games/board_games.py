@@ -82,8 +82,9 @@ class Statistics:
 
     def get_total(self, x):
         res = []
-        for key in self.games:
-            res.append(key)
+        for value in self.games.values():
+            for game in value:
+                res.append(game)
         return len(res)
 
 
