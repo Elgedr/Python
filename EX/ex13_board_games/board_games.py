@@ -140,6 +140,9 @@ class Gameplay:
         self.amount_of_players = 0
         self.players = players
 
+    def __repr__(self):
+        return self.game_name
+
 
 class Player:
     """Player class."""
