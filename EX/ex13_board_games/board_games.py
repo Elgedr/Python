@@ -25,6 +25,7 @@ class Statistics:
             return func(tokens[0])
 
     def read_from_file(self, filename: str):
+        """Read from file."""
         with open(filename, encoding='utf-8') as f:
             for line in f:
                 splitted = line.split(";")
@@ -74,18 +75,21 @@ class Statistics:
     #     return self.players
 
     def get_games(self, x):
+        """."""
         res = []
         for key in self.games:
             res.append(key)
         return res
 
     def get_players(self, x):
+        """."""
         res = []
         for key in self.players:
             res.append(key)
         return res
 
     def get_total(self, x):
+        """."""
         res = []
         for value in self.games.values():
             for game in value:
@@ -93,6 +97,7 @@ class Statistics:
         return len(res)
 
     def get_total_result_type(self, typ):
+        """."""
         counter = 0
         for values in self.games.values():
             for game in values:
