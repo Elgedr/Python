@@ -130,9 +130,11 @@ class Player:
         self.player_points = []
 
     def add_player_games(self, game: Gameplay):
+        """."""
         self.player_games.append(game)
 
     def add_player_points(self, point: int):
+        """."""
         self.player_points.append(point)
 
 
@@ -147,9 +149,11 @@ class Game:
         # self.results = ""
 
     def add_players_names(self, player: Player):
+        """."""
         self.players_names.append(player)
 
     def add_game_to_list(self, game: Gameplay):
+        """."""
         self.game_list.append(game)
 
 
@@ -160,4 +164,4 @@ if __name__ == '__main__':
     print(statistics.get("/players"))
     print(statistics.get("/games"))
     print(statistics.get("/total"))
-    print(statistics.get('/total/{winner}'))
+    print(statistics.get('/total/{places}'))
