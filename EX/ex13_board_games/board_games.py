@@ -17,7 +17,6 @@ class Statistics:
         """Get a path."""
         if path == "/total/places" or path == "/total/points" or path == "/total/winner":
             tokens = path[1:].split("/")[1]
-            # needed = tokens[1:-1]
             return self.get_total_result_type(tokens)
         elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount":
             token = path[1:].split("/")
@@ -111,8 +110,7 @@ class Statistics:
         return counter
 
     def get_player_amount(self, x):
-        pass
-
+        print(x)
 
 
 
