@@ -4,7 +4,7 @@ import string
 
 
 class Statistics:
-    """Statistics class."""
+    """Statistic class."""
 
     def __init__(self, filename: str):
         """Statistics constructor."""
@@ -68,9 +68,9 @@ class Statistics:
     # def get_players(self):
     #     return self.players
 
-    def get_games(self):
+    def get_games(self, x):
         res = []
-        for key in self.players:
+        for key in self.games:
             res.append(key)
         return res
 
@@ -136,3 +136,4 @@ if __name__ == '__main__':
     # print(statistics.get_games())
     # print(statistics.get_players())
     print(statistics.get("/players"))
+    print(statistics.get("/games"))
