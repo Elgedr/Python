@@ -15,10 +15,10 @@ class Statistics:
 
     def get(self, path: str):
         """Get a path."""
-        if path == '/total/{result_type}':
+        if path == '/total/{points}' or path == '/total/{places}' or path == '/total/{winners}':
             tokens = path[1:].split("/")[1]
             needed = tokens[1:-1]
-            self.get_total_result_type(needed)
+            return self.get_total_result_type(needed)
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
