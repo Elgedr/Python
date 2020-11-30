@@ -110,7 +110,10 @@ class Statistics:
         return counter
 
     def get_player_amount(self, x):
-        print(x)
+        res = self.players.get(x)
+        return len(res)
+
+
 
 
 
@@ -173,4 +176,4 @@ if __name__ == '__main__':
     print(statistics.get("/games"))
     print(statistics.get("/total"))
     print(statistics.get("/total/points"))
-    print(statistics.get("/player/{name}/amount"))
+    print(statistics.get("/player/joosep/amount"))
