@@ -112,17 +112,19 @@ class Statistics:
         return counter
 
     def get_player_amount(self, x):
+        """."""
         res = self.players.get(x)
         return len(res)
 
     def get_favourite_amount(self, x):
+        """."""
         final = []
         listt = self.players.get(x)
         for plajerobyect in listt:
             for games in plajerobyect.player_games:
                 final.append(games)
         res = max(set(final), key=final.count)
-        return res.__repr__()
+        return res
 
 
 class Gameplay:
@@ -138,7 +140,7 @@ class Gameplay:
         self.amount_of_players = 0
         self.players = players
 
-    def __repr__(self):
+    def __str__(self):
         return self.game_name
 
 
