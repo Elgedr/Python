@@ -141,6 +141,7 @@ class Gameplay:
         self.players = players
 
     def __str__(self):
+        """."""
         return self.game_name
 
 
