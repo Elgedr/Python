@@ -80,8 +80,11 @@ class Statistics:
             res.append(key)
         return res
 
-    def get_total(self):
-        pass
+    def get_total(self, x):
+        res = []
+        for key in self.games:
+            res.append(key)
+        return len(res)
 
 
 class Gameplay:
@@ -137,3 +140,4 @@ if __name__ == '__main__':
     # print(statistics.get_players())
     print(statistics.get("/players"))
     print(statistics.get("/games"))
+    print(statistics.get("/total"))
