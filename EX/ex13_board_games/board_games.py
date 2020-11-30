@@ -64,13 +64,11 @@ class Statistics:
                         new = second_object_name
                         new = Player(result_type)
                         new.add_player_games(name_for_gameplay_class)
-                        new.add_player_games(name_for_gameplay_class)
                         self.players[name].append(new)
                     else:
                         key_indict = name
                         self.players[key_indict] = []
                         name = Player(name)
-                        name.add_player_games(name_for_gameplay_class)
                         name.add_player_games(name_for_gameplay_class)
                         self.players[key_indict].append(name)
 
