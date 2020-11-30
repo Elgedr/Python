@@ -15,7 +15,7 @@ class Statistics:
 
     def get(self, path: str):
         """Get a path."""
-        if path == '/total/{points}' or path == '/total/{places}' or path == '/total/{winners}':
+        if path == '/total/{points}' or path == '/total/{places}' or path == '/total/{winner}':
             tokens = path[1:].split("/")[1]
             needed = tokens[1:-1]
             return self.get_total_result_type(needed)
@@ -155,4 +155,4 @@ if __name__ == '__main__':
     print(statistics.get("/players"))
     print(statistics.get("/games"))
     print(statistics.get("/total"))
-    print(statistics.get('/total/{points}'))
+    print(statistics.get('/total/{winner}'))
