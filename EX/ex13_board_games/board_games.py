@@ -15,10 +15,14 @@ class Statistics:
 
     def get(self, path: str):
         """Get a path."""
-        if path == '/total/{points}' or path == '/total/{places}' or path == '/total/{winner}':
+        if path == "/total/places" or path == "/total/points" or path == "/total/winner":
             tokens = path[1:].split("/")[1]
-            needed = tokens[1:-1]
-            return self.get_total_result_type(needed)
+            # needed = tokens[1:-1]
+            return self.get_total_result_type(tokens)
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount":
+            token = path[1:].split("/")
+            func = getattr(self, "get_" + token[0] + "_amount")
+            return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
@@ -28,7 +32,8 @@ class Statistics:
         """Read from file."""
         with open(filename, encoding='utf-8') as f:
             for line in f:
-                splitted = line.split(";")
+                linee = line.rstrip("\n")
+                splitted = linee.split(";")
                 game_name = splitted[0]
                 name_for_gameplay_class = splitted[0]
                 name_for_game_class = splitted[0]
@@ -105,6 +110,11 @@ class Statistics:
                     counter += 1
         return counter
 
+    def get_player_amount(self, x):
+        pass
+
+
+
 
 class Gameplay:
     """One game class."""
@@ -164,4 +174,5 @@ if __name__ == '__main__':
     print(statistics.get("/players"))
     print(statistics.get("/games"))
     print(statistics.get("/total"))
-    print(statistics.get('/total/{places}'))
+    print(statistics.get("/total/points"))
+    print(statistics.get("/player/{name}/amount"))
