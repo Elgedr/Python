@@ -22,6 +22,10 @@ class Statistics:
             token = path[1:].split("/")
             func = getattr(self, "get_" + token[0] + "_amount")
             return func(token[1])
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "favourite":
+            token = path[1::].split("/")
+            func = getattr(self, "get_" + token[2] + "_amount")
+            return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
@@ -113,8 +117,14 @@ class Statistics:
         res = self.players.get(x)
         return len(res)
 
-
-
+    def get_favourite_amount(self, x):
+        final = []
+        listt = self.players.get(x)
+        for plajerobyect in listt:
+            for games in plajerobyect.player_games:
+                final.append(games)
+        res = max(set(final), key=final.count)
+        return res.__repr__()
 
 
 class Gameplay:
@@ -177,3 +187,4 @@ if __name__ == '__main__':
     print(statistics.get("/total"))
     print(statistics.get("/total/points"))
     print(statistics.get("/player/joosep/amount"))
+    print(statistics.get("/player/joosep/favourite"))
