@@ -7,7 +7,7 @@ class Statistics:
     """Statistic class."""
 
     def __init__(self, filename: str):
-        """Statistics constructor."""
+        """Statistic constructor."""
         self.games = {}
         self.players = {}
         self.filename = filename
