@@ -11,6 +11,7 @@ while a[0] > 0:
     print(a)
     # robot.sleep(0.05)
 
+
 robot.set_wheels_speed(30)
 robot.sleep(0.05)
 robot.set_wheels_speed(0)
