@@ -73,7 +73,7 @@ class Statistics:
                         key_indict = name
                         self.players[key_indict] = []
                         name = Player(name)
-                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and points[players.index(key_indict)] == max(points):
+                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and points[players.index(key_indict)] == max(points):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                         else:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
@@ -167,9 +167,8 @@ class Statistics:
         for playerobyect in listt:
             for gameobject in playerobyect.player_games:
                 if gameobject.winner_or_not is True:
-                    print(gameobject.winner_or_not)
-        #             res.append(x)
-        # return len(res)
+                    res.append(x)
+        return len(res)
 
 
 class Gameplay:
@@ -244,4 +243,4 @@ if __name__ == '__main__':
     print(statistics.get("/player/joosep/favourite"))
     print(statistics.get("/game/terraforming mars/amount"))
     print(statistics.get("/game/terraforming mars/player-amount"))
-    print(statistics.get("/player//won"))
+    print(statistics.get("/player/riho/won"))
