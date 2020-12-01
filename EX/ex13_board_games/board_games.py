@@ -34,6 +34,10 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_playeramount")
             return func(token[1])
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "player" and path[1:].split("/")[2] == "won":
+            token = path[1::].split("/")
+            func = getattr(self, "get_" + token[0] + "_won")
+            return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
@@ -52,7 +56,7 @@ class Statistics:
                 players = splitted[1].split(",")  # ['ago', 'emi', 'el']
                 points = splitted[3].split(",")  # ['6', '30', '12']
 
-                name_for_gameplay_class = Gameplay(game_name, result_type, points, players, None)
+                name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
 
                 for name in players:
                     if name in self.players.keys():
@@ -156,6 +160,17 @@ class Statistics:
             res.append(len(gameobject.players_names))
         return max(res, key=res.count)
 
+    def get_player_won(self, x):
+        """."""
+        res = []
+        listt = self.players.get(x)
+        for playerobyect in listt:
+            for gameobject in playerobyect.player_games:
+                if gameobject.winner_or_not is True:
+                    print(gameobject.winner_or_not)
+        #             res.append(x)
+        # return len(res)
+
 
 class Gameplay:
     """One game class."""
@@ -229,3 +244,4 @@ if __name__ == '__main__':
     print(statistics.get("/player/joosep/favourite"))
     print(statistics.get("/game/terraforming mars/amount"))
     print(statistics.get("/game/terraforming mars/player-amount"))
+    print(statistics.get("/player//won"))
