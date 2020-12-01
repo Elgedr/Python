@@ -10,7 +10,24 @@ robot = PiBot()  # robot object
 #     robot.sleep(0.05)
 print("Hello!")
 print(robot.sleep(1))
-print(robot.set_wheels_speed(50))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+print(robot.set_wheels_speed(90))
+
+
+
+
+
 # Stop the robot when done
 robot.set_wheels_speed(0)
 
