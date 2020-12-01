@@ -1,14 +1,15 @@
 from PiBot import PiBot  # robot class
 robot = PiBot()  # robot object
 
-distance_from_object = robot.get_front_middle_laser()
-print(distance_from_object)
+# distance_from_object = robot.get_front_middle_laser()
+# print(distance_from_object)
+#
+# robot.set_wheels_speed(20)
+# while distance_from_object > 0.01:
+#     distance_from_object = robot.get_front_middle_laser()
+#     robot.sleep(0.05)
 
-robot.set_wheels_speed(20)
-while distance_from_object > 0.01:
-    distance_from_object = robot.get_front_middle_laser()
-    robot.sleep(0.05)
-
+print(robot.set_wheels_speed(50))
 # Stop the robot when done
 robot.set_wheels_speed(0)
 
