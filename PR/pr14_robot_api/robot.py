@@ -10,19 +10,10 @@ robot = PiBot()  # robot object
 #     robot.sleep(0.05)
 print("Hello!")
 print(robot.sleep(1))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
-print(robot.set_wheels_speed(90))
+robot.set_wheels_speed(30)
+while robot.get_line_sensors() > 100:
+    robot.set_wheels_speed(30)
+
 
 
 
