@@ -52,19 +52,27 @@ class Statistics:
                 players = splitted[1].split(",")  # ['ago', 'emi', 'el']
                 points = splitted[3].split(",")  # ['6', '30', '12']
 
-                name_for_gameplay_class = Gameplay(game_name, result_type, points, players)
+                name_for_gameplay_class = Gameplay(game_name, result_type, points, players, None)
 
                 for name in players:
                     if name in self.players.keys():
                         second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
                         new = second_object_name
                         new = Player(result_type)
+                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and points[players.index(name)] == max(points):
+                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
+                        else:
+                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                         new.add_player_games(name_for_gameplay_class)
                         self.players[name].append(new)
                     else:
                         key_indict = name
                         self.players[key_indict] = []
                         name = Player(name)
+                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and points[players.index(key_indict)] == max(points):
+                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
+                        else:
+                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                         name.add_player_games(name_for_gameplay_class)
                         self.players[key_indict].append(name)
 
@@ -152,11 +160,11 @@ class Statistics:
 class Gameplay:
     """One game class."""
 
-    def __init__(self, game_name: str, game_type: str, points_per_game: list, players: list):
+    def __init__(self, game_name: str, game_type: str, points_per_game: list, players: list, winner_or_not):
         """Gameplay constructor."""
         self.game_name = game_name
         self.times_of_playing = 0
-        self.winner_or_not = bool
+        self.winner_or_not = winner_or_not
         self.game_type = game_type
         self.points_per_game = points_per_game
         self.amount_of_players = 0
