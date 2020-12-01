@@ -26,9 +26,13 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[2] + "_amount")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "amount":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_playing")
+            return func(token[1])
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "player-amount":
+            token = path[1::].split("/")
+            func = getattr(self, "get_" + token[0] + "_playeramount")
             return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
@@ -76,14 +80,6 @@ class Statistics:
                         name.add_player_games(name_for_gameplay_class)
                         self.players[key_indict].append(name)
 
-                # self.games[name_for_game_class].append(game_name)
-
-    # def get_games(self):
-    #     return self.games
-    #
-    # def get_players(self):
-    #     return self.players
-
     def get_games(self, x):
         """."""
         res = []
@@ -127,12 +123,25 @@ class Statistics:
         for plajerobyect in listt:
             for games in plajerobyect.player_games:
                 final.append(games)
-        res = max(set(final), key=final.count)
+        res = max(final, key=final.count)
         return res
 
     def get_game_playing(self, x):
         """."""
         return len(self.games.get(x))
+
+    def get_game_playeramount(self, x):
+        """."""
+        res = {}
+        counter = 0
+        for listt in self.players.values():
+            for objects in listt:
+                for item in objects.player_games:
+                    if item.__eq__(x):
+                        for people in item:
+                            res[counter].append(people)
+                        counter += 1
+        return res
 
 
 class Gameplay:
@@ -148,9 +157,14 @@ class Gameplay:
         self.amount_of_players = 0
         self.players = players
 
-    def __str__(self):
+    def __repr__(self):
         """."""
         return self.game_name
+
+    def __eq__(self, other):
+        """."""
+        if self.game_name == other:
+            return True
 
 
 class Player:
@@ -201,4 +215,4 @@ if __name__ == '__main__':
     print(statistics.get("/player/joosep/amount"))
     print(statistics.get("/player/joosep/favourite"))
     print(statistics.get("/game/terraforming mars/amount"))
-    print(statistics.get("/game/{name}/player-amount"))
+    # print(statistics.get("/game/7 wonders/player-amount"))
