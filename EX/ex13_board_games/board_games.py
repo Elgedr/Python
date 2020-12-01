@@ -201,3 +201,4 @@ if __name__ == '__main__':
     print(statistics.get("/player/joosep/amount"))
     print(statistics.get("/player/joosep/favourite"))
     print(statistics.get("/game/terraforming mars/amount"))
+    print(statistics.get("/game/{name}/player-amount"))
