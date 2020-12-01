@@ -13,7 +13,7 @@ print(robot.sleep(1))
 robot.set_wheels_speed(30)
 while robot.get_line_sensors() > 100:
     robot.set_wheels_speed(30)
-
+robot.set_wheels_speed(0)
 
 
 
