@@ -1,5 +1,5 @@
+"""Robot."""
 from PiBot import PiBot  # robot class
-"""Robot class."""
 robot = PiBot()  # robot object
 
 a = robot.get_left_line_sensors()
