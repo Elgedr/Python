@@ -54,18 +54,6 @@ class Statistics:
 
                 name_for_gameplay_class = Gameplay(game_name, result_type, points, players)
 
-                if name_for_game_class in self.games.keys():
-                    second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
-                    new = second_object_name
-                    new = Game(result_type)
-                    new.add_game_to_list(name_for_gameplay_class)
-                    self.games[name_for_game_class].append(new)
-                else:
-                    self.games[name_for_game_class] = []
-                    game_name = Game(result_type)
-                    game_name.add_game_to_list(name_for_gameplay_class)
-                    self.games[name_for_game_class].append(game_name)
-
                 for name in players:
                     if name in self.players.keys():
                         second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
@@ -79,6 +67,22 @@ class Statistics:
                         name = Player(name)
                         name.add_player_games(name_for_gameplay_class)
                         self.players[key_indict].append(name)
+
+                if name_for_game_class in self.games.keys():
+                    second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
+                    new = second_object_name
+                    new = Game(result_type)
+                    new.add_game_to_list(name_for_gameplay_class)
+                    for i in players:
+                        new.add_players_names(i)
+                    self.games[name_for_game_class].append(new)
+                else:
+                    self.games[name_for_game_class] = []
+                    game_name = Game(result_type)
+                    game_name.add_game_to_list(name_for_gameplay_class)
+                    for i in players:
+                        game_name.add_players_names(i)
+                    self.games[name_for_game_class].append(game_name)
 
     def get_games(self, x):
         """."""
@@ -132,16 +136,17 @@ class Statistics:
 
     def get_game_playeramount(self, x):
         """."""
-        res = {}
-        counter = 0
-        for listt in self.players.values():
-            for objects in listt:
-                for item in objects.player_games:
-                    if item.__eq__(x):
-                        for people in item:
-                            res[counter].append(people)
-                        counter += 1
-        return res
+        res = []
+        # for listt in self.players.values():
+        #     for item in listt:
+        #         for objects in item.player_games:
+        #             if objects == x:
+        #                 res[x] = len(objects.players)
+        # return res
+        listt = self.games.get(x)
+        for gameobject in listt:
+            res.append(len(gameobject.players_names))
+        return max(res, key=res.count)
 
 
 class Gameplay:
@@ -195,7 +200,7 @@ class Game:
         self.result_type = result_type
         # self.results = ""
 
-    def add_players_names(self, player: Player):
+    def add_players_names(self, player):
         """."""
         self.players_names.append(player)
 
@@ -215,4 +220,4 @@ if __name__ == '__main__':
     print(statistics.get("/player/joosep/amount"))
     print(statistics.get("/player/joosep/favourite"))
     print(statistics.get("/game/terraforming mars/amount"))
-    # print(statistics.get("/game/7 wonders/player-amount"))
+    print(statistics.get("/game/terraforming mars/player-amount"))
