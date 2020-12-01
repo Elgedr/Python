@@ -20,6 +20,8 @@ print("Hello!")
 print(robot.sleep(1))
 print(robot.set_wheels_speed(30))
 print(robot.set_wheels_speed(30))
+print(robot.set_wheels_speed(30))
+print(robot.set_wheels_speed(30))
 print(robot.sleep(2))
 print(robot.set_wheels_speed(0))
     # while robot.get_line_sensors() > 100:
