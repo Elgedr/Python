@@ -60,4 +60,7 @@ robot.set_wheels_speed(30)
 print(robot.sleep(2))
 print(robot.set_wheels_speed(0))
 print(robot.get_left_line_sensors())
-
+robot.set_wheels_speed(30)
+print(robot.sleep(2))
+print(robot.set_wheels_speed(0))
+print(robot.get_left_line_sensors())
