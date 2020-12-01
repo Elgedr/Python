@@ -6,7 +6,7 @@ a = robot.get_left_line_sensors()
 
 robot.set_wheels_speed(30)
 while a[0] > 0:
-    robot.set_wheels_speed(30)
+    robot.set_wheels_speed(50)
     a = robot.get_left_line_sensors()
     print(a)
     robot.sleep(1)
