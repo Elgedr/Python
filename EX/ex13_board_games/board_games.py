@@ -18,13 +18,17 @@ class Statistics:
         if path == "/total/places" or path == "/total/points" or path == "/total/winner":
             tokens = path[1:].split("/")[1]
             return self.get_total_result_type(tokens)
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount" and path[1:].split("/")[0] == "player":
             token = path[1:].split("/")
             func = getattr(self, "get_" + token[0] + "_amount")
             return func(token[1])
         elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "favourite":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[2] + "_amount")
+            return func(token[1])
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game":
+            token = path[1::].split("/")
+            func = getattr(self, "get_" + token[0] + "_playing")
             return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
@@ -126,6 +130,10 @@ class Statistics:
         res = max(set(final), key=final.count)
         return res
 
+    def get_game_playing(self, x):
+        """."""
+        return len(self.games.get(x))
+
 
 class Gameplay:
     """One game class."""
@@ -192,3 +200,4 @@ if __name__ == '__main__':
     print(statistics.get("/total/points"))
     print(statistics.get("/player/joosep/amount"))
     print(statistics.get("/player/joosep/favourite"))
+    print(statistics.get("/game/terraforming mars/amount"))
