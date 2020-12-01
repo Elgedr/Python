@@ -8,12 +8,12 @@ robot = PiBot()  # robot object
 # while distance_from_object > 0.01:
 #     distance_from_object = robot.get_front_middle_laser()
 #     robot.sleep(0.05)
-print("Hello!")
-print(robot.sleep(1))
-robot.set_wheels_speed(30)
-while robot.get_line_sensors() > 100:
-    robot.set_wheels_speed(30)
-robot.set_wheels_speed(0)
+# print("Hello!")
+# print(robot.sleep(1))
+# robot.set_wheels_speed(30)
+# while robot.get_line_sensors() > 100:
+#     robot.set_wheels_speed(30)
+# robot.set_wheels_speed(0)
 
 if __name__ == '__main__':
 
