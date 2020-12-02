@@ -42,6 +42,10 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_wins")
             return func(token[1])
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-winner":
+            token = path[1::].split("/")
+            func = getattr(self, "get_" + token[0] + "_most_frequent_winner")
+            return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
@@ -188,6 +192,31 @@ class Statistics:
                     res[name] = player_obyect.winned_games.count(x)
         return max(res, key=res.get)
 
+    def get_game_most_frequent_winner(self, x):
+        """."""
+        res = {}
+        for name, llist in self.players.items():
+            played_games_list = []
+            for player_object in llist:
+                for game in player_object.player_games:
+                    if game == x:
+                        played_games_list.append(game)
+                if x in player_object.winned_games:
+                    winning_times = player_object.winned_games.count(x)
+                    played_games_amount = len(played_games_list)
+                    percentage = (winning_times / played_games_amount) * 100
+                    res[name] = percentage
+            # for player_obyect in llist:
+            #     print(player_obyect.player_games)
+                # played_games = len(player_obyect.player_games)
+                # print(played_games)
+            # if x in player_obyect.winned_games:
+            #     winned_times = player_obyect.winned_games.count(x)
+            #     percent = (winned_times / played_games) * 100
+            #     res[name] = percent
+
+        return max(res, key=res.get)
+
 
 class Gameplay:
     """One game class."""
@@ -260,13 +289,14 @@ class Game:
 
 if __name__ == '__main__':
     statistics = Statistics("ex13_test_file.txt")
-    # print(statistics.get("/players"))
-    # print(statistics.get("/games"))
-    # print(statistics.get("/total"))
-    # print(statistics.get("/total/points"))
-    # print(statistics.get("/player/joosep/amount"))
-    # print(statistics.get("/player/joosep/favourite"))
-    # print(statistics.get("/game/terraforming mars/amount"))
-    # print(statistics.get("/game/terraforming mars/player-amount"))
-    # print(statistics.get("/player/kristjan/won"))
+    print(statistics.get("/players"))
+    print(statistics.get("/games"))
+    print(statistics.get("/total"))
+    print(statistics.get("/total/points"))
+    print(statistics.get("/player/joosep/amount"))
+    print(statistics.get("/player/joosep/favourite"))
+    print(statistics.get("/game/terraforming mars/amount"))
+    print(statistics.get("/game/terraforming mars/player-amount"))
+    print(statistics.get("/player/kristjan/won"))
     print(statistics.get("/game/terraforming mars/most-wins"))
+    print(statistics.get("/game/7 wonders/most-frequent-winner"))
