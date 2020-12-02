@@ -38,6 +38,10 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_won")
             return func(token[1])
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-wins":
+            token = path[1::].split("/")
+            func = getattr(self, "get_" + token[0] + "_most_wins")
+            return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
@@ -55,6 +59,7 @@ class Statistics:
                 result_type = splitted[2]
                 players = splitted[1].split(",")  # ['ago', 'emi', 'el']
                 points = splitted[3].split(",")  # ['6', '30', '12']
+                player_objects_list = []
 
                 name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
 
@@ -65,9 +70,11 @@ class Statistics:
                         new = Player(result_type)
                         if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
+                            new.add_winned_game(game_name)
                         else:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                         new.add_player_games(name_for_gameplay_class)
+                        player_objects_list.append(new)
                         self.players[name].append(new)
                     else:
                         key_indict = name
@@ -75,25 +82,33 @@ class Statistics:
                         name = Player(name)
                         if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
+                            name.add_winned_game(game_name)
                         else:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                         name.add_player_games(name_for_gameplay_class)
                         self.players[key_indict].append(name)
+                        player_objects_list.append(name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
 
                 if name_for_game_class in self.games.keys():
                     second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
                     new = second_object_name
                     new = Game(result_type)
                     new.add_game_to_list(name_for_gameplay_class)
-                    for i in players:
+                    for i in player_objects_list:
                         new.add_players_names(i)
+                        for game in i.player_games:
+                            if game.game_name == name_for_game_class:
+                                new.add_player_object(i)
                     self.games[name_for_game_class].append(new)
                 else:
                     self.games[name_for_game_class] = []
                     game_name = Game(result_type)
                     game_name.add_game_to_list(name_for_gameplay_class)
-                    for i in players:
+                    for i in player_objects_list:
                         game_name.add_players_names(i)
+                        for game in i.player_games:
+                            if game.game_name == name_for_game_class:
+                                game_name.add_player_object(i)
                     self.games[name_for_game_class].append(game_name)
 
     def get_games(self, x):
@@ -149,12 +164,6 @@ class Statistics:
     def get_game_playeramount(self, x):
         """."""
         res = []
-        # for listt in self.players.values():
-        #     for item in listt:
-        #         for objects in item.player_games:
-        #             if objects == x:
-        #                 res[x] = len(objects.players)
-        # return res
         listt = self.games.get(x)
         for gameobject in listt:
             res.append(len(gameobject.players_names))
@@ -169,6 +178,14 @@ class Statistics:
                 if gameobject.winner_or_not is True:
                     res.append(x)
         return len(res)
+
+    def get_game_most_wins(self, x):
+        res = {}
+        for name, llist in self.players.items():
+            for player_obyect in llist:
+                if x in player_obyect.winned_games:
+                    res[name] = player_obyect.winned_games.count(x)
+        return max(res, key=res.get)
 
 
 class Gameplay:
@@ -202,6 +219,7 @@ class Player:
         self.player_name = name
         self.player_games = []
         self.player_points = []
+        self.winned_games = []
 
     def add_player_games(self, game: Gameplay):
         """."""
@@ -211,6 +229,8 @@ class Player:
         """."""
         self.player_points.append(point)
 
+    def add_winned_game(self, game):
+        self.winned_games.append(game)
 
 class Game:
     """Game class."""
@@ -220,7 +240,7 @@ class Game:
         self.game_list = []
         self.players_names = []
         self.result_type = result_type
-        # self.results = ""
+        self.players_objects = []
 
     def add_players_names(self, player):
         """."""
@@ -230,11 +250,12 @@ class Game:
         """."""
         self.game_list.append(game)
 
+    def add_player_object(self, player):
+        self.players_objects.append(player)
+
 
 if __name__ == '__main__':
     statistics = Statistics("ex13_test_file.txt")
-    # print(statistics.get_games())
-    # print(statistics.get_players())
     # print(statistics.get("/players"))
     # print(statistics.get("/games"))
     # print(statistics.get("/total"))
@@ -243,4 +264,5 @@ if __name__ == '__main__':
     # print(statistics.get("/player/joosep/favourite"))
     # print(statistics.get("/game/terraforming mars/amount"))
     # print(statistics.get("/game/terraforming mars/player-amount"))
-    print(statistics.get("/player/kristjan/won"))
+    # print(statistics.get("/player/kristjan/won"))
+    print(statistics.get("/game/terraforming mars/most-wins"))
