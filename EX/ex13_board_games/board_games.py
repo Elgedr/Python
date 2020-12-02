@@ -63,7 +63,7 @@ class Statistics:
                         second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
                         new = second_object_name
                         new = Player(result_type)
-                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and points[players.index(name)] == max(points):
+                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                         else:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
@@ -73,7 +73,7 @@ class Statistics:
                         key_indict = name
                         self.players[key_indict] = []
                         name = Player(name)
-                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and points[players.index(key_indict)] == max(points):
+                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                         else:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
@@ -243,4 +243,4 @@ if __name__ == '__main__':
     # print(statistics.get("/player/joosep/favourite"))
     # print(statistics.get("/game/terraforming mars/amount"))
     # print(statistics.get("/game/terraforming mars/player-amount"))
-    print(statistics.get("/player/joosep/won"))
+    print(statistics.get("/player/kristjan/won"))
