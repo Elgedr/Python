@@ -96,9 +96,9 @@ class Statistics:
                     new.add_game_to_list(name_for_gameplay_class)
                     for i in player_objects_list:
                         new.add_players_names(i)
-                        for game in i.player_games:
-                            if game.game_name == name_for_game_class:
-                                new.add_player_object(i)
+                        # for game in i.player_games:
+                        #     if game.game_name == name_for_game_class:
+                        #         new.add_player_object(i)
                     self.games[name_for_game_class].append(new)
                 else:
                     self.games[name_for_game_class] = []
@@ -106,9 +106,9 @@ class Statistics:
                     game_name.add_game_to_list(name_for_gameplay_class)
                     for i in player_objects_list:
                         game_name.add_players_names(i)
-                        for game in i.player_games:
-                            if game.game_name == name_for_game_class:
-                                game_name.add_player_object(i)
+                        # for game in i.player_games:
+                        #     if game.game_name == name_for_game_class:
+                        #         game_name.add_player_object(i)
                     self.games[name_for_game_class].append(game_name)
 
     def get_games(self, x):
@@ -180,6 +180,7 @@ class Statistics:
         return len(res)
 
     def get_game_most_wins(self, x):
+        """."""
         res = {}
         for name, llist in self.players.items():
             for player_obyect in llist:
@@ -230,7 +231,9 @@ class Player:
         self.player_points.append(point)
 
     def add_winned_game(self, game):
+        """."""
         self.winned_games.append(game)
+
 
 class Game:
     """Game class."""
@@ -251,6 +254,7 @@ class Game:
         self.game_list.append(game)
 
     def add_player_object(self, player):
+        """."""
         self.players_objects.append(player)
 
 
