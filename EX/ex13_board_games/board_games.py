@@ -50,6 +50,10 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_losses")
             return func(token[1])
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-loser":
+            token = path[1::].split("/")
+            func = getattr(self, "get_" + token[0] + "_most_losses")
+            return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
@@ -228,6 +232,23 @@ class Statistics:
             res[name] = len(ress)
         return max(res, key=res.get)
 
+    def get_game_most_frequent_loser(self, x):
+        """."""
+        res = {}
+        for name, llist in self.players.items():
+            played_games_list = []
+            for player_object in llist:
+                for game in player_object.player_games:
+                    if game == x:
+                        played_games_list.append(game)
+                if x in player_object.l:
+                    winning_times = player_object.lost_games.count(x)
+                    played_games_amount = len(played_games_list)
+                    percentage = (winning_times / played_games_amount) * 100
+                    res[name] = percentage
+        return max(res, key=res.get)
+
+
 
 class Gameplay:
     """One game class."""
@@ -316,4 +337,5 @@ if __name__ == '__main__':
     # print(statistics.get("/player/kristjan/won"))
     # print(statistics.get("/game/terraforming mars/most-wins"))
     # print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    print(statistics.get('/game/terraforming mars/most-losses'))
+    # print(statistics.get('/game/terraforming mars/most-losses'))
+    print(statistics.get('/game/{name}/most-frequent-loser'))
