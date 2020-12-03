@@ -222,14 +222,14 @@ class Statistics:
         """."""
         res = {}
         for name, llist in self.players.items():
-            ress = []
             for player_obyect in llist:
                 for game in player_obyect.lost_games:
                     if game.game_type == "points" or game.game_type == "places":
                         if x in player_obyect.lost_games:
+                            ress = []
                             for item in player_obyect.lost_games:
                                 ress.append(item)
-            res[name] = len(ress)
+                            res[name] = len(ress)
         return max(res, key=res.get)
 
     def get_game_most_frequent_loser(self, x):
@@ -256,12 +256,10 @@ class Gameplay:
     def __init__(self, game_name: str, game_type: str, points_per_game: list, players: list, winner_or_not):
         """Gameplay constructor."""
         self.game_name = game_name
-        self.times_of_playing = 0
-        self.winner_or_not = winner_or_not
         self.game_type = game_type
         self.points_per_game = points_per_game
-        self.amount_of_players = 0
         self.players = players
+        self.winner_or_not = winner_or_not
 
     def __repr__(self):
         """."""
@@ -337,5 +335,5 @@ if __name__ == '__main__':
     # print(statistics.get("/player/kristjan/won"))
     # print(statistics.get("/game/terraforming mars/most-wins"))
     # print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    # print(statistics.get('/game/terraforming mars/most-losses'))
-    print(statistics.get('/game/{name}/most-frequent-loser'))
+    print(statistics.get('/game/chess/most-losses'))
+    # print(statistics.get('/game/{name}/most-frequent-loser'))
