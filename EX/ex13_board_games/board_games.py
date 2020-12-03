@@ -31,8 +31,7 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_playing")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
-            2] == "player-amount":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "player-amount":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_playeramount")
             return func(token[1])
@@ -40,23 +39,23 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_won")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
-            2] == "most-wins":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-wins":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_wins")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
-            2] == "most-frequent-winner":
+        else:
+            return self.create_func(path)
+
+    def create_func(self, path):
+        if len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-winner":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_frequent_winner")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
-            2] == "most-losses":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-losses":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_losses")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
-            2] == "most-frequent-loser":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-loser":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_losses")
             return func(token[1])
@@ -64,6 +63,7 @@ class Statistics:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
             return func(tokens[0])
+
 
     def read_from_file(self, filename: str):
         """Read from file."""
@@ -342,16 +342,16 @@ class Game:
 
 if __name__ == '__main__':
     statistics = Statistics("ex13_test_file.txt")
-    # print(statistics.get("/players"))
-    # print(statistics.get("/games"))
-    # print(statistics.get("/total"))
-    # print(statistics.get("/total/points"))
-    # print(statistics.get("/player/joosep/amount"))
-    # print(statistics.get("/player/joosep/favourite"))
-    # print(statistics.get("/game/terraforming mars/amount"))
-    # print(statistics.get("/game/terraforming mars/player-amount"))
+    print(statistics.get("/players"))
+    print(statistics.get("/games"))
+    print(statistics.get("/total"))
+    print(statistics.get("/total/points"))
+    print(statistics.get("/player/joosep/amount"))
+    print(statistics.get("/player/joosep/favourite"))
+    print(statistics.get("/game/terraforming mars/amount"))
+    print(statistics.get("/game/terraforming mars/player-amount"))
     print(statistics.get("/player/kristjan/won"))
-    # print(statistics.get("/game/terraforming mars/most-wins"))
-    # print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    # print(statistics.get('/game/chess/most-losses'))
+    print(statistics.get("/game/terraforming mars/most-wins"))
+    print(statistics.get("/game/7 wonders/most-frequent-winner"))
+    print(statistics.get('/game/chess/most-losses'))
     # print(statistics.get('/game/{name}/most-frequent-loser'))
