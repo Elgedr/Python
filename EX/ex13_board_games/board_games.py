@@ -69,7 +69,7 @@ class Statistics:
                 points = splitted[3].split(",")  # ['6', '30', '12']
                 player_objects_list = []
 
-                name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
+                name_for_gameplay_class = Gameplay(game_name, result_type, points, players, None)
 
                 for name in players:
                     if name in self.players.keys():
@@ -79,7 +79,7 @@ class Statistics:
                         if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             new.add_winned_game(game_name)
-                        else:
+                        elif result_type == "places" and name == points[-1] or result_type == "points" and players.index(name) == points.index(str(min(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                             new.add_lost_games(name_for_gameplay_class)
                         new.add_player_games(name_for_gameplay_class)
@@ -92,7 +92,7 @@ class Statistics:
                         if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             name.add_winned_game(game_name)
-                        else:
+                        elif result_type == "places" and key_indict == points[-1] or result_type == "points" and players.index(key_indict) == points.index(str(min(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                             name.add_lost_games(name_for_gameplay_class)
                         name.add_player_games(name_for_gameplay_class)
@@ -223,8 +223,8 @@ class Statistics:
                 for game in player_obyect.lost_games:
                     if game.game_type == "points" or game.game_type == "places":
                         if x in player_obyect.lost_games:
-                            print(player_obyect.lost_games)
-                            ress.append(player_obyect.lost_games.count(x))
+                            for item in player_obyect.lost_games:
+                                ress.append(item)
             res[name] = len(ress)
         return max(res, key=res.get)
 
