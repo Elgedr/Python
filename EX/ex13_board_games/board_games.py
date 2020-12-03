@@ -245,15 +245,14 @@ class Statistics:
             played_games_list = []
             for player_object in llist:
                 for game in player_object.player_games:
-                    print(game)
-        #             if game == x:
-        #                 played_games_list.append(game)
-        #         if x in player_object.l:
-        #             winning_times = player_object.lost_games.count(x)
-        #             played_games_amount = len(played_games_list)
-        #             percentage = (winning_times / played_games_amount) * 100
-        #             res[name] = percentage
-        # return max(res, key=res.get)
+                    if game == x:
+                        played_games_list.append(game)
+                if x in player_object.lost_games:
+                    winning_times = player_object.lost_games.count(x)
+                    played_games_amount = len(played_games_list)
+                    percentage = (winning_times / played_games_amount) * 100
+                    res[name] = percentage
+        return max(res, key=res.get)
 
 
 class Gameplay:
