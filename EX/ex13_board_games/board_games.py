@@ -201,12 +201,19 @@ class Statistics:
     def get_player_won(self, x):
         """."""
         res = []
-        listt = self.players.get(x)
-        for playerobyect in listt:
-            for gameobject in playerobyect.player_games:
-                if gameobject.winner_or_not is True:
-                    res.append(x)
+        list_of_player_objects = self.players.get(x)
+        for player_obj in list_of_player_objects:
+            for game in player_obj.winned_games:
+                res.append(game)
         return len(res)
+
+        # res = []
+        # listt = self.players.get(x)
+        # for playerobyect in listt:
+        #     for gameobject in playerobyect.player_games:
+        #         if gameobject.winner_or_not is True:
+        #             res.append(x)
+        # return len(res)
 
     def get_game_most_wins(self, x):
         """."""
@@ -343,8 +350,8 @@ if __name__ == '__main__':
     # print(statistics.get("/player/joosep/favourite"))
     # print(statistics.get("/game/terraforming mars/amount"))
     # print(statistics.get("/game/terraforming mars/player-amount"))
-    # print(statistics.get("/player/kristjan/won"))
+    print(statistics.get("/player/kristjan/won"))
     # print(statistics.get("/game/terraforming mars/most-wins"))
     # print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    print(statistics.get('/game/chess/most-losses'))
+    # print(statistics.get('/game/chess/most-losses'))
     # print(statistics.get('/game/{name}/most-frequent-loser'))
