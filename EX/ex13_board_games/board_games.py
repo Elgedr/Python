@@ -221,8 +221,8 @@ class Statistics:
             for player_obyect in llist:
                 for game in player_obyect.lost_games:
                     if game.game_type == "points" or game.game_type == "places":
-                        if x in player_obyect.lost_games :
-                            res[name] = player_obyect.winned_games.count(x)
+                        if x in player_obyect.lost_games:
+                            res[name] = player_obyect.lost_games.count(x)
         return max(res, key=res.get)
 
 
