@@ -116,45 +116,28 @@ class Statistics:
                         self.players[key_indict].append(name)
                         player_objects_list.append(
                             name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
-            self.read_from_file2(filename)
 
-    def read_from_file2(self, filename):
-        """."""
-        with open(filename, encoding='utf-8') as f:
-            for line in f:
-                linee = line.rstrip("\n")
-                splitted = linee.split(";")
-                game_name = splitted[0]
-                name_for_gameplay_class = splitted[0]
-                name_for_game_class = splitted[0]
-                result_type = splitted[2]
-                players = splitted[1].split(",")  # ['ago', 'emi', 'el']
-                points = splitted[3].split(",")  # ['6', '30', '12']
-                player_objects_list = []
-
-        name_for_gameplay_class = Gameplay(game_name, result_type, points, players, None)
-
-        if name_for_game_class in self.games.keys():
-            second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
-            new = second_object_name
-            new = Game(result_type)
-            new.add_game_to_list(name_for_gameplay_class)
-            for i in player_objects_list:
-                new.add_players_names(i)
-                # for game in i.player_games:
-                #     if game.game_name == name_for_game_class:
-                #         new.add_player_object(i)
-            self.games[name_for_game_class].append(new)
-        else:
-            self.games[name_for_game_class] = []
-            game_name = Game(result_type)
-            game_name.add_game_to_list(name_for_gameplay_class)
-            for i in player_objects_list:
-                game_name.add_players_names(i)
-                # for game in i.player_games:
-                #     if game.game_name == name_for_game_class:
-                #         game_name.add_player_object(i)
-            self.games[name_for_game_class].append(game_name)
+                if name_for_game_class in self.games.keys():
+                    second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
+                    new = second_object_name
+                    new = Game(result_type)
+                    new.add_game_to_list(name_for_gameplay_class)
+                    for i in player_objects_list:
+                        new.add_players_names(i)
+                        # for game in i.player_games:
+                        #     if game.game_name == name_for_game_class:
+                        #         new.add_player_object(i)
+                    self.games[name_for_game_class].append(new)
+                else:
+                    self.games[name_for_game_class] = []
+                    game_name = Game(result_type)
+                    game_name.add_game_to_list(name_for_gameplay_class)
+                    for i in player_objects_list:
+                        game_name.add_players_names(i)
+                        # for game in i.player_games:
+                        #     if game.game_name == name_for_game_class:
+                        #         game_name.add_player_object(i)
+                    self.games[name_for_game_class].append(game_name)
 
     def get_games(self, x):
         """."""
