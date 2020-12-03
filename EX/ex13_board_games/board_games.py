@@ -57,7 +57,7 @@ class Statistics:
             return func(token[1])
         elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-loser":
             token = path[1::].split("/")
-            func = getattr(self, "get_" + token[0] + "_most_losses")
+            func = getattr(self, "get_" + token[0] + "_most_frequent_loser")
             return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
@@ -245,14 +245,15 @@ class Statistics:
             played_games_list = []
             for player_object in llist:
                 for game in player_object.player_games:
-                    if game == x:
-                        played_games_list.append(game)
-                if x in player_object.l:
-                    winning_times = player_object.lost_games.count(x)
-                    played_games_amount = len(played_games_list)
-                    percentage = (winning_times / played_games_amount) * 100
-                    res[name] = percentage
-        return max(res, key=res.get)
+                    print(game)
+        #             if game == x:
+        #                 played_games_list.append(game)
+        #         if x in player_object.l:
+        #             winning_times = player_object.lost_games.count(x)
+        #             played_games_amount = len(played_games_list)
+        #             percentage = (winning_times / played_games_amount) * 100
+        #             res[name] = percentage
+        # return max(res, key=res.get)
 
 
 class Gameplay:
@@ -329,16 +330,16 @@ class Game:
 
 if __name__ == '__main__':
     statistics = Statistics("ex13_test_file.txt")
-    print(statistics.get("/players"))
-    print(statistics.get("/games"))
-    print(statistics.get("/total"))
-    print(statistics.get("/total/points"))
-    print(statistics.get("/player/joosep/amount"))
-    print(statistics.get("/player/joosep/favourite"))
-    print(statistics.get("/game/terraforming mars/amount"))
-    print(statistics.get("/game/terraforming mars/player-amount"))
-    print(statistics.get("/player/kristjan/won"))
-    print(statistics.get("/game/terraforming mars/most-wins"))
-    print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    print(statistics.get('/game/chess/most-losses'))
-    # print(statistics.get('/game/{name}/most-frequent-loser'))
+    # print(statistics.get("/players"))
+    # print(statistics.get("/games"))
+    # print(statistics.get("/total"))
+    # print(statistics.get("/total/points"))
+    # print(statistics.get("/player/joosep/amount"))
+    # print(statistics.get("/player/joosep/favourite"))
+    # print(statistics.get("/game/terraforming mars/amount"))
+    # print(statistics.get("/game/terraforming mars/player-amount"))
+    # print(statistics.get("/player/kristjan/won"))
+    # print(statistics.get("/game/terraforming mars/most-wins"))
+    # print(statistics.get("/game/7 wonders/most-frequent-winner"))
+    # print(statistics.get('/game/chess/most-losses'))
+    print(statistics.get('/game/chess/most-frequent-loser'))
