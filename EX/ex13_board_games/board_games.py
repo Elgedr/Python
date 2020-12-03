@@ -18,8 +18,7 @@ class Statistics:
         if path == "/total/places" or path == "/total/points" or path == "/total/winner":
             tokens = path[1:].split("/")[1]
             return self.get_total_result_type(tokens)
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount" and path[1:].split("/")[
-            0] == "player":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount" and path[1:].split("/")[0] == "player":
             token = path[1:].split("/")
             func = getattr(self, "get_" + token[0] + "_amount")
             return func(token[1])
@@ -44,9 +43,10 @@ class Statistics:
             func = getattr(self, "get_" + token[0] + "_most_wins")
             return func(token[1])
         else:
-            return self.create_func(path)
+            return self.get_2(path)
 
-    def create_func(self, path):
+    def get_2(self, path):
+        """Continuation of get function."""
         if len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-winner":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_frequent_winner")
@@ -63,7 +63,6 @@ class Statistics:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
             return func(tokens[0])
-
 
     def read_from_file(self, filename: str):
         """Read from file."""
