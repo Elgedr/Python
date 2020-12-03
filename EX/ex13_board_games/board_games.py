@@ -248,9 +248,9 @@ class Statistics:
                     if game == x:
                         played_games_list.append(game)
                 if x in player_object.lost_games:
-                    winning_times = player_object.lost_games.count(x)
+                    losing_times = player_object.lost_games.count(x)
                     played_games_amount = len(played_games_list)
-                    percentage = (winning_times / played_games_amount) * 100
+                    percentage = (losing_times / played_games_amount) * 100
                     res[name] = percentage
         return max(res, key=res.get)
 
@@ -341,4 +341,4 @@ if __name__ == '__main__':
     # print(statistics.get("/game/terraforming mars/most-wins"))
     # print(statistics.get("/game/7 wonders/most-frequent-winner"))
     # print(statistics.get('/game/chess/most-losses'))
-    print(statistics.get('/game/chess/most-frequent-loser'))
+    print(statistics.get('/game/terraforming mars/most-frequent-loser'))
