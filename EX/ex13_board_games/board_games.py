@@ -83,7 +83,7 @@ class Statistics:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                         new.add_player_games(name_for_gameplay_class)
                         player_objects_list.append(new)
-                        new.add_lost_games(game_name)
+                        new.add_lost_games(name_for_gameplay_class)
                         self.players[name].append(new)
                     else:
                         key_indict = name
@@ -95,7 +95,7 @@ class Statistics:
                         else:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                         name.add_player_games(name_for_gameplay_class)
-                        name.add_lost_games(game_name)
+                        name.add_lost_games(name_for_gameplay_class)
                         self.players[key_indict].append(name)
                         player_objects_list.append(name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
 
@@ -219,8 +219,10 @@ class Statistics:
         res = {}
         for name, llist in self.players.items():
             for player_obyect in llist:
-                if x in player_obyect.lost_games:
-                    res[name] = player_obyect.winned_games.count(x)
+                for game in player_obyect.lost_games:
+                    if game.game_type == "points" or game.game_type == "places":
+                        if x in player_obyect.lost_games :
+                            res[name] = player_obyect.winned_games.count(x)
         return max(res, key=res.get)
 
 
