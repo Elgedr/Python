@@ -77,9 +77,6 @@ class Statistics:
                 players = splitted[1].split(",")  # ['ago', 'emi', 'el']
                 points = splitted[3].split(",")  # ['6', '30', '12']
                 player_objects_list = []
-
-                name_for_gameplay_class = Gameplay(game_name, result_type, points, players, None)
-
                 for name in players:
                     if name in self.players.keys():
                         second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
