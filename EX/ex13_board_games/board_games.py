@@ -221,7 +221,7 @@ class Statistics:
             for player_obyect in llist:
                 if x in player_obyect.lost_games:
                     res[name] = player_obyect.winned_games.count(x)
-        return min(res, key=res.get)
+        return max(res, key=res.get)
 
 
 class Gameplay:
