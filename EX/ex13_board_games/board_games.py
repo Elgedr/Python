@@ -82,8 +82,7 @@ class Statistics:
                         second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
                         new = second_object_name
                         new = Player(result_type)
-                        if result_type == "winner" and name in points or result_type == "places" and name == points[
-                            0] or result_type == "points" and players.index(name) == points.index(
+                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(
                                 str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             new.add_winned_game(game_name)
@@ -99,8 +98,7 @@ class Statistics:
                         key_indict = name
                         self.players[key_indict] = []
                         name = Player(name)
-                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == \
-                                points[0] or result_type == "points" and players.index(key_indict) == points.index(
+                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(
                                 str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             name.add_winned_game(game_name)
@@ -111,8 +109,7 @@ class Statistics:
                             name.add_lost_games(name_for_gameplay_class)
                         name.add_player_games(name_for_gameplay_class)
                         self.players[key_indict].append(name)
-                        player_objects_list.append(
-                            name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
+                        player_objects_list.append(name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
 
                 if name_for_game_class in self.games.keys():
                     second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
@@ -121,9 +118,6 @@ class Statistics:
                     new.add_game_to_list(name_for_gameplay_class)
                     for i in player_objects_list:
                         new.add_players_names(i)
-                        # for game in i.player_games:
-                        #     if game.game_name == name_for_game_class:
-                        #         new.add_player_object(i)
                     self.games[name_for_game_class].append(new)
                 else:
                     self.games[name_for_game_class] = []
@@ -131,9 +125,6 @@ class Statistics:
                     game_name.add_game_to_list(name_for_gameplay_class)
                     for i in player_objects_list:
                         game_name.add_players_names(i)
-                        # for game in i.player_games:
-                        #     if game.game_name == name_for_game_class:
-                        #         game_name.add_player_object(i)
                     self.games[name_for_game_class].append(game_name)
 
     def get_games(self, x):
