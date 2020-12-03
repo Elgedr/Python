@@ -218,11 +218,13 @@ class Statistics:
         """."""
         res = {}
         for name, llist in self.players.items():
+            ress = []
             for player_obyect in llist:
                 for game in player_obyect.lost_games:
                     if game.game_type == "points" or game.game_type == "places":
                         if x in player_obyect.lost_games:
-                            res[name] = player_obyect.lost_games.count(x)
+                            ress.append(player_obyect.lost_games.count(x))
+            res[name] = len(ress)
         return max(res, key=res.get)
 
 
@@ -313,4 +315,4 @@ if __name__ == '__main__':
     # print(statistics.get("/player/kristjan/won"))
     # print(statistics.get("/game/terraforming mars/most-wins"))
     # print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    print(statistics.get('/game/chess/most-losses'))
+    print(statistics.get('/game/terraforming mars/most-losses'))
