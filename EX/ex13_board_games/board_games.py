@@ -18,7 +18,8 @@ class Statistics:
         if path == "/total/places" or path == "/total/points" or path == "/total/winner":
             tokens = path[1:].split("/")[1]
             return self.get_total_result_type(tokens)
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount" and path[1:].split("/")[0] == "player":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount" and path[1:].split("/")[
+            0] == "player":
             token = path[1:].split("/")
             func = getattr(self, "get_" + token[0] + "_amount")
             return func(token[1])
@@ -30,7 +31,8 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_playing")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "player-amount":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "player-amount":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_playeramount")
             return func(token[1])
@@ -38,19 +40,23 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_won")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-wins":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "most-wins":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_wins")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-winner":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "most-frequent-winner":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_frequent_winner")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-losses":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "most-losses":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_losses")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-loser":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "most-frequent-loser":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_losses")
             return func(token[1])
@@ -80,10 +86,14 @@ class Statistics:
                         second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
                         new = second_object_name
                         new = Player(result_type)
-                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(str(max(list(map(int, points))))):
+                        if result_type == "winner" and name in points or result_type == "places" and name == points[
+                            0] or result_type == "points" and players.index(name) == points.index(
+                                str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             new.add_winned_game(game_name)
-                        elif result_type == "places" and name == points[-1] or result_type == "points" and players.index(name) == points.index(str(min(list(map(int, points))))):
+                        elif result_type == "places" and name == points[
+                            -1] or result_type == "points" and players.index(name) == points.index(
+                                str(min(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                             new.add_lost_games(name_for_gameplay_class)
                         new.add_player_games(name_for_gameplay_class)
@@ -93,15 +103,20 @@ class Statistics:
                         key_indict = name
                         self.players[key_indict] = []
                         name = Player(name)
-                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(str(max(list(map(int, points))))):
+                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == \
+                                points[0] or result_type == "points" and players.index(key_indict) == points.index(
+                                str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             name.add_winned_game(game_name)
-                        elif result_type == "places" and key_indict == points[-1] or result_type == "points" and players.index(key_indict) == points.index(str(min(list(map(int, points))))):
+                        elif result_type == "places" and key_indict == points[
+                            -1] or result_type == "points" and players.index(key_indict) == points.index(
+                                str(min(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                             name.add_lost_games(name_for_gameplay_class)
                         name.add_player_games(name_for_gameplay_class)
                         self.players[key_indict].append(name)
-                        player_objects_list.append(name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
+                        player_objects_list.append(
+                            name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
 
                 if name_for_game_class in self.games.keys():
                     second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
@@ -223,13 +238,10 @@ class Statistics:
         res = {}
         for name, llist in self.players.items():
             for player_obyect in llist:
-                for game in player_obyect.lost_games:
-                    if game.game_type == "points" or game.game_type == "places":
-                        if x in player_obyect.lost_games:
-                            ress = []
-                            for item in player_obyect.lost_games:
-                                ress.append(item)
-                            res[name] = len(ress)
+                if x in player_obyect.lost_games:
+                    ress = []
+                    ress.append(x)
+                    res[name] = len(ress)
         return max(res, key=res.get)
 
     def get_game_most_frequent_loser(self, x):
@@ -247,7 +259,6 @@ class Statistics:
                     percentage = (winning_times / played_games_amount) * 100
                     res[name] = percentage
         return max(res, key=res.get)
-
 
 
 class Gameplay:
@@ -335,5 +346,5 @@ if __name__ == '__main__':
     # print(statistics.get("/player/kristjan/won"))
     # print(statistics.get("/game/terraforming mars/most-wins"))
     # print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    print(statistics.get('/game/chess/most-losses'))
+    print(statistics.get('/game/terraforming mars/most-losses'))
     # print(statistics.get('/game/{name}/most-frequent-loser'))
