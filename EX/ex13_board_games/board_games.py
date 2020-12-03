@@ -46,6 +46,10 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_frequent_winner")
             return func(token[1])
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-losses":
+            token = path[1::].split("/")
+            func = getattr(self, "get_" + token[0] + "_most_losses")
+            return func(token[1])
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
@@ -79,6 +83,7 @@ class Statistics:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                         new.add_player_games(name_for_gameplay_class)
                         player_objects_list.append(new)
+                        new.add_lost_games(game_name)
                         self.players[name].append(new)
                     else:
                         key_indict = name
@@ -90,6 +95,7 @@ class Statistics:
                         else:
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                         name.add_player_games(name_for_gameplay_class)
+                        name.add_lost_games(game_name)
                         self.players[key_indict].append(name)
                         player_objects_list.append(name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
 
@@ -206,16 +212,16 @@ class Statistics:
                     played_games_amount = len(played_games_list)
                     percentage = (winning_times / played_games_amount) * 100
                     res[name] = percentage
-            # for player_obyect in llist:
-            #     print(player_obyect.player_games)
-                # played_games = len(player_obyect.player_games)
-                # print(played_games)
-            # if x in player_obyect.winned_games:
-            #     winned_times = player_obyect.winned_games.count(x)
-            #     percent = (winned_times / played_games) * 100
-            #     res[name] = percent
-
         return max(res, key=res.get)
+
+    def get_game_most_losses(self, x):
+        """."""
+        res = {}
+        for name, llist in self.players.items():
+            for player_obyect in llist:
+                if x in player_obyect.lost_games:
+                    res[name] = player_obyect.winned_games.count(x)
+        return min(res, key=res.get)
 
 
 class Gameplay:
@@ -250,6 +256,7 @@ class Player:
         self.player_games = []
         self.player_points = []
         self.winned_games = []
+        self.lost_games = []
 
     def add_player_games(self, game: Gameplay):
         """."""
@@ -262,6 +269,10 @@ class Player:
     def add_winned_game(self, game):
         """."""
         self.winned_games.append(game)
+
+    def add_lost_games(self, game):
+        """."""
+        self.lost_games.append(game)
 
 
 class Game:
@@ -289,14 +300,15 @@ class Game:
 
 if __name__ == '__main__':
     statistics = Statistics("ex13_test_file.txt")
-    print(statistics.get("/players"))
-    print(statistics.get("/games"))
-    print(statistics.get("/total"))
-    print(statistics.get("/total/points"))
-    print(statistics.get("/player/joosep/amount"))
-    print(statistics.get("/player/joosep/favourite"))
-    print(statistics.get("/game/terraforming mars/amount"))
-    print(statistics.get("/game/terraforming mars/player-amount"))
-    print(statistics.get("/player/kristjan/won"))
-    print(statistics.get("/game/terraforming mars/most-wins"))
-    print(statistics.get("/game/7 wonders/most-frequent-winner"))
+    # print(statistics.get("/players"))
+    # print(statistics.get("/games"))
+    # print(statistics.get("/total"))
+    # print(statistics.get("/total/points"))
+    # print(statistics.get("/player/joosep/amount"))
+    # print(statistics.get("/player/joosep/favourite"))
+    # print(statistics.get("/game/terraforming mars/amount"))
+    # print(statistics.get("/game/terraforming mars/player-amount"))
+    # print(statistics.get("/player/kristjan/won"))
+    # print(statistics.get("/game/terraforming mars/most-wins"))
+    # print(statistics.get("/game/7 wonders/most-frequent-winner"))
+    print(statistics.get('/game/chess/most-losses'))
