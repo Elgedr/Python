@@ -82,13 +82,10 @@ class Statistics:
                         second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
                         new = second_object_name
                         new = Player(result_type)
-                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(
-                                str(max(list(map(int, points))))):
+                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             new.add_winned_game(game_name)
-                        elif result_type == "places" and name == points[
-                            -1] or result_type == "points" and players.index(name) == points.index(
-                                str(min(list(map(int, points))))):
+                        elif result_type == "places" and name == points[-1] or result_type == "points" and players.index(name) == points.index(str(min(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                             new.add_lost_games(name_for_gameplay_class)
                         new.add_player_games(name_for_gameplay_class)
@@ -98,13 +95,10 @@ class Statistics:
                         key_indict = name
                         self.players[key_indict] = []
                         name = Player(name)
-                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(
-                                str(max(list(map(int, points))))):
+                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             name.add_winned_game(game_name)
-                        elif result_type == "places" and key_indict == points[
-                            -1] or result_type == "points" and players.index(key_indict) == points.index(
-                                str(min(list(map(int, points))))):
+                        elif result_type == "places" and key_indict == points[-1] or result_type == "points" and players.index(key_indict) == points.index(str(min(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                             name.add_lost_games(name_for_gameplay_class)
                         name.add_player_games(name_for_gameplay_class)
