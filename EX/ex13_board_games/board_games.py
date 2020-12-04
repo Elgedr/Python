@@ -129,7 +129,6 @@ class Statistics:
                 splitted = linee.split(";")
                 game_name = splitted[0]
                 name_for_gameplay_class = splitted[0]
-                name_for_game_class = splitted[0]
                 result_type = splitted[2]
                 players = splitted[1].split(",")  # ['ago', 'emi', 'el']
                 points = splitted[3].split(",")  # ['6', '30', '12']
