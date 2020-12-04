@@ -2,7 +2,6 @@
 import random
 import string
 
-
 class Statistics:
     """Statistic class."""
 
@@ -329,16 +328,16 @@ class Game:
 
 if __name__ == '__main__':
     statistics = Statistics("ex13_test_file.txt")
-    # print(statistics.get("/players"))
-    # print(statistics.get("/games"))
-    # print(statistics.get("/total"))
-    # print(statistics.get("/total/points"))
-    # print(statistics.get("/player/joosep/amount"))
-    # print(statistics.get("/player/joosep/favourite"))
-    # print(statistics.get("/game/terraforming mars/amount"))
-    # print(statistics.get("/game/terraforming mars/player-amount"))
-    # print(statistics.get("/player/kristjan/won"))
-    # print(statistics.get("/game/terraforming mars/most-wins"))
-    # print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    # print(statistics.get('/game/chess/most-losses'))
+    print(statistics.get("/players"))
+    print(statistics.get("/games"))
+    print(statistics.get("/total"))
+    print(statistics.get("/total/points"))
+    print(statistics.get("/player/joosep/amount"))
+    print(statistics.get("/player/joosep/favourite"))
+    print(statistics.get("/game/terraforming mars/amount"))
+    print(statistics.get("/game/terraforming mars/player-amount"))
+    print(statistics.get("/player/kristjan/won"))
+    print(statistics.get("/game/terraforming mars/most-wins"))
+    print(statistics.get("/game/7 wonders/most-frequent-winner"))
+    print(statistics.get('/game/chess/most-losses'))
     print(statistics.get('/game/terraforming mars/most-frequent-loser'))
