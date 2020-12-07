@@ -29,7 +29,7 @@ robot = PiBot()  # robot object
 #     a = robot.get_left_line_sensors()
 #     print(a)
 #     robot.sleep(0.01)
-for i in range(500):
+for i in range(100):
     a = robot.get_left_line_sensors()
     b = robot.get_right_line_sensors()
     while a[0] < 1024 and b[0] < 1024:
