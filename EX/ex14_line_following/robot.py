@@ -29,7 +29,12 @@ robot = PiBot()  # robot object
 #     a = robot.get_left_line_sensors()
 #     print(a)
 #     robot.sleep(0.01)
-for i in range(100):
+for i in range(50):
+    robot.set_wheels_speed(50)
+    robot.sleep(0.01)
+robot.set_left_wheel_speed(-20)
+robot.set_right_wheel_speed(20)
+for i in range(50):
     robot.set_wheels_speed(50)
     robot.sleep(0.01)
 
