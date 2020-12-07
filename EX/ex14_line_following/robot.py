@@ -3,7 +3,7 @@ from PiBot import PiBot  # robot class
 robot = PiBot()  # robot object
 
 a = robot.get_left_line_sensors()
-b = robot.get_leftmost_line_sensor()
+b = robot.get_right_line_sensors()
 
 robot.set_wheels_speed(30)
 for u in range(500):
