@@ -33,13 +33,15 @@ for i in range(50):
     robot.set_wheels_speed(50)
     robot.sleep(0.01)
 
-for i in range(1000):
-    robot.set_wheels_speed(0)
-    robot.set_left_wheel_speed(2)
-    robot.set_right_wheel_speed(-2)
-    robot.sleep(0.2)
-    robot.set_wheels_speed(0)
+
+robot.set_left_wheel_speed(0)
+robot.set_right_wheel_speed(2)
+robot.sleep(0.2)
+
 print(robot.get_rotation())
+for i in range(50):
+    robot.set_wheels_speed(50)
+    robot.sleep(0.01)
 
 robot.set_wheels_speed(30)
 robot.sleep(0.05)
