@@ -34,8 +34,8 @@ for i in range(50):
     robot.sleep(0.01)
 
 
-robot.set_left_wheel_speed(0)
-robot.set_right_wheel_speed(10)
+robot.set_left_wheel_speed(40)
+robot.set_right_wheel_speed(0)
 robot.sleep(0.2)
 
 print(robot.get_rotation())
