@@ -45,7 +45,7 @@ for i in range(500):
 #     robot.set_wheels_speed(50)
 #     robot.sleep(0.01)
 
-robot.set_wheels_speed(30)
-robot.sleep(0.05)
+# robot.set_wheels_speed(30)
+# robot.sleep(0.05)
 robot.set_wheels_speed(0)
 robot.done()
