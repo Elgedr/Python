@@ -51,7 +51,8 @@ for i in range(100):
             robot.set_wheels_speed(50)
             robot.sleep(0.01)
     else:
-        robot.set_wheels_speed(50)
+        robot.set_left_wheel_speed(2)
+        robot.set_right_wheel_speed(0)
         robot.sleep(0.01)
 
 # robot.set_wheels_speed(30)
