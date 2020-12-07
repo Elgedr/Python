@@ -70,41 +70,50 @@ class Statistics:
             for line in f:
                 linee = line.rstrip("\n")
                 splitted = linee.split(";")
+                game_name = splitted[0]
                 name_for_gameplay_class = splitted[0]
                 name_for_game_class = splitted[0]
                 result_type = splitted[2]
+                players = splitted[1].split(",")  # ['ago', 'emi', 'el']
+                points = splitted[3].split(",")  # ['6', '30', '12']
                 player_objects_list = []
+                for name in players:
+                    if name in self.players.keys():
+                        second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
+                        new = second_object_name
+                        new = Player(result_type)
+                        if result_type == "winner" and name in points or result_type == "places" and name == points[
+                            0] or result_type == "points" and players.index(name) == points.index(
+                                str(max(list(map(int, points))))):
+                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
+                            new.add_winned_game(game_name)
+                        elif result_type == "places" and name == points[
+                            -1] or result_type == "points" and players.index(name) == points.index(
+                                str(min(list(map(int, points))))):
+                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
+                            new.add_lost_games(name_for_gameplay_class)
+                        new.add_player_games(name_for_gameplay_class)
+                        player_objects_list.append(new)
+                        self.players[name].append(new)
+                    else:
+                        key_indict = name
+                        self.players[key_indict] = []
+                        name = Player(name)
+                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == \
+                                points[0] or result_type == "points" and players.index(key_indict) == points.index(
+                                str(max(list(map(int, points))))):
+                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
+                            name.add_winned_game(game_name)
+                        elif result_type == "places" and key_indict == points[
+                            -1] or result_type == "points" and players.index(key_indict) == points.index(
+                                str(min(list(map(int, points))))):
+                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
+                            name.add_lost_games(name_for_gameplay_class)
+                        name.add_player_games(name_for_gameplay_class)
+                        self.players[key_indict].append(name)
+                        player_objects_list.append(
+                            name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
 
-                self.read_from_file_2(filename)
-                # for name in players:
-                #     if name in self.players.keys():
-                #         second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
-                #         new = second_object_name
-                #         new = Player(result_type)
-                #         if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(str(max(list(map(int, points))))):
-                #             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
-                #             new.add_winned_game(game_name)
-                #         elif result_type == "places" and name == points[-1] or result_type == "points" and players.index(name) == points.index(str(min(list(map(int, points))))):
-                #             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
-                #             new.add_lost_games(name_for_gameplay_class)
-                #         new.add_player_games(name_for_gameplay_class)
-                #         player_objects_list.append(new)
-                #         self.players[name].append(new)
-                #     else:
-                #         key_indict = name
-                #         self.players[key_indict] = []
-                #         name = Player(name)
-                #         if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(str(max(list(map(int, points))))):
-                #             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
-                #             name.add_winned_game(game_name)
-                #         elif result_type == "places" and key_indict == points[-1] or result_type == "points" and players.index(key_indict) == points.index(str(min(list(map(int, points))))):
-                #             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
-                #             name.add_lost_games(name_for_gameplay_class)
-                #         name.add_player_games(name_for_gameplay_class)
-                #         self.players[key_indict].append(name)
-                #         player_objects_list.append(name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
-
-                # return self.read_from_file_2(filename)
                 if name_for_game_class in self.games.keys():
                     second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
                     new = second_object_name
@@ -120,46 +129,6 @@ class Statistics:
                     for i in player_objects_list:
                         game_name.add_players_names(i)
                     self.games[name_for_game_class].append(game_name)
-
-    def read_from_file_2(self, file):
-        """."""
-        with open(file, encoding='utf-8') as f:
-            for line in f:
-                linee = line.rstrip("\n")
-                splitted = linee.split(";")
-                game_name = splitted[0]
-                name_for_gameplay_class = splitted[0]
-                result_type = splitted[2]
-                players = splitted[1].split(",")  # ['ago', 'emi', 'el']
-                points = splitted[3].split(",")  # ['6', '30', '12']
-                player_objects_list = []
-                for name in players:
-                    if name in self.players.keys():
-                        second_object_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
-                        new = second_object_name
-                        new = Player(result_type)
-                        if result_type == "winner" and name in points or result_type == "places" and name == points[0] or result_type == "points" and players.index(name) == points.index(str(max(list(map(int, points))))):
-                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
-                            new.add_winned_game(game_name)
-                        elif result_type == "places" and name == points[-1] or result_type == "points" and players.index(name) == points.index(str(min(list(map(int, points))))):
-                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
-                            new.add_lost_games(name_for_gameplay_class)
-                        new.add_player_games(name_for_gameplay_class)
-                        player_objects_list.append(new)
-                        self.players[name].append(new)
-                    else:
-                        key_indict = name
-                        self.players[key_indict] = []
-                        name = Player(name)
-                        if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == points[0] or result_type == "points" and players.index(key_indict) == points.index(str(max(list(map(int, points))))):
-                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
-                            name.add_winned_game(game_name)
-                        elif result_type == "places" and key_indict == points[-1] or result_type == "points" and players.index(key_indict) == points.index(str(min(list(map(int, points))))):
-                            name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
-                            name.add_lost_games(name_for_gameplay_class)
-                        name.add_player_games(name_for_gameplay_class)
-                        self.players[key_indict].append(name)
-                        player_objects_list.append(name)  # add a person object to list. чтобы потом добавить этих персон в список self.game
 
     def get_games(self, x):
         """."""
@@ -227,14 +196,6 @@ class Statistics:
             for game in player_obj.winned_games:
                 res.append(game)
         return len(res)
-
-        # res = []
-        # listt = self.players.get(x)
-        # for playerobyect in listt:
-        #     for gameobject in playerobyect.player_games:
-        #         if gameobject.winner_or_not is True:
-        #             res.append(x)
-        # return len(res)
 
     def get_game_most_wins(self, x):
         """."""
