@@ -18,7 +18,8 @@ class Statistics:
         if path == "/total/places" or path == "/total/points" or path == "/total/winner":
             tokens = path[1:].split("/")[1]
             return self.get_total_result_type(tokens)
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount" and path[1:].split("/")[0] == "player":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[2] == "amount" and path[1:].split("/")[
+            0] == "player":
             token = path[1:].split("/")
             func = getattr(self, "get_" + token[0] + "_amount")
             return func(token[1])
@@ -30,7 +31,8 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_playing")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "player-amount":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "player-amount":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_playeramount")
             return func(token[1])
@@ -38,7 +40,8 @@ class Statistics:
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_won")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-wins":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "most-wins":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_wins")
             return func(token[1])
@@ -47,15 +50,18 @@ class Statistics:
 
     def get_2(self, path):
         """Continuation of get function."""
-        if len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-winner":
+        if len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "most-frequent-winner":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_frequent_winner")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-losses":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "most-losses":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_losses")
             return func(token[1])
-        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[2] == "most-frequent-loser":
+        elif len(path[1:].split("/")) == 3 and path[1:].split("/")[0] == "game" and path[1:].split("/")[
+            2] == "most-frequent-loser":
             token = path[1::].split("/")
             func = getattr(self, "get_" + token[0] + "_most_frequent_loser")
             return func(token[1])
@@ -84,12 +90,12 @@ class Statistics:
                         new = Player(result_type)
                         if result_type == "winner" and name in points or result_type == "places" and name == points[
                             0] or result_type == "points" and players.index(name) == points.index(
-                                str(max(list(map(int, points))))):
+                            str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             new.add_winned_game(game_name)
                         elif result_type == "places" and name == points[
                             -1] or result_type == "points" and players.index(name) == points.index(
-                                str(min(list(map(int, points))))):
+                            str(min(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                             new.add_lost_games(name_for_gameplay_class)
                         new.add_player_games(name_for_gameplay_class)
@@ -101,12 +107,12 @@ class Statistics:
                         name = Player(name)
                         if result_type == "winner" and key_indict in points or result_type == "places" and key_indict == \
                                 points[0] or result_type == "points" and players.index(key_indict) == points.index(
-                                str(max(list(map(int, points))))):
+                            str(max(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, True)
                             name.add_winned_game(game_name)
                         elif result_type == "places" and key_indict == points[
                             -1] or result_type == "points" and players.index(key_indict) == points.index(
-                                str(min(list(map(int, points))))):
+                            str(min(list(map(int, points))))):
                             name_for_gameplay_class = Gameplay(game_name, result_type, points, players, False)
                             name.add_lost_games(name_for_gameplay_class)
                         name.add_player_games(name_for_gameplay_class)
@@ -222,6 +228,10 @@ class Statistics:
                     res[name] = percentage
         return max(res, key=res.get)
 
+    def get_game(self, x):
+        """."""
+        return len(self.games.get(x))
+
     def get_game_most_losses(self, x):
         """."""
         res = {}
@@ -324,16 +334,16 @@ class Game:
 
 if __name__ == '__main__':
     statistics = Statistics("ex13_test_file.txt")
-    print(statistics.get("/players"))
-    print(statistics.get("/games"))
-    print(statistics.get("/total"))
-    print(statistics.get("/total/points"))
-    print(statistics.get("/player/joosep/amount"))
-    print(statistics.get("/player/joosep/favourite"))
+    # print(statistics.get("/players"))
+    # print(statistics.get("/games"))
+    # print(statistics.get("/total"))
+    # print(statistics.get("/total/points"))
+    # print(statistics.get("/player/joosep/amount"))
+    # print(statistics.get("/player/joosep/favourite"))
     print(statistics.get("/game/terraforming mars/amount"))
-    print(statistics.get("/game/terraforming mars/player-amount"))
-    print(statistics.get("/player/kristjan/won"))
-    print(statistics.get("/game/terraforming mars/most-wins"))
-    print(statistics.get("/game/7 wonders/most-frequent-winner"))
-    print(statistics.get('/game/chess/most-losses'))
-    print(statistics.get('/game/terraforming mars/most-frequent-loser'))
+    # print(statistics.get("/game/terraforming mars/player-amount"))
+    # print(statistics.get("/player/kristjan/won"))
+    # print(statistics.get("/game/terraforming mars/most-wins"))
+    # print(statistics.get("/game/7 wonders/most-frequent-winner"))
+    # print(statistics.get('/game/chess/most-losses'))
+    # print(statistics.get('/game/terraforming mars/most-frequent-loser'))
