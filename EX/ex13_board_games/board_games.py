@@ -68,7 +68,7 @@ class Statistics:
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
-            return func(tokens[0])
+            return func(tokens[1])
 
     def read_from_file(self, filename: str):
         """Read from file."""
@@ -340,10 +340,10 @@ if __name__ == '__main__':
     # print(statistics.get("/total/points"))
     # print(statistics.get("/player/joosep/amount"))
     # print(statistics.get("/player/joosep/favourite"))
-    print(statistics.get("/game/terraforming mars/amount"))
+    # print(statistics.get("/game/terraforming mars/amount"))
     # print(statistics.get("/game/terraforming mars/player-amount"))
     # print(statistics.get("/player/kristjan/won"))
     # print(statistics.get("/game/terraforming mars/most-wins"))
     # print(statistics.get("/game/7 wonders/most-frequent-winner"))
     # print(statistics.get('/game/chess/most-losses'))
-    # print(statistics.get('/game/terraforming mars/most-frequent-loser'))
+    print(statistics.get('/game/terraforming mars/most-frequent-loser'))
