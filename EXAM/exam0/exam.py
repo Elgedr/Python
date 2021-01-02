@@ -109,7 +109,15 @@ def rainbows(field: str, lower=False) -> int:
     :param field: string to search rainbows from
     :return: number of rainbows in the string
     """
-    pass
+    string = field.lower()
+    if "rainbow" in string:
+        new = string.replace("rainbow", '', 1)
+        return rainbows(new) + 1
+    elif "wobniar" in string:
+        new = string.replace("wobniar", '', 1)
+        return rainbows(new) + 1
+    else:
+        return 0
 
 
 def longest_substring(text: str) -> str:
@@ -130,8 +138,20 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    pass
+    result = ''
+    res = []
+    if text == '':
+        return ''
+    for letter in text:
+        if not (letter in res):
+            res.append(letter)
+    for char in res:
+        result += char
+    return result
 
+
+if __name__ == '__main__':
+    print(longest_substring('babcdEFghij'))
 
 class Student:
     """Student class."""
