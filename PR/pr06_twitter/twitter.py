@@ -68,7 +68,7 @@ if __name__ == '__main__':
     tweet3 = Tweet("@CIA", "We can neither confirm nor deny that this is our first tweet. #heart", 2192, 284200)
     tweets = [tweet1, tweet2, tweet3]
 
-    print(find_fastest_growing(tweets).user)  # -> "@elonmusk"
+    print(find_fastest_growing(tweets))  # -> "@elonmusk"
 
     filtered_by_popularity = sort_by_popularity(tweets)
     print(filtered_by_popularity[0].user)  # -> "@CIA"

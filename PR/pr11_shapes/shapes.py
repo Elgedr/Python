@@ -150,7 +150,6 @@ class Paint:
 
     def get_rectangles(self) -> list:
         """Return only rectangles."""
-        """Return only squares."""
         res = []
         for shape in self.shapes:
             if isinstance(shape, Rectangle):

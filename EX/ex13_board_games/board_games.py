@@ -68,7 +68,7 @@ class Statistics:
         else:
             tokens = path[1:].split("/")  # our path = /game/{name}/amount we will get ["game", "{name}", "amount"]
             func = getattr(self, 'get_' + tokens[0])  # get_game
-            return func(tokens[1])
+            return func(tokens[0])
 
     def read_from_file(self, filename: str):
         """Read from file."""

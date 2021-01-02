@@ -5,13 +5,11 @@ import random
 
 class PersonError(Exception):
     """Person error."""
-
     pass
 
 
 class TransactionError(Exception):
     """Transaction error."""
-
     pass
 
 
@@ -34,7 +32,7 @@ class Person:
     def age_control(self, age):
         """Funct."""
         if age <= 0:
-            raise PersonError
+            raise PersonError('can not add a user due to his age')
         return age
 
     @property

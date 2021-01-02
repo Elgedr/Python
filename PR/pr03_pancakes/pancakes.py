@@ -35,7 +35,7 @@ def make_n_pancakes(n: int, ingredients: list):
     dough_amount = make_dough(ingredients)  # например 7
     done_pancakes = 0
     if can_make_pancake(dough_amount) is False:
-        return done_pancakes
+        return 0
     else:
         while can_make_pancake(dough_amount) is True:
             dough_amount = make_a_pancake(dough_amount)

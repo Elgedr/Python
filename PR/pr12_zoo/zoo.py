@@ -32,7 +32,7 @@ def find_smallest_animal_by_weight(animal_list: list) -> Animal:
     :param animal_list: input list of animals
     :return: Animal object
     """
-    res = min(animal_list, key=lambda x: x.weight_range[0])  # используем 1 для того, чтобы искал максимум по первому числу в tuple
+    res = min(animal_list, key=lambda x: x.weight_range[0])  # используем 0 для того, чтобы искал максимум по первому числу в tuple
     return res
 
 
