@@ -225,7 +225,7 @@ def add_result_to_student(student: Student, grades_count: int, new_grade: int, c
     Return the modified student object.
     """
     gr_sum = student.average_grade * grades_count
-    new_av = (gr_sum + new_grade) / (grades_count + 1)
+    new_av = round((gr_sum + new_grade) / (grades_count + 1), 3)
     student.average_grade = new_av
     return student
 
