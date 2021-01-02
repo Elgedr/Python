@@ -188,7 +188,6 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
         result = sorted(res, key=lambda x: x.average_grade)
     return result[0]
 
-
 def add_result_to_student(student: Student, grades_count: int, new_grade: int, credit_points) -> Student:
     """
     Update student average grade and credit points by adding a new grade (result).
