@@ -159,6 +159,9 @@ class Student:
         self.average_grade = average_grade
         self.name = name
 
+    def __repr__(self):
+        return self.name
+
 
 def create_student(name: str, grades: list, credit_points: int) -> Student:
     """
@@ -188,8 +191,8 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
     if not res:
         return None
     else:
-        result = sorted(res, key=lambda x: x.average_grade)
-    return result[-1]
+        result = sorted(res, key=lambda x: -x.average_grade)
+    return result[0]
 
 
 def add_result_to_student(student: Student, grades_count: int, new_grade: int, credit_points) -> Student:
@@ -228,7 +231,6 @@ def add_result_to_student(student: Student, grades_count: int, new_grade: int, c
     new_av = round((gr_sum + new_grade) / (grades_count + 1), 3)
     student.average_grade = new_av
     return student
-
 
 
 def get_ordered_students(students: list) -> list:
@@ -342,6 +344,11 @@ class Hotel:
 
 
 if __name__ == '__main__':
+    st1 = Student('Ago', 2, 100)
+    st2 = Student('El', 6, 2000)
+    st3 = Student("pipa", 1, 30)
+    listt = [st1, st2, st3]
+    print(get_top_student_with_credit_points(listt, 20))
     hotel = Hotel()
     room1 = Room(1, 100)
     room1.add_feature("tv")
