@@ -230,7 +230,7 @@ def add_result_to_student(student: Student, grades_count: int, new_grade: int, c
     gr_sum = student.average_grade * grades_count
     new_av = round((gr_sum + new_grade) / (grades_count + 1), 3)
     student.average_grade = new_av
-    student.credit_points = credit_points
+    student.credit_points += credit_points
     return student
 
 
@@ -240,7 +240,8 @@ def get_ordered_students(students: list) -> list:
 
     credit points (higher first), average_grade (higher first), name (a to z).
     """
-    pass
+    res = sorted(students, key=lambda x: (-x.credit_points, -x.average_grade, x.name))
+    return res
 
 
 class Room:
