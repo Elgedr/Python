@@ -19,11 +19,15 @@ def close_far(a: int, b: int, c: int) -> bool:
     second = abs(a - b)
     th = abs(c - b)
 
-    if first == 1 and second >= 2 and th >= 2:
+    if first <= 1 and second >= 2 and th >= 2:
         return True
-    elif second == 1 and first >= 2 and th >= 2:
+    elif second <= 1 and first >= 2 and th >= 2:
         return True
     return False
+
+
+if __name__ == '__main__':
+    print(close_far(-1, -1, 10))
 
 
 def get_names_from_results(results_string: str, min_result: int) -> list:
