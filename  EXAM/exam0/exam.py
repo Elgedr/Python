@@ -63,10 +63,6 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
     return res
 
 
-if __name__ == '__main__':
-    print(get_names_from_results("ago 123,peeter 11,33", 10))
-
-
 def tic_tac_toe(game: list) -> int:
     """
     Find game winner.
@@ -87,7 +83,18 @@ def tic_tac_toe(game: list) -> int:
     :param game
     :return: winning player id
     """
-    pass
+    for listt in game:
+        if listt[0] == listt[1] == listt[2]:
+            return listt[0]
+    for i in range(3):
+        if game[0][i] == game[1][i] == game[2][i]:
+            return game[0][i]
+    if game[0][0] == game[1][1] == game[2][2]:
+        return game[0][0]
+    elif game[0][2] == game[1][1] == game[2][0]:
+        return game[0][2]
+    else:
+        return 0
 
 
 def rainbows(field: str, lower=False) -> int:
