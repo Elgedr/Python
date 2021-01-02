@@ -150,9 +150,6 @@ def longest_substring(text: str) -> str:
     return result
 
 
-if __name__ == '__main__':
-    print(longest_substring('babcdEFghij'))
-
 class Student:
     """Student class."""
 
@@ -170,7 +167,8 @@ def create_student(name: str, grades: list, credit_points: int) -> Student:
     Round the average grade up to three decimal places.
     If the list of grades is empty, the average grade will be 0.
     """
-    pass
+    aver = round(sum(grades) / len(grades), 2)
+    return Student(name, aver, credit_points)
 
 
 def get_top_student_with_credit_points(students: list, min_credit_points: int):
@@ -180,7 +178,15 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
     If there are no students with enough credit points, return None.
     If several students have the same average score, return the first.
     """
-    pass
+    res = []
+    for st in students:
+        if st.credit_points >= min_credit_points:
+            res.append(st)
+    if not res:
+        return None
+    else:
+        result = sorted(res, key=lambda x: x.average_grade)
+    return result[0]
 
 
 def add_result_to_student(student: Student, grades_count: int, new_grade: int, credit_points) -> Student:
