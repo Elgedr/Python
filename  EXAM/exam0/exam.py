@@ -26,9 +26,6 @@ def close_far(a: int, b: int, c: int) -> bool:
     return False
 
 
-if __name__ == '__main__':
-    print(close_far(4, 1, 3))
-
 
 def get_names_from_results(results_string: str, min_result: int) -> list:
     """
