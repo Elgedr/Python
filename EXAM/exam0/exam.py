@@ -316,19 +316,28 @@ class Hotel:
         If there are several with the same amount of matching features, return the one with the smallest room number.
         If there is no available rooms, return None
         """
-        pass
+        res = None
+
 
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
         res = []
+        for room in self.rooms:
+            if not room.booked:
+                res.append(room)
+        return res
 
     def get_rooms(self) -> list:
         """Return all the rooms (both booked and available)."""
-        pass
+        return self.rooms
 
     def get_booked_rooms(self) -> list:
         """Return all the booked rooms."""
-        pass
+        res = []
+        for room in self.rooms:
+            if room.booked:
+                res.append(room)
+        return res
 
     def get_feature_profits(self) -> dict:
         """
@@ -348,7 +357,17 @@ class Hotel:
         'd': 200
         }
         """
-        pass
+        booked_list = self.get_booked_rooms()
+        res = {}
+        for room in booked_list:
+            for feature in room.features:
+                if feature in res:
+                    res[feature].append(room.price)
+                else:
+                    res[feature] = [room.price]
+        for key, value in res.items():
+            res[key] = sum(value)
+        return res
 
     def get_most_profitable_feature(self) -> Optional[str]:
         """
@@ -359,7 +378,11 @@ class Hotel:
         If there are several with the same max value, return the feature which is alphabetically lower (a < z)
         If there are no features booked, return None.
         """
-        pass
+        profits = self.get_feature_profits()
+        if not profits:
+            return None
+        res = sorted(profits.items(), key=lambda it: (-it[1], it[0]))[0]
+        return res
 
 
 if __name__ == '__main__':
