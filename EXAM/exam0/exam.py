@@ -91,7 +91,7 @@ def tic_tac_toe(game: list) -> int:
         if game[0][i] == game[1][i] == game[2][i] == 2:
             return 2
     else:
-        tic(game)
+        return tic(game)
 
 
 def tic(game) -> int:
