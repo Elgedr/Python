@@ -253,7 +253,10 @@ class Room:
 
     def __init__(self, number: int, price: int):
         """Constructor."""
-        pass
+        self.number = number
+        self.price = price
+        self.features = []
+        self.booked = False
 
     def add_feature(self, feature: str) -> bool:
         """
@@ -264,19 +267,21 @@ class Room:
         - the room is booked.
         Otherwise, add the feature to the room and return True
         """
-        pass
+        if self.booked is True or feature in self.features:
+            return False
+        self.features.append(feature)
 
     def get_features(self) -> list:
         """Return all the features of the room."""
-        pass
+        return self.features
 
     def get_price(self) -> int:
         """Return the price."""
-        pass
+        return self.price
 
     def get_number(self) -> int:
         """Return the room number."""
-        pass
+        return self.number
 
 
 class Hotel:
