@@ -318,7 +318,6 @@ class Hotel:
         """
         res = None
 
-
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
         res = []
