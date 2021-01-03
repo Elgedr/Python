@@ -318,8 +318,9 @@ class Hotel:
         for rooms in self.rooms:
             if rooms.number == room.number:
                 return False
-        self.rooms.append(room)
-        return True
+            else:
+                self.rooms.append(room)
+            return True
 
     def book_room(self, required_features: list) -> Optional[Room]:
         """
@@ -417,10 +418,13 @@ if __name__ == '__main__':
     room1.add_feature("tv")
     room1.add_feature("bed")
     room2 = Room(2, 200)
+    roo3 = Room(2, 2000)
     room2.add_feature("tv")
     room2.add_feature("sauna")
     hotel.add_room(room1)
     hotel.add_room(room2)
+    hotel.add_room(roo3)
+
     # TODO: try to add room with existing number, try to add existing feature to room
 
     assert hotel.get_rooms() == [room1, room2]
