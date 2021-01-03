@@ -318,9 +318,8 @@ class Hotel:
         for rooms in self.rooms:
             if rooms.number == room.number:
                 return False
-            else:
-                self.rooms.append(room)
-            return True
+        self.rooms.append(room)
+        return True
 
     def book_room(self, required_features: list) -> Optional[Room]:
         """
@@ -404,7 +403,7 @@ class Hotel:
         if not profits:
             return None
         res = sorted(profits.items(), key=lambda it: (-it[1], it[0]))[0]
-        return res
+        return res[0]
 
 
 if __name__ == '__main__':
