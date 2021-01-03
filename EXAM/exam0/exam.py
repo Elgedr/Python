@@ -325,10 +325,16 @@ class Hotel:
         If there is no available rooms, return None
         """
         free_rooms = self.get_available_rooms()
-        res = []
-        features = {}
+        rooms_and_features = {}
+        if not free_rooms:
+            return None
         for room in free_rooms:
-            counter = 0
+            rooms_and_features[room] = 0
+            for feature in required_features:
+                if feature in room.features:
+                    rooms_and_features[room] += 1
+        res = sorted(rooms_and_features.items(), key=lambda x: (-(len(x[1])), x[0].number))[0]
+        return res
 
 
     def get_available_rooms(self) -> list:
@@ -378,7 +384,6 @@ class Hotel:
                 else:
                     res[feature] = room.price
         return res
-
 
     def get_most_profitable_feature(self) -> Optional[str]:
         """
