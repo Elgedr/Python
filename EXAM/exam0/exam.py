@@ -419,6 +419,7 @@ if __name__ == '__main__':
     room2 = Room(2, 200)
     roo3 = Room(2, 2000)
     room2.add_feature("tv")
+    room2.add_feature("bed")
     room2.add_feature("sauna")
     room2.add_feature("sauna")
     hotel.add_room(room1)
