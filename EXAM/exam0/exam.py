@@ -379,6 +379,7 @@ class Hotel:
                     res[feature] = room.price
         return res
 
+
     def get_most_profitable_feature(self) -> Optional[str]:
         """
         Return the feature which profits the most.
