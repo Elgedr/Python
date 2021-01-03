@@ -420,11 +420,10 @@ if __name__ == '__main__':
     roo3 = Room(2, 2000)
     room2.add_feature("tv")
     room2.add_feature("sauna")
+    room2.add_feature("sauna")
     hotel.add_room(room1)
     hotel.add_room(room2)
     hotel.add_room(roo3)
-
-    # TODO: try to add room with existing number, try to add existing feature to room
 
     assert hotel.get_rooms() == [room1, room2]
     assert hotel.get_booked_rooms() == []
