@@ -299,12 +299,11 @@ class Hotel:
         If a room with the given number already exists, do not add a room and return False.
         Otherwise add the room to hotel and return True.
         """
-        if len(self.rooms) >= 1:
-            for rooms in self.rooms:
-                if rooms.number == room.number:
-                    return False
-            self.rooms.append(room)
-            return True
+        for rooms in self.rooms:
+            if rooms.number == room.number:
+                return False
+        self.rooms.append(room)
+        return True
 
     def book_room(self, required_features: list) -> Optional[Room]:
         """
