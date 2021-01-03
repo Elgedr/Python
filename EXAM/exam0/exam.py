@@ -333,7 +333,7 @@ class Hotel:
             for feature in required_features:
                 if feature in room.features:
                     rooms_and_features[room] += 1
-        res = sorted(rooms_and_features.items(), key=lambda x: (-(len(x[1])), x[0].number))[0]
+        res = sorted(rooms_and_features.items(), key=lambda x: (-x[1], x[0].number))[0]
         return res
 
 
