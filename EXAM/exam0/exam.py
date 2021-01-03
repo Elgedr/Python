@@ -90,6 +90,11 @@ def tic_tac_toe(game: list) -> int:
             return 1
         if game[0][i] == game[1][i] == game[2][i] == 2:
             return 2
+    else:
+        tic(game)
+
+
+def tic(game) -> int:
     if game[0][0] == game[1][1] == game[2][2] == 1:
         return 1
     elif game[0][0] == game[1][1] == game[2][2] == 2:
@@ -335,7 +340,6 @@ class Hotel:
                     rooms_and_features[room] += 1
         res = sorted(rooms_and_features.items(), key=lambda x: (-x[1], x[0].number))[0]
         return res
-
 
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
