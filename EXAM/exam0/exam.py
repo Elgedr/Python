@@ -324,7 +324,12 @@ class Hotel:
         If there are several with the same amount of matching features, return the one with the smallest room number.
         If there is no available rooms, return None
         """
-        res = None
+        free_rooms = self.get_available_rooms()
+        res = []
+        features = {}
+        for room in free_rooms:
+            counter = 0
+
 
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
@@ -369,11 +374,9 @@ class Hotel:
         for room in booked_list:
             for feature in room.features:
                 if feature in res:
-                    res[feature].append(room.price)
+                    res[feature] += room.price
                 else:
-                    res[feature] = [room.price]
-        for key, value in res.items():
-            res[key] = sum(value)
+                    res[feature] = room.price
         return res
 
     def get_most_profitable_feature(self) -> Optional[str]:
