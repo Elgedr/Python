@@ -110,14 +110,14 @@ def rainbows(field: str, lower=False) -> int:
     :return: number of rainbows in the string
     """
     string = field.lower()
+    if not ("rainbow" in string) or not ("wobniar" in string):
+        return 0
     if "rainbow" in string:
         new = string.replace("rainbow", '', 1)
         return rainbows(new) + 1
     elif "wobniar" in string:
         new = string.replace("wobniar", '', 1)
         return rainbows(new) + 1
-    else:
-        return 0
 
 
 def longest_substring(text: str) -> str:
