@@ -93,4 +93,4 @@ You will get deleted category’s Id
 - Use http://localhost:8080/products/category/{category} and choose a GET method
 - Instead of {category} in the URL, write the category of the products you want to get
 
-Also, you can get a product or category by id using GET method and http://localhost:8080/products/{id} or http://localhost:8080/categories/{id}
+## Also, you can get a product or category by id using GET method and http://localhost:8080/products/{id} or http://localhost:8080/categories/{id}
