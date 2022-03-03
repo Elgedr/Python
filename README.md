@@ -1,4 +1,7 @@
-# NB! For a more beautiful output of the JSON, you can install this extension https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=ru 
+# API documentation
+
+
+### NB! For a more beautiful output of the JSON, you can install this extension https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=ru 
 
 
 
