@@ -32,6 +32,7 @@ If you try to create the category with the existing name you will get the error 
 }`
 - As every product has a category, you should give a category id the product belongs to. Choose “Params”, write under the key categoryId and tick this key. As a value write needed category Id
 
+Also, you can get a product or category by id using GET method and http://localhost:8080/products/{id} or http://localhost:8080/categories/{id}
 ![unnamed (3)](https://user-images.githubusercontent.com/73361292/156654455-a36b0772-b5cf-433b-bea9-0bd9f3267590.png)
 
 
@@ -88,3 +89,9 @@ You will get deleted category’s Id
 - Instead of {id} in the URL, write the id of the product to be deleted
 - Press “Send”
 You will get deleted category’s Id
+
+### Get products by category
+- Use http://localhost:8080/products/category/{category} and choose a GET method
+- Instead of {category} in the URL, write the category of the products you want to get
+
+Also, you can get a product or category by id using GET method and http://localhost:8080/products/{id} or http://localhost:8080/categories/{id}
