@@ -1,7 +1,11 @@
 # API documentation
 
 
-### NB! For a more beautiful output of the JSON, you can install this extension https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=ru 
+### NB! For a more beautiful output of the JSON, you can install this extension https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=ru
+
+### Entity relationship diagram
+
+![Screenshot 2022-03-04 001946](https://user-images.githubusercontent.com/73361292/156662675-3cc1f06a-e367-4673-9025-c579bf7cd5d0.png)
 
 
 
