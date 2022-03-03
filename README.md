@@ -7,8 +7,11 @@ Firstly, you should create a category.
 
 - Use http://localhost:8080/categories  and choose a POST method
 
+![unnamed (1)](https://user-images.githubusercontent.com/73361292/156654179-32841d71-93aa-43e3-9eb5-f463d8487118.png)
+
 - For creating a new category, you should write the category’s name. Press “Body” then choose “raw” and choose ‘“JSON”.
 
+![unnamed](https://user-images.githubusercontent.com/73361292/156654271-fa11e09e-91fa-4969-9723-9d4be4271f56.png)
 
 - Write category’s name like this 
 `{
@@ -18,6 +21,7 @@ Firstly, you should create a category.
 - Press “Send”
 
 If you try to create the category with the existing name you will get the error “Category already exists!”
+![unnamed (2)](https://user-images.githubusercontent.com/73361292/156654375-3e962f06-0e30-4260-b73a-7d8c51a60bce.png)
 
 ### Create a product
 - For this, use http://localhost:8080/categories and choose a POST method
@@ -28,6 +32,9 @@ If you try to create the category with the existing name you will get the error 
 }`
 - As every product has a category, you should give a category id the product belongs to. Choose “Params”, write under the key categoryId and tick this key. As a value write needed category Id
 
+![unnamed (3)](https://user-images.githubusercontent.com/73361292/156654455-a36b0772-b5cf-433b-bea9-0bd9f3267590.png)
+
+
 
 
 ### Get all categories
@@ -35,11 +42,14 @@ If you try to create the category with the existing name you will get the error 
 - Press “Send”
 - Or just type  http://localhost:8080/categories in the search box and you will get something similar to this
 
+![unnamed (4)](https://user-images.githubusercontent.com/73361292/156654581-622b976a-00f5-44ec-abe9-a0bf6419d3b6.png)
+
+
 
 ### Get all products
 - Use http://localhost:8080/categories and choose a GET method
 - Press “Send”
-- Or just type  http://localhost:8080/categories in the search box and you will get something similar to this
+- Or just type  http://localhost:8080/categories in the search box
 
 
 
@@ -47,6 +57,8 @@ If you try to create the category with the existing name you will get the error 
 - Use http://localhost:8080/categories/{id} and choose a PUT method
 - Instead of {id} in the URL, write the id of the category to be updated
 - In params under the “Key” write the “name”(field to be changed) and under the “Value” wanted new name value
+
+![unnamed (7)](https://user-images.githubusercontent.com/73361292/156654760-ce325645-3495-4eec-9b54-34c09bc2edde.png)
 - Press “Send”
 
 You will get a product with a changed name
@@ -67,6 +79,8 @@ You will get a product with a changed name
 - Instead of {id} in the URL, write the id of the category to be deleted
 - Press “Send”
 You will get deleted category’s Id
+
+![unnamed (8)](https://user-images.githubusercontent.com/73361292/156654763-fcfef683-eb60-4c2b-9939-99bf05c09aa2.png)
 
 
 ### Delete product
