@@ -24,7 +24,7 @@ If you try to create the category with the existing name you will get the error 
 ![unnamed (2)](https://user-images.githubusercontent.com/73361292/156654375-3e962f06-0e30-4260-b73a-7d8c51a60bce.png)
 
 ### Create a product
-- For this, use http://localhost:8080/categories and choose a POST method
+- For this, use http://localhost:8080/products and choose a POST method
 - Repeat all steps from “create a category”, write parameters for a new product like that:
 `{
 “productName”: “wanted product name”,
@@ -47,9 +47,9 @@ If you try to create the category with the existing name you will get the error 
 
 
 ### Get all products
-- Use http://localhost:8080/categories and choose a GET method
+- Use http://localhost:8080/products and choose a GET method
 - Press “Send”
-- Or just type  http://localhost:8080/categories in the search box
+- Or just type  http://localhost:8080/products in the search box
 
 
 
